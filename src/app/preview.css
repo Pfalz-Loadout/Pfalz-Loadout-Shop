@@ -425,3 +425,8 @@
   color: var(--signal);
   font-weight: 600;
 }
+/* QD-Öse: etwas breiter, weil fast quadratisch */
+.lockbadge.qdbadge,
+.pcard__media .lockbadge.qdbadge {
+  width: 42px;
+}

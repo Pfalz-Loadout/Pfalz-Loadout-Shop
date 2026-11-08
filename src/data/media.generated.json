@@ -1021,6 +1021,19 @@
   "cut": true,
   "tr": 0.1
  },
+ "zb-qd": {
+  "w": 796,
+  "h": 919,
+  "widths": [
+   120,
+   240,
+   360
+  ],
+  "v": "1cc14a75",
+  "bg": "transparent",
+  "cut": true,
+  "tr": 0.203
+ },
  "zb-patch-glow": {
   "w": 691,
   "h": 693,

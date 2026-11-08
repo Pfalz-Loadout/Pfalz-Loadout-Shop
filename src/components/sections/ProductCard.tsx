@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
 import { LockBadge } from '../LockBadge';
 import { PatchBadge } from '../PatchBadge';
+import { QdBadge } from '../QdBadge';
 import { ShotArrows } from '../ShotArrows';
 import { Picture, hasMedia, lockSpace } from '../Picture';
 import { useCart } from '../cart/CartProvider';
@@ -72,6 +73,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
         <ShotArrows index={shotIdx % Math.max(1, shots.length)} count={shots.length} onChange={setShotIdx} />
         {/* Zubehör steht statisch in fester Größe über jedem Vorschaubild */}
         <LockBadge on={variant.option === 'mit Zahlenschloss'} />
+        <QdBadge on={variant.option === '+ QD-Öse'} />
         {product.badge && <PatchBadge {...product.badge} />}
         <span className="pcard__code mono">{colorCode(product, color)}</span>
         <span className="pcard__num mono">{String(index + 1).padStart(2, '0')}/04</span>
