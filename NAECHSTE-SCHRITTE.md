@@ -10,6 +10,14 @@ Inhaltlicher Kern:
 Umsetzungsidee: interaktive „Packliste“ beim IFAK (Labor oder Produktbühne) – Kategorien M/A/R/C/H zum Antippen, jeweils 1–2 Sätze.
 Pflicht-Hinweise: „Lieferung ohne Inhalt“, „keine medizinische Beratung – Inhalt nach eigener Ausbildung wählen, Kurs empfohlen“.
 
+Zweite Quelle (PPF Germany, Blog „IFAK: Was in dein Erste-Hilfe-Kit für den Einsatz gehört“, 05.10.2026) – ebenfalls nur Inspiration, eigene Worte:
+- Kern (Hartford Consensus III): Handschuhe, Tourniquet (nur CoTCCC-empfohlen), Druckverband, hämostyptische Gaze; dazu 2 Chest Seals (vented), Trauma-Schere, Marker, Rettungsdecke.
+- Warum Gaze Pflicht ist: Studie Eastridge 2012 – nur ca. 13,5 % der tödlichen Blutungen an Armen/Beinen (Tourniquet), ca. 19 % Leiste/Achsel/Hals → Wound Packing.
+- Packen in Schichten: vorne Blutstillung, Mitte Brustkorb, hinten Wärme/Reserve; Tourniquet außen; Rip-Away-Pouch (passt zu PL_IFAK!); immer gleicher Platz.
+- Nicht rein: Bagatell-Pflaster, Medikamente, Schienen, Übungsmaterial.
+- Wartung: Ablaufdaten (Gaze, Chest Seals), Hitze im Auto, nach Einsatz auffüllen, üben.
+- Idee für den Shop: Packliste-Grafik in der Pouch (Schichten antippbar) + Quellenangaben (TCCC, ERC 2025, S3-Leitlinie Polytrauma) + Hinweis „ersetzt keine Ausbildung“. Rip-Away-Funktion des IFAK als Kaufargument verknüpfen.
+
 ## 2. Zahlenschloss-Fotos
 Echte Fotos (Schwarz, Pink, Grün, Orange, Gelb, Blau, weißer Grund) nach
 `OneDrive\Dokumente\Claude\pfalz-loadout-shop\medien\zubehoer\zahlenschloss\` legen →
