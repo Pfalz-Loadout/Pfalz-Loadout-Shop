@@ -24,12 +24,13 @@ Zweite Quelle (PPF Germany, Blog „IFAK: Was in dein Erste-Hilfe-Kit für den E
 **Umgestellt (08.11.2026):** LockBadge zeigt jetzt ein echtes Foto oben rechts im Vorschaubild (kein Einflug), Farbleuchten wechselt alle 4 s mit kurzem Aufleuchten.
 Retuschierter Ausschnitt verworfen („hässlich“) → liegt nur noch in `zahlenschloss\_alt\`. Die Inhaberin hat ORIGINAL-Produktfotos (800×800, weißer Grund, hochkant, Farben schwarz/pink/grün/orange/gelb/blau) im Chat gezeigt – sie müssen als Dateien in den Ordner:
 `medien\zubehoer\zahlenschloss\schwarz.jpg, pink.jpg, gruen.jpg, orange.jpg, gelb.jpg, blau.jpg`
-Dann: `python -I scripts/schloss-freistellen.py` (rembg-venv) → `node scripts/medien.mjs zs-` → fertig (Komponente + Manifest sind vorbereitet). Bis dahin erscheint KEIN Schloss im Bild.
+ERLEDIGT 08.11.2026: Originalfotos liegen als H…jpg + benannte Kopien (schwarz.jpg …) im Ordner, freigestellt und eingebaut. Gruppenfoto s-l1600.webp liegt dort ebenfalls (noch nicht verwendet).
 Außerdem gezeigt: Gruppenfoto aller Farben auf dunklem Grund mit Pfalz-Loadout-Logo – Kandidat fürs Materiallabor/Range-Bag-Zubehör.
 
 ## 2c. Weitere Änderungen 08.11.2026
 - Wolken-Rand der Produktfotos entfernt (wieder weißer Rahmen).
 - Bildwechsel per Pfeil links/rechts auf dem Vorschaubild (`src/components/ShotArrows.tsx`), Zähler unten rechts.
+- Bildwechsel jetzt als dezente Leiste mittig unter dem Artikel; Vorschaubild kippt mit der Maus statt beim Scrollen.
 - Gurt: je Farbe 2 Fotos (stehend, liegend, freigestellt), bei „+ QD-Öse“ wird `sl-qd-teile` als 3. Bild angehängt und angezeigt (`optionStage` in shop.ts).
 
 ## 2b. Range Bag (KWT) Bildreihenfolge
