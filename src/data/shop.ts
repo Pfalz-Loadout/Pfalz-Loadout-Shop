@@ -339,7 +339,8 @@ export const PRODUCTS: Product[] = [
       { label: 'Lieferumfang', value: 'Pouch + Trägerplatte + PVC-Patch, ohne Inhalt' },
     ],
     hotspots: [
-      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [74, 41], 'med-oliv-front': [75, 41], 'med-schwarz-front': [71, 41], 'med-rot-stage': [73, 42] } },
+      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [85, 40], 'med-oliv-front': [85, 40], 'med-schwarz-front': [82, 40], 'med-rot-stage': [83, 41] } },
+      { label: 'Trägerplatte', text: 'Hinten: MOLLE-Streifen für Rucksack, Gürtel oder Weste. Die Pouch hält per Klett darauf – ein Zug, und sie ist ab.', at: { 'med-coyote-seite': [36, 55], 'med-oliv-rueck': [40, 55], 'med-schwarz-rueck': [31, 50], 'med-camo-rueck': [46, 55] } },
       { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [47, 22], 'med-oliv-front': [46, 22], 'med-schwarz-front': [42, 22], 'med-rot-stage': [43, 23] } },
       { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [60, 37], 'med-oliv-front': [63, 37], 'med-schwarz-front': [57, 37], 'med-rot-stage': [61, 37] } },
       { label: 'Zipper', text: 'Rundum-Reißverschluss, öffnet über die ganze Höhe.', at: { 'med-coyote-front': [28, 69], 'med-oliv-front': [23, 72], 'med-schwarz-front': [26, 67] } },
@@ -371,7 +372,8 @@ export const PRODUCTS: Product[] = [
         },
       },
     ],
-    stage: { coyote: ['med-coyote-front', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-offen'], rot: ['med-rot-stage'], camo: ['med-camo-stage'], acu: ['med-acu-stage'] },
+    // Front, Rückseite, aufgeklappt (Rot/ACU: keine weiteren Fotos vorhanden)
+    stage: { coyote: ['med-coyote-front', 'med-coyote-seite', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-rueck', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-rueck', 'med-schwarz-offen'], rot: ['med-rot-stage'], camo: ['med-camo-stage', 'med-camo-rueck'], acu: ['med-acu-stage'] },
     cutout: { coyote: 'med-coyote-front', oliv: 'med-oliv-front', schwarz: 'med-schwarz-front', rot: 'med-rot-stage', camo: 'med-camo-stage', acu: 'med-acu-stage' },
     model3d: '/models/pl-med03.glb',
     note: 'Lieferung ohne medizinischen Inhalt.',
