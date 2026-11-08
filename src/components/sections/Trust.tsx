@@ -41,7 +41,7 @@ export function Trust() {
           </div>
           {[1, 2].map((n) => (
             <figure className="voice voice--ph" key={n}>
-              <span className="mono" style={{ color: 'var(--coyote)' }}>
+              <span className="mono" style={{ color: 'var(--coyote-ink)' }}>
                 Platzhalter · Kundenstimme {n}
               </span>
               <blockquote>

@@ -226,7 +226,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
           </div>
 
           {options.length === 1 && variant.option && (
-            <p className="mono" style={{ margin: '-6px 0 14px', color: 'var(--coyote)' }}>
+            <p className="mono" style={{ margin: '-6px 0 14px', color: 'var(--coyote-ink)' }}>
               Ausführung: {variant.option} (inklusive)
             </p>
           )}

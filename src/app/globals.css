@@ -5,20 +5,24 @@
    ================================================================== */
 
 :root {
-  --basalt: #141414;
-  --basalt-2: #1a1a19;
-  --basalt-3: #222220;
-  --basalt-4: #2c2c29;
+  /* Hell: Papier-Grund, weiße Karten/Bühnen (Freisteller-Weiß), Schrift fast schwarz.
+     Variablennamen bleiben (basalt = Grund, bone = Schrift), damit alle Bauteile mitziehen. */
+  --basalt: #f4f3ef;
+  --basalt-2: #ffffff;
+  --basalt-3: #ebe9e3;
+  --basalt-4: #dfdcd4;
   --ranger: #3b4a3f;
   --ranger-hi: #52665a;
   --coyote: #b8a07e;
   --coyote-lo: #8e7a5c;
-  --bone: #edebe6;
-  --bone-2: #c9c6be; /* Kontrast auf Basalt ≈ 11:1 */
-  --bone-3: #9a978f; /* ≈ 6.4:1 – nur für Labels */
-  --signal: #ff5f1f; /* ≈ 6.3:1 auf Basalt */
-  --line: rgba(237, 235, 230, 0.1);
-  --line-2: rgba(237, 235, 230, 0.2);
+  --bone: #141414;
+  --bone-2: #3a3935; /* ≈ 10:1 auf Papier */
+  --bone-3: #66645e; /* ≈ 5.4:1 – Labels */
+  --signal: #ff5f1f; /* Markierungen, Buttons, Zugband */
+  --signal-ink: #b13a0a; /* Orange als SCHRIFT: ≈ 5.6:1 auf Papier (WCAG AA) */
+  --coyote-ink: #6f5a37; /* Coyote als Schrift ≈ 6:1 */
+  --line: rgba(20, 20, 20, 0.1);
+  --line-2: rgba(20, 20, 20, 0.18);
   --sand: #d9cfbd;
   --sand-ink: #2a2620;
 
@@ -33,7 +37,7 @@
   --hdr: 64px;
   --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
   --ease-snap: cubic-bezier(0.5, 1.6, 0.4, 1);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 *,
@@ -176,7 +180,7 @@ textarea {
   color: var(--bone-3);
 }
 .signal {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 /* Sektionskopf: Stencil-Label + Seriennummer */
@@ -389,7 +393,7 @@ textarea {
   font-family: var(--f-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--signal);
+  color: var(--signal-ink);
   opacity: 0;
 }
 .scan.is-scanned .scan__beam::before {
@@ -440,7 +444,7 @@ textarea {
   align-items: center;
   gap: 24px;
   padding-inline: var(--gutter);
-  background: linear-gradient(rgba(20, 20, 20, 0.92), rgba(20, 20, 20, 0.6));
+  background: rgba(244, 243, 239, 0.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -547,7 +551,7 @@ textarea {
   transition: color 0.2s;
 }
 .hero__codes a:hover {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 /* Wortmarke: so groß wie möglich, zwei Zeilen, Stencil */
 .hero__title {
@@ -689,7 +693,7 @@ textarea {
   opacity: 1;
 }
 .manifest__text .w--sig {
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .manifest__sub {
   margin-top: 36px;
@@ -742,9 +746,7 @@ textarea {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 45% at 50% 78%, rgba(237, 235, 230, 0.1), transparent 70%),
-    radial-gradient(ellipse 80% 70% at 50% 45%, #2a2a27, var(--basalt-2) 75%);
+  background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 2px;
   transform-style: preserve-3d;
@@ -793,15 +795,13 @@ textarea {
   bottom: 12px;
   z-index: 3;
   color: var(--bone);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 .stage__serial {
   position: absolute;
   right: 14px;
   top: 14px;
   z-index: 3;
-  color: rgba(237, 235, 230, 0.85);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  color: var(--bone-3);
 }
 .stage__thumbs {
   position: absolute;
@@ -816,7 +816,7 @@ textarea {
   height: 6px;
   padding: 0;
   border: 0;
-  background: rgba(20, 20, 20, 0.45);
+  background: var(--line-2);
   cursor: pointer;
 }
 .stage__thumbs button[aria-pressed='true'] {
@@ -845,9 +845,9 @@ textarea {
   width: 34px;
   height: 34px;
   padding: 0;
-  border: 1px solid rgba(237, 235, 230, 0.9);
+  border: 1px solid var(--bone);
   border-radius: 50%;
-  background: rgba(20, 20, 20, 0.55);
+  background: rgba(255, 255, 255, 0.85);
   cursor: pointer;
   backdrop-filter: blur(4px);
 }
@@ -877,7 +877,8 @@ textarea {
   max-width: 220px;
   padding: 10px 12px;
   transform: translateY(-50%);
-  background: rgba(20, 20, 20, 0.92);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(20, 20, 20, 0.12);
   border: 1px solid var(--line-2);
   border-left: 3px solid var(--signal);
   font-size: 0.85rem;
@@ -891,7 +892,7 @@ textarea {
   font-family: var(--f-mono);
   font-size: 0.7rem;
   letter-spacing: 0.06em;
-  color: var(--coyote);
+  color: var(--coyote-ink);
   text-transform: uppercase;
   margin-bottom: 2px;
 }
@@ -916,7 +917,7 @@ textarea {
   margin-bottom: 10px;
 }
 .sheet__code {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .sheet__name {
   font-size: clamp(2.8rem, 5.2vw, 5rem);
@@ -929,7 +930,7 @@ textarea {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .sheet__desc {
   color: var(--bone-2);
@@ -949,7 +950,7 @@ textarea {
 }
 .specs__more summary::before {
   content: '+ ';
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .specs__more[open] summary::before {
   content: '− ';
@@ -1028,7 +1029,7 @@ textarea {
   width: 20px;
   height: 20px;
   border-radius: 1px;
-  outline: 1px solid rgba(237, 235, 230, 0.25);
+  outline: 1px solid var(--line-2);
 }
 .swatch input:checked + span {
   border-color: var(--bone);
@@ -1206,7 +1207,7 @@ textarea {
   display: block;
   font-family: var(--f-mono);
   font-size: 0.68rem;
-  color: var(--coyote);
+  color: var(--coyote-ink);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1232,7 +1233,7 @@ textarea {
   font-family: var(--f-mono);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
-  color: var(--coyote);
+  color: var(--coyote-ink);
   text-transform: uppercase;
   margin-bottom: 4px;
 }
@@ -1340,7 +1341,7 @@ textarea {
   gap: 12px;
   padding: clamp(18px, 4vw, 40px);
   background:
-    repeating-linear-gradient(-45deg, rgba(237, 235, 230, 0.03) 0 10px, transparent 10px 20px),
+    repeating-linear-gradient(-45deg, rgba(20, 20, 20, 0.035) 0 10px, transparent 10px 20px),
     var(--basalt-2);
 }
 .placeholder__tag {
@@ -1349,7 +1350,7 @@ textarea {
   gap: 8px;
   padding: 4px 8px;
   border: 1px dashed var(--coyote);
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .placeholder p {
   margin: 0;
@@ -1362,7 +1363,7 @@ textarea {
 }
 .proof__prop {
   margin: 8px 0 18px;
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .proof__rows {
   margin: 0 0 16px;
@@ -1504,7 +1505,7 @@ textarea {
   max-width: 900px;
 }
 .panel__num {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .panel__title {
   font-size: clamp(3.4rem, 10vw, 9rem);
@@ -1716,7 +1717,7 @@ textarea {
   padding-top: 8px;
 }
 .tally__save {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 /* ------------------------------------------------------------------
@@ -1861,7 +1862,7 @@ textarea {
 .form-msg {
   margin-top: 10px;
   font-size: 0.9rem;
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .hp {
   position: absolute;
@@ -1944,7 +1945,8 @@ textarea {
 .cline__img {
   width: 64px;
   height: 64px;
-  background: var(--sand);
+  background: #ffffff;
+  border: 1px solid var(--line);
   overflow: hidden;
 }
 .cline__img img {
@@ -2168,7 +2170,7 @@ textarea {
 .legal .todo {
   border: 1px dashed var(--coyote);
   padding: 14px 16px;
-  color: var(--coyote);
+  color: var(--coyote-ink);
   font-family: var(--f-mono);
   font-size: 0.85rem;
 }
@@ -2243,7 +2245,7 @@ textarea {
   color: var(--bone);
 }
 .detail__list li.is-on .mono {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .detail__list li.is-on p {
   max-height: 5em;
@@ -2256,7 +2258,8 @@ textarea {
   width: min(100%, calc((100svh - var(--hdr) - 64px) * 0.75));
   margin-inline: auto;
   overflow: hidden;
-  background: radial-gradient(ellipse 80% 70% at 50% 45%, #2a2a27, var(--basalt-2) 75%);
+  background: #ffffff;
+  border: 1px solid var(--line);
 }
 .detail__shot {
   position: absolute;
@@ -2301,10 +2304,38 @@ textarea {
   font-family: var(--f-mono);
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .detail__grid p {
   margin: 4px 0 0;
   color: var(--bone-2);
   font-size: 0.92rem;
+}
+
+
+/* ------------------------------------------------------------------
+   Dunkle Instrumente auf hellem Grund (Einsatzfotos, Labor-Medien)
+   ------------------------------------------------------------------ */
+.panel,
+.proof__media,
+.compare {
+  --bone: #edebe6;
+  --bone-2: #c9c6be;
+  --bone-3: #9a978f;
+  --line: rgba(237, 235, 230, 0.1);
+  --line-2: rgba(237, 235, 230, 0.2);
+  --signal-ink: #ff5f1f;
+  --coyote-ink: #b8a07e;
+  color: var(--bone);
+}
+.proof__media {
+  background: #161615;
+}
+.proof__media .placeholder {
+  --bone-2: #c9c6be;
+}
+
+/* Heller Look: Licht-Sweep über der Bühne aus (wirkte auf Weiß wie ein Streifen) */
+.stage__sweep {
+  display: none;
 }

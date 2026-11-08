@@ -143,9 +143,7 @@ img {
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 70% 40% at 50% 80%, rgba(237, 235, 230, 0.09), transparent 70%),
-    radial-gradient(ellipse 80% 70% at 50% 45%, #2c2c29, var(--basalt-2) 75%);
+  background: #ffffff;
 }
 .pcard__shot {
   position: absolute;
@@ -193,7 +191,7 @@ img {
 }
 .pcard__code {
   left: 12px;
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .pcard__num {
   right: 12px;
@@ -214,7 +212,7 @@ img {
   font-weight: 700;
   font-size: 0.82rem;
   text-transform: uppercase;
-  color: var(--coyote);
+  color: var(--coyote-ink);
 }
 .pcard__bullets {
   list-style: none;
@@ -314,7 +312,7 @@ img {
 }
 .pcard__sheet summary::before {
   content: '+ ';
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .pcard__sheet[open] summary::before {
   content: '− ';
@@ -345,7 +343,8 @@ img {
     justify-content: space-between;
     gap: 12px;
     padding: 10px 10px 10px 16px;
-    background: rgba(26, 26, 25, 0.92);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 10px 30px rgba(20, 20, 20, 0.12);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--line-2);
@@ -382,7 +381,7 @@ img {
 }
 .lbar__hint {
   font-size: 0.62rem;
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 .lbar__btn {
   min-height: 46px;
