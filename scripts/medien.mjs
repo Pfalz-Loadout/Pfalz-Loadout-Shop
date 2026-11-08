@@ -100,6 +100,8 @@ const MANIFEST = [
   // Beweis Arbeitsmatte: grüne KWT aufgeklappt mit (Softair-)Pistole, echtes Studiofoto auf dunklem Grund
   { key: 'rb-oliv-matte', src: 'videos/oliv-ende-offen-dunkel.jpg', sizes: STAGE },
   { key: 'logo-badge', src: 'logo/logo-badge.webp', sizes: [160, 320] },
+  // Header-Logo: Rahmen (Schrift, Ringe, Fadenkreuz) mit transparentem Zielfernrohr – erzeugt von scripts/logo-rahmen.py
+  { key: 'logo-rahmen', src: 'logo/logo-rahmen.png', sizes: [200, 400, 652], hq: true, alpha: true },
 
   // ---------- Zubehör: Zahlenschloss (freigestellt, Alpha; je Farbe eine Datei zubehoer/zahlenschloss/<farbe>.png) ----------
   // Original-Produktfotos (weißer Grund) → vorher: python -I scripts/schloss-freistellen.py (legt freigestellt/zs-<farbe>.png an)

@@ -4,11 +4,13 @@ import './globals.css';
 import './mobile.css';
 import './preview.css';
 import './packliste.css';
+import './logo.css';
 import { MotionProvider } from '@/components/MotionProvider';
 import { CartProvider } from '@/components/cart/CartProvider';
 import { CartDrawer } from '@/components/cart/CartDrawer';
 import { Checkout } from '@/components/cart/Checkout';
 import { Header } from '@/components/Header';
+import { ScopeIntro } from '@/components/ScopeIntro';
 import { Footer } from '@/components/Footer';
 import { Notice } from '@/components/Notice';
 import { LoadoutBar } from '@/components/LoadoutBar';
@@ -47,14 +49,21 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${display.variable} ${stencil.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="de" className={`${display.variable} ${stencil.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('pl-intro-gesehen')!=='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vorab','intro-laeuft')}catch(e){}",
+          }}
+        />
         <a className="skip" href="#main">
           Zum Inhalt springen
         </a>
         <MotionProvider>
           <CartProvider>
             <Header />
+            <ScopeIntro />
             <main id="main">{children}</main>
             <Footer />
             <CartDrawer />

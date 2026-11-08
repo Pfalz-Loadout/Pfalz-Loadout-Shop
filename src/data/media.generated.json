@@ -711,6 +711,19 @@
   "cut": false,
   "tr": 0.165
  },
+ "logo-rahmen": {
+  "w": 652,
+  "h": 404,
+  "widths": [
+   200,
+   400,
+   652
+  ],
+  "v": "aa58eccb",
+  "bg": "transparent",
+  "cut": false,
+  "tr": 0.161
+ },
  "zs-schwarz": {
   "w": 398,
   "h": 747,

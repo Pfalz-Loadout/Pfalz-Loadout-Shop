@@ -333,7 +333,8 @@ export const PRODUCTS: Product[] = [
       { label: 'Material', value: 'Oxford-Nylon' },
       { label: 'Befestigung', value: 'MOLLE-Trägerplatte, Klett-Abreißfunktion' },
       { label: 'Tragen', value: 'MOLLE, Gürtel oder Bein (Riemen + Schnalle)' },
-      { label: 'Innen', value: 'Gummischlaufen, Netzfach mit Reißverschluss' },
+      { label: 'Innen', value: 'Deckel: Fächer + Gummibänder · Boden: Taschen + Gummischlaufen · Klappe: Netzfach mit Reißverschluss' },
+      { label: 'Reißverschluss', value: 'Rundum, 2 Schieber mit Paracord-Zuglaschen' },
       { label: 'Lieferumfang', value: 'Pouch + Trägerplatte + PVC-Patch, ohne Inhalt' },
     ],
     hotspots: [
@@ -341,7 +342,11 @@ export const PRODUCTS: Product[] = [
       { label: 'Trägerplatte', text: 'Hinten: MOLLE-Streifen für Rucksack, Gürtel oder Weste. Die Pouch hält per Klett darauf – ein Zug, und sie ist ab.', at: { 'med-coyote-seite': [36, 55], 'med-oliv-rueck': [40, 55], 'med-schwarz-rueck': [31, 50], 'med-camo-rueck': [46, 55] } },
       { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [47, 22], 'med-oliv-front': [46, 22], 'med-schwarz-front': [42, 22], 'med-rot-stage': [43, 23] } },
       { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [60, 37], 'med-oliv-front': [63, 37], 'med-schwarz-front': [57, 37], 'med-rot-stage': [61, 37] } },
-      { label: 'Zipper', text: 'Rundum-Reißverschluss, öffnet über die ganze Höhe.', at: { 'med-coyote-front': [28, 69], 'med-oliv-front': [23, 72], 'med-schwarz-front': [26, 67] } },
+      { label: 'Zipper', text: 'Rundum-Reißverschluss mit zwei Schiebern und Paracord-Zuglaschen – öffnet über die ganze Höhe, auch mit Handschuhen.', at: { 'med-coyote-front': [28, 69], 'med-oliv-front': [23, 72], 'med-schwarz-front': [26, 67] } },
+      // aufgeklappte Ansicht (Beispielbefüllung auf den Fotos)
+      { label: 'Deckel', text: 'Fächer und mehrere Gummibänder halten Verbände, Feuerstarter oder Lampe an ihrem Platz.', at: { 'med-coyote-offen': [58, 40], 'med-oliv-offen': [62, 40], 'med-schwarz-offen': [55, 40] } },
+      { label: 'Gummischlaufen', text: 'Taschen und kräftige Gummischlaufen im Boden: Kompressen, Verbände und Tücher sitzen fest.', at: { 'med-coyote-offen': [57, 57], 'med-oliv-offen': [55, 58], 'med-schwarz-offen': [48, 60] } },
+      { label: 'Netzfach', text: 'Netzfach mit Reißverschluss in der Klappe für Kleinteile: Handschuhe, Schere, Pinzette, Sicherheitsnadeln. Inhalt nicht im Lieferumfang.', at: { 'med-coyote-offen': [40, 73], 'med-oliv-offen': [42, 75], 'med-schwarz-offen': [55, 74] } },
     ],
     lab: [
       {
@@ -363,7 +368,7 @@ export const PRODUCTS: Product[] = [
         property: 'Ordnung unter Stress',
         material: 'Gummischlaufen, Netzfach',
         source: 'Produktbeschreibung',
-        text: 'Aufgeklappt liegt alles offen vor dir – keine Wühlerei, wenn es schnell gehen muss. Inhalt nicht im Lieferumfang.',
+        text: 'Aufgeklappt liegt alles offen vor dir – keine Wühlerei, wenn es schnell gehen muss. Im Deckel Fächer und Gummibänder, im Boden Taschen und Gummischlaufen, in der Klappe ein Netzfach mit Reißverschluss für Kleinteile. Inhalt nicht im Lieferumfang.',
         media: {
           kind: 'video',
           brief: 'Top-down, 5 Sek. Loop: aufgeklappte Pouch, Hände entnehmen Verband und Schere. Weiches Licht von oben, neutraler Untergrund.',

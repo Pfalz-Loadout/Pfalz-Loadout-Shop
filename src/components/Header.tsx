@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { SHOP } from '@/data/shop';
 import { useCart } from './cart/CartProvider';
+import { Logo } from './Logo';
 import { pull, scrollToId } from './MotionProvider';
 
 const NAV = [
@@ -18,8 +19,7 @@ export function Header() {
   return (
     <header className="hdr">
       <a className="hdr__brand" href="/#top" aria-label="PFALZ LOADOUT – zum Seitenanfang">
-        <img src="/media/logo-badge-160.webp" alt="" width={36} height={36} />
-        <span className="hdr__word">PFALZ LOADOUT</span>
+        <Logo />
       </a>
       <nav className="hdr__nav mono" aria-label="Hauptnavigation">
         {NAV.map((n) => (
