@@ -1,4 +1,16 @@
 {
+ "rb-coyote-gerade": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   480,
+   960,
+   1440
+  ],
+  "v": "556dca25",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
  "rb-coyote-front": {
   "w": 2048,
   "h": 2048,

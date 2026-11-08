@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
+import { LockBadge } from '../LockBadge';
+import { useVariantPicker } from './ProductCard';
 
 const STOCK_TEXT = { lager: 'Auf Lager – Versand in 1–2 Werktagen', wenige: 'Nur noch wenige', ausverkauft: 'Ausverkauft' };
 
@@ -19,25 +21,14 @@ export function ProductStage({ product, index }: { product: Product; index: numb
   const root = useRef<HTMLElement>(null);
   const btn = useRef<HTMLButtonElement>(null);
 
-  const colors = useMemo(() => [...new Set(product.variants.map((v) => v.color))], [product]);
-  const firstAvailable = product.variants.find((v) => v.stock !== 'ausverkauft') ?? product.variants[0];
-  const [color, setColor] = useState<ColorKey>(firstAvailable.color);
-  const options = useMemo(
-    () => [...new Set(product.variants.filter((v) => v.color === color).map((v) => v.option ?? ''))],
-    [product, color],
-  );
-  const [option, setOption] = useState(firstAvailable.option ?? '');
-  const variant =
-    product.variants.find((v) => v.color === color && (v.option ?? '') === option) ??
-    product.variants.find((v) => v.color === color)!;
+  // gemeinsame Auswahl-Logik: Farben in Code-Reihenfolge, 01 Schwarz vorausgewählt
+  const { colors, color, setColor, options, option, setOption, variant } = useVariantPicker(product);
+  const optRef = useRef<HTMLElement | null>(null);
   const shots = (product.stage[color] ?? []).filter(hasMedia);
   const [shot, setShot] = useState(0);
   const [openSpot, setOpenSpot] = useState<number | null>(null);
 
   useEffect(() => setShot(0), [color]);
-  useEffect(() => {
-    if (!options.includes(option)) setOption(options[0]);
-  }, [options, option]);
 
   // Scroll: Foto dreht sich leicht in 3D, Lichtkante wandert, zweites Foto blendet ein
   useEffect(() => {
@@ -49,9 +40,6 @@ export function ProductStage({ product, index }: { product: Product; index: numb
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.6,
-          onUpdate: (s) => {
-            if (shots.length > 1) setShot(s.progress > 0.55 ? 1 : 0);
-          },
         },
       });
       tl.fromTo('.stage__frame', { rotateY: -9, rotateX: 3 }, { rotateY: 9, rotateX: -2, ease: 'none' }, 0).fromTo(
@@ -110,6 +98,17 @@ export function ProductStage({ product, index }: { product: Product; index: numb
               ))}
             </div>
           )}
+          {shots.length > 1 && (
+            <button
+              type="button"
+              className="shot-next mono"
+              onClick={() => setShot((i) => (i + 1) % shots.length)}
+              aria-label={`Nächstes Bild (${shot + 1} von ${shots.length})`}
+            >
+              {shot + 1}/{shots.length} <span aria-hidden="true">›</span>
+            </button>
+          )}
+          <LockBadge on={variant.option === 'mit Zahlenschloss'} origin={optRef} />
           <span className="stage__serial mono">{product.serial}</span>
           <span className="stage__code mono">
             {colorCode(product, color)} · {COLORS[color].label}
@@ -215,7 +214,10 @@ export function ProductStage({ product, index }: { product: Product; index: numb
                         name={`${product.slug}-opt`}
                         value={o}
                         checked={option === o}
-                        onChange={() => setOption(o)}
+                        onChange={(e) => {
+                          optRef.current = e.currentTarget.closest('label');
+                          setOption(o);
+                        }}
                       />
                       <span>{o || 'Standard'}</span>
                     </label>

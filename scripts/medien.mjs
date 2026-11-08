@@ -34,6 +34,7 @@ const DETAIL = [480, 960];
 /** gemini: Gemini-Sternchen unten rechts wegschneiden */
 const MANIFEST = [
   // ---------- Range Bag (Freisteller, weißer Grund) ----------
+  { key: 'rb-coyote-gerade', src: `${RB}/freisteller/coyote/20251103_194403*.jpg`, sizes: STAGE },
   { key: 'rb-coyote-front', src: `${RB}/freisteller/coyote/Produktversch*bd91*.jpg`, sizes: STAGE },
   { key: 'rb-coyote-offen', src: `${RB}/freisteller/coyote/20251103_194047*.jpg`, sizes: STAGE },
   { key: 'rb-coyote-zipper', src: `${RB}/freisteller/coyote/20251103_194320*.jpg`, sizes: DETAIL },

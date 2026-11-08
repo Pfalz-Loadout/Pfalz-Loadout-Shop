@@ -1,15 +1,22 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
+import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
+import { LockBadge } from '../LockBadge';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull } from '../MotionProvider';
 
 /** Auswahl-Logik (Farbe + Ausführung) – gemeinsam für Karte und Bühne nutzbar */
 export function useVariantPicker(product: Product) {
-  const colors = useMemo(() => [...new Set(product.variants.map((v) => v.color))], [product]);
-  const first = product.variants.find((v) => v.stock !== 'ausverkauft') ?? product.variants[0];
+  // Farben in Code-Reihenfolge (01 Schwarz, 02 Oliv …); vorausgewählt: niedrigste lieferbare Nummer
+  const colors = useMemo(
+    () => [...new Set(product.variants.map((v) => v.color))].sort((a, b) => COLOR_NO[a].localeCompare(COLOR_NO[b])),
+    [product],
+  );
+  const first =
+    colors.map((c) => product.variants.find((v) => v.color === c && v.stock !== 'ausverkauft')).find(Boolean) ??
+    product.variants[0];
   const [color, setColor] = useState<ColorKey>(first.color);
   const options = useMemo(
     () => [...new Set(product.variants.filter((v) => v.color === color).map((v) => v.option ?? ''))],
@@ -30,14 +37,18 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
   const { add } = useCart();
   const { colors, color, setColor, options, option, setOption, variant } = useVariantPicker(product);
   const btn = useRef<HTMLButtonElement>(null);
-  const shot = (product.stage[color] ?? []).find(hasMedia);
+  const shots = (product.stage[color] ?? []).filter(hasMedia);
+  const [shotIdx, setShotIdx] = useState(0);
+  useEffect(() => setShotIdx(0), [color]);
+  const shot = shots[shotIdx % Math.max(1, shots.length)];
   const soldOut = variant.stock === 'ausverkauft';
+  const optRef = useRef<HTMLElement | null>(null);
 
   return (
     <article className="pcard" id={`${product.slug}-karte`} aria-labelledby={`${product.slug}-k`}>
       <div className="pcard__media">
         {/* key = Farbe → neues Bild läuft mit Scan-Effekt ein */}
-        <div className="pcard__shot" key={color}>
+        <div className="pcard__shot" key={`${color}-${shotIdx}`}>
           {shot ? (
             <Picture k={shot} alt={`${product.name} in ${COLORS[color].label}`} sizes="86vw" />
           ) : (
@@ -45,6 +56,17 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           )}
           <span className="pcard__scan" aria-hidden="true" />
         </div>
+        {shots.length > 1 && (
+          <button
+            type="button"
+            className="shot-next mono"
+            onClick={() => setShotIdx((i) => (i + 1) % shots.length)}
+            aria-label={`Nächstes Bild (${(shotIdx % shots.length) + 1} von ${shots.length})`}
+          >
+            {(shotIdx % shots.length) + 1}/{shots.length} <span aria-hidden="true">›</span>
+          </button>
+        )}
+        <LockBadge on={variant.option === 'mit Zahlenschloss'} origin={optRef} />
         <span className="pcard__code mono">{colorCode(product, color)}</span>
         <span className="pcard__num mono">{String(index + 1).padStart(2, '0')}/04</span>
       </div>
@@ -84,7 +106,16 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           {options.length > 1 && (
             <div className="seg" role="radiogroup" aria-label="Ausführung">
               {options.map((o) => (
-                <button key={o || 'std'} type="button" role="radio" aria-checked={option === o} onClick={() => setOption(o)}>
+                <button
+                  key={o || 'std'}
+                  type="button"
+                  role="radio"
+                  aria-checked={option === o}
+                  onClick={(e) => {
+                    optRef.current = e.currentTarget;
+                    setOption(o);
+                  }}
+                >
                   {o || 'Standard'}
                 </button>
               ))}

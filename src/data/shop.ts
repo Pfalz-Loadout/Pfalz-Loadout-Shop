@@ -180,9 +180,9 @@ export const PRODUCTS: Product[] = [
       { label: 'Tragen', value: 'Tragegriffe + abnehmbarer Schultergurt mit Karabinern' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL_IFAK.', at: { 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-camo-front': [55, 60] } },
-      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-camo-front': [48, 30] } },
-      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-camo-front': [18, 52] } },
+      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL_IFAK.', at: { 'rb-oliv-quer': [45, 56], 'rb-coyote-gerade': [42, 60], 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-camo-front': [55, 60] } },
+      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-oliv-quer': [47, 23], 'rb-coyote-gerade': [47, 22], 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-camo-front': [48, 30] } },
+      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-camo-front': [18, 52] } },
       { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-camo-front': [59, 38] } },
     ],
     lab: [
@@ -239,10 +239,10 @@ export const PRODUCTS: Product[] = [
         },
       },
     ],
-    stage: { coyote: ['rb-coyote-front', 'rb-coyote-offen'], oliv: ['rb-oliv-front', 'rb-oliv-quer'], schwarz: ['rb-schwarz-quer', 'rb-schwarz-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
-    cutout: { coyote: 'rb-coyote-front', oliv: 'rb-oliv-front', schwarz: 'rb-schwarz-quer', camo: 'rb-camo-front' },
+    stage: { schwarz: ['rb-schwarz-quer', 'rb-schwarz-offen'], oliv: ['rb-oliv-quer', 'rb-oliv-front'], coyote: ['rb-coyote-gerade', 'rb-coyote-front', 'rb-coyote-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
+    cutout: { schwarz: 'rb-schwarz-quer', oliv: 'rb-oliv-quer', coyote: 'rb-coyote-gerade', camo: 'rb-camo-front' },
     model3d: '/models/pl-rb01.glb',
-    note: 'Abgebildete Patches, Waffen und Zubehör sind nicht im Lieferumfang. Für den Transport von Waffen gelten die Vorschriften des WaffG – bitte prüfe sie für deinen Fall selbst.',
+    note: 'Farbe des Zahlenschlosses nach Verfügbarkeit. Abgebildete Patches, Waffen und Zubehör sind nicht im Lieferumfang. Für den Transport von Waffen gelten die Vorschriften des WaffG – bitte prüfe sie für deinen Fall selbst.',
   },
   {
     code: 'PL_AP',
