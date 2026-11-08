@@ -6,7 +6,7 @@ import { SCOPE_FOCUS, SCOPE_IMG_STYLE, photoSrc } from './Logo';
 
 /**
  * Intro (einmal pro Besuch):
- * 1) Ladephase: kleiner Fadenkreuz-Ring „Ziel wird erfasst“, während das große Foto lädt UND dekodiert wird
+ * 1) Ladephase: drei rote Punkte leuchten nacheinander, bis das große Foto geladen ist – dann sofort Intro
  *    (sonst ruckelt der Zoom). Lädt es nicht innerhalb von 7 s, entfällt das Intro.
  * 2) Blick durchs Zielfernrohr → Zoom auf den Berg → Zoom zurück, das Fernrohr fliegt in den Header
  *    und wird zum Logo (die Landschaft bleibt im Scope).
@@ -14,7 +14,7 @@ import { SCOPE_FOCUS, SCOPE_IMG_STYLE, photoSrc } from './Logo';
  */
 const KEY = 'pl-intro-gesehen';
 const MAX_LADEZEIT = 7000;
-const MIN_LADEANZEIGE = 650;
+const MIN_LADEANZEIGE = 0; // sofort weiter, sobald das Foto da ist
 
 /** Entscheidung nur einmal pro Seitenaufruf treffen (robust gegen doppelte Effekte im Entwicklungsmodus) */
 let entscheidung: boolean | null = null;
@@ -66,7 +66,7 @@ export function ScopeIntro() {
     // geladen = Datei da; danach kurz aufs Dekodieren warten (max. 0,6 s – in Hintergrund-Tabs kommt die Bestätigung nie)
     const geladen = new Promise<void>((res, rej) => {
       const nachLaden = () => {
-        const t = setTimeout(res, 600);
+        const t = setTimeout(res, 250);
         const fertigDekodiert = () => {
           clearTimeout(t);
           res();
@@ -85,9 +85,7 @@ export function ScopeIntro() {
         if (fertig) return;
         fertig = true;
         clearTimeout(notaus);
-        // Ladeanzeige per CSS ausblenden, dann Intro (unabhängig vom Animations-Takt)
-        loader.current?.classList.add('is-weg');
-        setTimeout(() => setPhase('intro'), 320);
+        setPhase('intro'); // Ladeanzeige sofort weg, Intro startet
       })
       .catch(() => {
         fertig = true;
@@ -170,17 +168,10 @@ export function ScopeIntro() {
   return (
     <div ref={root} className="intro" aria-hidden="true">
       {phase === 'laden' && (
-        <div ref={loader} className="intro__loader">
-          <svg viewBox="-50 -50 100 100" className="intro__loader-ring">
-            <circle r="44" className="intro__loader-track" />
-            <circle r="44" className="intro__loader-arc" />
-            <line x1="-30" y1="0" x2="-10" y2="0" />
-            <line x1="10" y1="0" x2="30" y2="0" />
-            <line x1="0" y1="-30" x2="0" y2="-10" />
-            <line x1="0" y1="10" x2="0" y2="30" />
-            <circle r="1.8" className="intro__loader-dot" />
-          </svg>
-          <span className="intro__loader-text mono">Ziel wird erfasst</span>
+        <div ref={loader} className="intro__dots">
+          <span />
+          <span />
+          <span />
         </div>
       )}
       {phase === 'intro' && (
