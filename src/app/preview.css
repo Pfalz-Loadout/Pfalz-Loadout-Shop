@@ -372,11 +372,12 @@
 }
 @keyframes patch-puls {
   0%,
-  40%,
+  45%,
   100% {
     opacity: 0;
   }
-  14% {
+  12%,
+  22% {
     opacity: 1;
   }
 }
