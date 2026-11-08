@@ -30,6 +30,20 @@ export function ProductStage({ product, index }: { product: Product; index: numb
   const shots = [...baseShots, ...extraShots];
   const [shot, setShot] = useState(0);
   const [openSpot, setOpenSpot] = useState<number | null>(null);
+  // Infokästchen bleiben nicht stehen: zu bei Bild-/Farbwechsel, Klick daneben und nach 3,5 s
+  useEffect(() => setOpenSpot(null), [shot, color]);
+  useEffect(() => {
+    if (openSpot === null) return;
+    const t = setTimeout(() => setOpenSpot(null), 3500);
+    const outside = (e: PointerEvent) => {
+      if (!(e.target as HTMLElement).closest?.('.hotspot')) setOpenSpot(null);
+    };
+    document.addEventListener('pointerdown', outside);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener('pointerdown', outside);
+    };
+  }, [openSpot]);
 
   useEffect(() => setShot(0), [color]);
   // Zubehör gewählt (z. B. QD-Öse) → direkt das Zusatzbild zeigen
@@ -138,6 +152,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
                 key={h.label}
                 className={`hotspot${openSpot === i ? ' is-open' : ''}${x > 60 ? ' hotspot--left' : ''}`}
                 style={{ left: `${x}%`, top: `${y}%` }}
+                onPointerLeave={() => setOpenSpot((o) => (o === i ? null : o))}
               >
                 <button
                   type="button"
@@ -148,7 +163,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
                 />
                 <div className="hotspot__tip" role="note">
                   <b>{h.label}</b>
-                  {h.text}
+                  <span>{h.text}</span>
                 </div>
               </div>
               );

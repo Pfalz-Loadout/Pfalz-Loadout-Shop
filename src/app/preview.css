@@ -177,3 +177,92 @@
     animation: none;
   }
 }
+
+/* ------------------------------------------------------------------
+   Infokästchen an den Hotspots: hochwertige Karte, nur temporär sichtbar
+   (Hover / Antippen; schließt beim Verlassen, Klick daneben, Bildwechsel, nach 3,5 s)
+   ------------------------------------------------------------------ */
+.hotspot__tip {
+  left: 46px;
+  display: grid;
+  gap: 4px;
+  width: max-content;
+  max-width: 240px;
+  padding: 12px 14px 13px;
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  border-left: 1px solid rgba(20, 20, 20, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow:
+    0 1px 2px rgba(20, 20, 20, 0.06),
+    0 14px 34px -10px rgba(20, 20, 20, 0.28);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--bone-2);
+  opacity: 0;
+  transform: translate(-6px, -50%) scale(0.98);
+  transform-origin: left center;
+  transition:
+    opacity 0.22s ease,
+    transform 0.28s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+/* Verbindungslinie vom Punkt zum Kästchen */
+.hotspot__tip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 12px;
+  height: 1px;
+  background: var(--signal);
+}
+.hotspot__tip b {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--bone);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+.hotspot__tip b::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--signal);
+}
+.hotspot.is-open .hotspot__tip,
+.hotspot:hover .hotspot__tip {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+.hotspot--left .hotspot__tip {
+  left: auto;
+  right: 46px;
+  transform: translate(6px, -50%) scale(0.98);
+  transform-origin: right center;
+}
+.hotspot--left .hotspot__tip::before {
+  right: auto;
+  left: 100%;
+}
+.hotspot--left.is-open .hotspot__tip,
+.hotspot--left:hover .hotspot__tip {
+  transform: translate(0, -50%) scale(1);
+}
+/* aktiver Punkt hebt sich ab */
+.hotspot.is-open .hotspot__dot,
+.hotspot:hover .hotspot__dot {
+  border-color: var(--signal);
+  background: #ffffff;
+}
+.hotspot.is-open,
+.hotspot:hover {
+  z-index: 8;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hotspot__tip {
+    transition: opacity 0.15s;
+  }
+}
