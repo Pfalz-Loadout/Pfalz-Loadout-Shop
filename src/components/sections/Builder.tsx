@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useRef, useState } from 'react';
-import { COLORS, PRODUCTS, SHOP, computeTotals, formatEuro, variantLabel, type Product } from '@/data/shop';
+import { COLORS, PRODUCTS, SHOP, computeTotals, formatEuro, variantLabel, type Product, colorName } from '@/data/shop';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
@@ -127,7 +127,7 @@ export function Builder() {
                     className="mat__label"
                     style={{ left: `${slot.left + 1}%`, top: `${Math.min(92, slot.top + (p.code === 'PL_AP' || p.code === 'PL_KWT' ? 44 : 40))}%`, opacity: sel[p.code].on ? 1 : 0 }}
                   >
-                    {p.code} · {COLORS[v.color].label}
+                    {p.code} · {colorName(v.color)}
                   </span>
                 );
               })}

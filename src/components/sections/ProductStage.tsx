@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
+import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
@@ -75,7 +75,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
                 <Picture
                   key={k}
                   k={k}
-                  alt={`${product.name} in ${COLORS[color].label}${i === 1 ? ', zweite Ansicht' : ''}`}
+                  alt={`${product.name} in ${colorName(color)}${i === 1 ? ', zweite Ansicht' : ''}`}
                   className="stage__shot"
                   sizes="(max-width: 960px) 92vw, 50vw"
                   style={{ opacity: i === shot ? 1 : 0 }}
@@ -83,7 +83,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
               ))
             ) : (
               <div className="stage__missing mono">
-                Foto {COLORS[color].label} folgt
+                Foto {colorName(color)} folgt
                 <br />
                 Platzhalter: Studiofoto auf grauem Grund, 3:4
               </div>
@@ -111,7 +111,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
           <LockBadge on={variant.option === 'mit Zahlenschloss'} origin={optRef} />
           <span className="stage__serial mono">{product.serial}</span>
           <span className="stage__code mono">
-            {colorCode(product, color)} · {COLORS[color].label}
+            {colorCode(product, color)} · {colorName(color)}
           </span>
           {shots.length > 0 &&
             product.hotspots.map((h, i) => {
@@ -178,7 +178,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
 
           <div className="picker">
             <fieldset>
-              <legend className="mono">Farbe – {COLORS[color].label}</legend>
+              <legend className="mono">Farbe – {colorName(color)}</legend>
               <div className="swatches">
                 {colors.map((c) => {
                   const all = product.variants.filter((v) => v.color === c);
@@ -195,7 +195,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
                       />
                       <span>
                         <i style={{ background: COLORS[c].swatch }} />
-                        {COLORS[c].label}
+                        {colorName(c)}
                         {out && <span className="sr-only"> (ausverkauft)</span>}
                       </span>
                     </label>

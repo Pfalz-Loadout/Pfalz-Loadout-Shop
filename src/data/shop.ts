@@ -478,7 +478,10 @@ export type Totals = {
   missingForFreeShippingCents: number;
 };
 
-export const variantLabel = (v: Variant) => [COLORS[v.color].label, v.option].filter(Boolean).join(' · ');
+/** Farbname mit Nummer vorn, z. B. 01_Schwarz */
+export const colorName = (c: ColorKey) => `${COLOR_NO[c]}_${COLORS[c].label}`;
+
+export const variantLabel = (v: Variant) => [colorName(v.color), v.option].filter(Boolean).join(' · ');
 
 /** Einzige Stelle, an der gerechnet wird – identisch auf Client und Server */
 export function computeTotals(cart: CartLine[]): Totals {

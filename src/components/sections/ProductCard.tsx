@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
+import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
 import { LockBadge } from '../LockBadge';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
@@ -50,7 +50,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
         {/* key = Farbe → neues Bild läuft mit Scan-Effekt ein */}
         <div className="pcard__shot" key={`${color}-${shotIdx}`}>
           {shot ? (
-            <Picture k={shot} alt={`${product.name} in ${COLORS[color].label}`} sizes="86vw" />
+            <Picture k={shot} alt={`${product.name} in ${colorName(color)}`} sizes="86vw" />
           ) : (
             <div className="stage__missing mono">Foto folgt</div>
           )}
@@ -93,7 +93,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
                   type="button"
                   role="radio"
                   aria-checked={color === c}
-                  aria-label={`${COLORS[c].label}${out ? ' (ausverkauft)' : ''}`}
+                  aria-label={`${colorName(c)}${out ? ' (ausverkauft)' : ''}`}
                   disabled={out}
                   className="dot"
                   style={{ background: COLORS[c].swatch }}
@@ -101,7 +101,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
                 />
               );
             })}
-            <span className="mono dim">{COLORS[color].label}</span>
+            <span className="mono dim">{colorName(color)}</span>
           </div>
           {options.length > 1 && (
             <div className="seg" role="radiogroup" aria-label="Ausführung">
