@@ -28,6 +28,8 @@ export function ProductStage({ product, index }: { product: Product; index: numb
   const baseShots = (product.stage[color] ?? []).filter(hasMedia);
   const extraShots = (product.optionStage?.[option ?? ''] ?? []).filter(hasMedia);
   const shots = [...baseShots, ...extraShots];
+  const split = product.optionSplit?.[option ?? ''];
+  const splitOn = !!split && hasMedia(split.k);
   const [shot, setShot] = useState(0);
   const [openSpot, setOpenSpot] = useState<number | null>(null);
   // Infokästchen bleiben nicht stehen: zu bei Bild-/Farbwechsel, Klick daneben und nach 3,5 s
@@ -108,7 +110,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
         >
           {/* außerhalb des 3D-Rahmens: bleibt gestochen scharf, dreht nicht mit */}
           <LockBadge on={variant.option === 'mit Zahlenschloss'} />
-          <div className="stage__frame">
+          <div className={`stage__frame${splitOn ? ' is-split' : ''}`}>
             {shots.length ? (
               shots.map((k, i) => (
                 <Picture
@@ -130,6 +132,13 @@ export function ProductStage({ product, index }: { product: Product; index: numb
             <div className="stage__sweep" />
             <div className="stage__vignette" />
           </div>
+          {/* geteilte Vorschau: zweites Bild rechts (z. B. QD-Montage am Gewehr) */}
+          {split && hasMedia(split.k) && (
+            <div className={`stage__split${splitOn ? ' is-on' : ''}`} aria-hidden={!splitOn}>
+              <Picture k={split.k} alt={split.label} sizes="(max-width: 960px) 46vw, 25vw" />
+              <span className="stage__split-label mono">{split.label}</span>
+            </div>
+          )}
           {shots.length > 1 && (
             <div className="stage__thumbs" role="group" aria-label="Ansicht wählen">
               {shots.map((k, i) => (
@@ -269,7 +278,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
             <div>
               <div className="buy__price">{formatEuro(variant.priceCents)}</div>
               <span className="buy__meta">
-                {SHOP.vatNote.replace('Gemäß ', '')} · zzgl. <a href="/versand-zahlung">Versand</a>
+                zzgl. <a href="/versand-zahlung">Versand</a>
               </span>
             </div>
             <button

@@ -21,20 +21,20 @@ export const SCOPE_BOX = {
 
 /**
  * Bildausschnitt im Zielfernrohr (gilt für Header-Logo UND Intro, damit der Übergang nahtlos ist):
- * Foto 3:2, 300 % × 200 % der Kreisgröße, Bergkamm knapp unter dem Fadenkreuz.
+ * eigener quadratischer Ausschnitt (pfalz-scope, 2800 px aus dem 6000-px-Original), Tafelberg im Fadenkreuz.
+ * Das Bild füllt den Kreis genau → beim Zoom stehen genug echte Pixel zur Verfügung.
  */
-export const SCOPE_PHOTO = 'einsatz-pfalz';
+export const SCOPE_PHOTO = 'pfalz-scope';
 export const SCOPE_IMG_STYLE = {
   position: 'absolute' as const,
-  width: '300%',
-  height: '200%',
-  left: '-166%',
-  top: '-26%',
+  inset: 0,
+  width: '100%',
+  height: '100%',
   maxWidth: 'none',
   objectFit: 'cover' as const,
 };
-/** Zoom-Ziel im Foto (Bergkamm) – als transform-origin relativ zum Foto-Element */
-export const SCOPE_FOCUS = '72% 40%';
+/** Zoom-Ziel im Foto (Tafelberg) – als transform-origin relativ zum Foto-Element */
+export const SCOPE_FOCUS = '50% 48%';
 
 export function photoSrc(prefer: 'small' | 'large') {
   const m = mediaMeta(SCOPE_PHOTO);

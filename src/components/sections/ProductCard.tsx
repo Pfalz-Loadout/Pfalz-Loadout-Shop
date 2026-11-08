@@ -41,6 +41,8 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
   const baseShots = (product.stage[color] ?? []).filter(hasMedia);
   const extraShots = (product.optionStage?.[option ?? ''] ?? []).filter(hasMedia);
   const shots = [...baseShots, ...extraShots];
+  const split = product.optionSplit?.[option ?? ''];
+  const splitOn = !!split && hasMedia(split.k);
   const [shotIdx, setShotIdx] = useState(0);
   useEffect(() => setShotIdx(0), [color]);
   useEffect(() => setShotIdx(extraShots.length ? baseShots.length : 0), [option]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -52,7 +54,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
     <article className="pcard" id={`${product.slug}-karte`} aria-labelledby={`${product.slug}-k`}>
       <div className="pcard__media" style={lockSpace(shot ? [shot] : [])}>
         {/* key = Farbe → neues Bild läuft mit Scan-Effekt ein */}
-        <div className="pcard__shot" key={`${color}-${shotIdx}`}>
+        <div className={`pcard__shot${splitOn ? ' is-split' : ''}`} key={`${color}-${shotIdx}`}>
           {shot ? (
             <Picture k={shot} alt={`${product.name} in ${colorName(color)}`} sizes="86vw" />
           ) : (
@@ -60,6 +62,12 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           )}
           <span className="pcard__scan" aria-hidden="true" />
         </div>
+        {split && hasMedia(split.k) && (
+          <div className={`stage__split pcard__split${splitOn ? ' is-on' : ''}`} aria-hidden={!splitOn}>
+            <Picture k={split.k} alt={split.label} sizes="46vw" />
+            <span className="stage__split-label mono">{split.label}</span>
+          </div>
+        )}
         <ShotArrows index={shotIdx % Math.max(1, shots.length)} count={shots.length} onChange={setShotIdx} />
         {/* Handy: nur zeigen, wenn oben rechts genug Platz ist (aufgeklappte Tasche: nein) */}
         <LockBadge on={variant.option === 'mit Zahlenschloss' && (shot ? (mediaMeta(shot).tr ?? 1) >= 0.25 : false)} />
@@ -124,7 +132,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           <div>
             <div className="pcard__price">{formatEuro(variant.priceCents)}</div>
             <span className="buy__meta">
-              Keine USt. (§ 19 UStG) · zzgl. <a href="/versand-zahlung">Versand</a>
+              zzgl. <a href="/versand-zahlung">Versand</a>
             </span>
           </div>
           <button
@@ -154,7 +162,6 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           </dl>
           <p className="sheet__desc">{product.description}</p>
           {product.note && <p className="sheet__note">{product.note}</p>}
-          <p className="sheet__note">{SHOP.vatNote}</p>
         </details>
       </div>
     </article>

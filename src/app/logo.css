@@ -23,7 +23,7 @@
   transform: translateZ(0);
 }
 .logo__photo {
-  transform-origin: 72% 40%;
+  transform-origin: 50% 48%;
   transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.1, 1);
   will-change: transform;
 }
@@ -142,7 +142,7 @@ html.intro-vorab body::after {
    ------------------------------------------------------------------ */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero__mark {
-    background-image: linear-gradient(rgba(20, 18, 12, 0.18), rgba(20, 18, 12, 0.18)), var(--hero-foto);
+    background-image: linear-gradient(rgba(20, 18, 12, 0.24), rgba(20, 18, 12, 0.24)), var(--hero-foto);
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
@@ -151,10 +151,10 @@ html.intro-vorab body::after {
     -webkit-text-fill-color: transparent;
   }
   .hero__mark--a {
-    background-position: center, 70% 44%; /* Bergkamm im Abendlicht */
+    background-position: center, 50% 40%; /* Horizont und Wald */
   }
   .hero__mark--b {
-    background-position: center, 68% 82%; /* Weinberge */
+    background-position: center, 50% 68%; /* Wald und Sandstein */
   }
 }
 .hero__title .ch.is-done {
@@ -180,18 +180,18 @@ html.intro-vorab body::after {
 }
 @keyframes hero-fahrt-a {
   from {
-    background-position: center, 22% 47%;
+    background-position: center, 25% 40%;
   }
   to {
-    background-position: center, 78% 45%;
+    background-position: center, 75% 38%;
   }
 }
 @keyframes hero-fahrt-b {
   from {
-    background-position: center, 80% 80%;
+    background-position: center, 75% 70%;
   }
   to {
-    background-position: center, 20% 76%;
+    background-position: center, 25% 64%;
   }
 }
 @media (prefers-reduced-motion: reduce) {

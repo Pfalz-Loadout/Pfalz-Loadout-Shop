@@ -103,6 +103,10 @@ const MANIFEST = [
   // ---------- Einsatz / Marke ----------
   { key: 'einsatz-stand', src: 'einsatz/schiessstand-range-bag-ki.png', sizes: SCENE, gemini: true },
   { key: 'einsatz-pfalz', src: 'einsatz/pfalz-weinberg-abendlicht.jpg', sizes: SCENE },
+  // Zielfernrohr (Intro + Header-Logo): quadratischer Ausschnitt um den Tafelberg am Horizont, 6000×4000-Original
+  { key: 'pfalz-scope', src: 'einsatz/pfalz-sandstein-weitblick.jpg', extract: { left: 2550, top: 0, width: 2800, height: 2800 }, sizes: [400, 1200, 2800], q: 84 },
+  // Hero-Wortmarke: dasselbe Foto in voller Breite
+  { key: 'pfalz-weit', src: 'einsatz/pfalz-sandstein-weitblick.jpg', sizes: [1280, 1920, 2560], q: 82 },
   { key: 'hero-oliv-start', src: 'videos/oliv-start-geschlossen-dunkel.jpg', sizes: STAGE },
   // Beweis Arbeitsmatte: grüne KWT aufgeklappt mit (Softair-)Pistole, echtes Studiofoto auf dunklem Grund
   { key: 'rb-oliv-matte', src: 'videos/oliv-ende-offen-dunkel.jpg', sizes: STAGE },
@@ -182,6 +186,12 @@ async function run() {
       const m = await img.metadata();
       let w = m.autoOrient?.width ?? m.width;
       let h = m.autoOrient?.height ?? m.height;
+      if (item.extract && !cut) {
+        // fester Ausschnitt aus dem Original (z. B. Zielfernrohr-Motiv)
+        img = img.extract(item.extract);
+        w = item.extract.width;
+        h = item.extract.height;
+      }
       if (item.gemini && !cut) {
         // ~7 % rechts und unten abschneiden (KI-Wasserzeichen)
         const cw = Math.round(w * 0.93);
@@ -196,8 +206,8 @@ async function run() {
       for (const width of uniq) {
         let base = sharp(buf).resize({ width, withoutEnlargement: true, kernel: 'lanczos3' });
         if (item.hq) base = base.sharpen({ sigma: 0.5, m1: 0.6, m2: 1.2 }); // Schloss: knackig nach dem Verkleinern
-        await base.clone().avif({ quality: item.hq ? 72 : 52, effort: item.hq ? 7 : 4 }).toFile(path.join(OUT, `${item.key}-${width}.avif`));
-        await base.clone().webp(item.hq ? { quality: 92, alphaQuality: 100, smartSubsample: true } : { quality: 74 }).toFile(path.join(OUT, `${item.key}-${width}.webp`));
+        await base.clone().avif({ quality: item.q ? Math.round(item.q * 0.8) : item.hq ? 72 : 52, effort: item.hq || item.q ? 7 : 4 }).toFile(path.join(OUT, `${item.key}-${width}.avif`));
+        await base.clone().webp(item.hq ? { quality: 92, alphaQuality: 100, smartSubsample: true } : { quality: item.q ?? 74, smartSubsample: !!item.q }).toFile(path.join(OUT, `${item.key}-${width}.webp`));
       }
       // Freiraum oben rechts (Anteil der Bildhöhe ohne Produkt im rechten 22-%-Streifen) → Platz fürs Zahlenschloss
       const probe = await sharp(buf).resize({ width: 200 }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });

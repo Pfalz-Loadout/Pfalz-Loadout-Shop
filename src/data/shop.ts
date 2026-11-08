@@ -89,6 +89,8 @@ export type Product = {
   stage: Partial<Record<ColorKey, string[]>>;
   /** Zusatzbilder, die bei einer gewählten Ausführung hinten angehängt werden (z. B. QD-Teile) */
   optionStage?: Record<string, string[]>;
+  /** Geteilte Vorschau: bei dieser Ausführung erscheint rechts ein zweites Bild (z. B. QD-Montage am Gewehr) */
+  optionSplit?: Record<string, { k: string; label: string }>;
   /** Freisteller (weißer Grund) für Loadout-Builder je Farbe */
   cutout: Partial<Record<ColorKey, string>>;
   /** 3D-Modell (GLB) – austauschbarer Platzhalter, bis dahin prozeduraler Ersatzkörper */
@@ -462,9 +464,9 @@ export const PRODUCTS: Product[] = [
         media: { kind: 'scale-length', brief: 'Animierte Messskala (läuft im Browser)' },
       },
     ],
-    // je Farbe 2 Bilder (stehend, liegend); bei „+ QD-Öse“ kommt das Teilefoto dazu
-    stage: { schwarz: ['sl-schwarz-stand', 'sl-schwarz-liegend', 'sl-mlok', 'sl-schaft-schwarz'], oliv: ['sl-oliv-stand', 'sl-oliv-liegend', 'sl-schaft-oliv', 'sl-mlok'] },
-    optionStage: { '+ QD-Öse': ['sl-qd-teile'] },
+    // je Farbe 3 Bilder (stehend, liegend, am Schaft); bei „+ QD-Öse“ teilt sich die Vorschau: rechts die QD-Montage an der M-LOK-Schiene
+    stage: { schwarz: ['sl-schwarz-stand', 'sl-schwarz-liegend', 'sl-schaft-schwarz'], oliv: ['sl-oliv-stand', 'sl-oliv-liegend', 'sl-schaft-oliv'] },
+    optionSplit: { '+ QD-Öse': { k: 'sl-mlok', label: 'QD-Öse an M-LOK' } },
     cutout: { schwarz: 'sl-schwarz-stand', oliv: 'sl-oliv-stand' },
     note: 'Beispielbilder am Gewehr: abgebildete Waffe und Montageschiene sind nicht im Lieferumfang.',
   },

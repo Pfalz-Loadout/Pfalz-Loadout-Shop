@@ -170,8 +170,7 @@ export function Builder() {
                 Set in den Warenkorb
               </button>
               <span className="dim-3" style={{ fontSize: '.78rem' }}>
-                Mengenrabatt: {SHOP.volume.label} – Stückzahl im Warenkorb anpassen, der Rabatt rechnet sich automatisch.{' '}
-                {SHOP.vatNote}
+                Mengenrabatt: {SHOP.volume.label} – Stückzahl im Warenkorb anpassen, der Rabatt rechnet sich automatisch.
               </span>
             </div>
           </div>

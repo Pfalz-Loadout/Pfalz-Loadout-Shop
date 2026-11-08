@@ -271,3 +271,77 @@
 .proof__media .is-contain img {
   object-fit: contain;
 }
+
+/* ------------------------------------------------------------------
+   Geteilte Vorschau (z. B. Sling + QD-Öse): Produktbild links, Montage rechts
+   ------------------------------------------------------------------ */
+.stage__frame,
+.pcard__shot {
+  transition: right 0.55s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.stage__frame.is-split,
+.pcard__shot.is-split {
+  right: calc(50% + 4px);
+}
+.stage__split {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% + 4px);
+  right: 0;
+  z-index: 2;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  opacity: 0;
+  transform: translateX(14px);
+  pointer-events: none;
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.stage__split.is-on {
+  opacity: 1;
+  transform: none;
+}
+.stage__split picture,
+.stage__split img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.stage__split-label {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 3px 7px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--bone);
+  font-size: 0.6rem;
+}
+/* in der geteilten Ansicht: Produkt links bleibt ganz sichtbar, Infopunkte ausgeblendet (Lage passt nicht mehr) */
+.stage__frame.is-split img,
+.pcard__shot.is-split img {
+  object-fit: contain;
+}
+/* Bildleiste mittig unter dem Produkt (linke Hälfte), Beschriftung rechts unten */
+.stage__visual:has(.stage__frame.is-split) .shot-nav,
+.pcard__media:has(.pcard__shot.is-split) .shot-nav {
+  left: 25%;
+}
+.stage__visual:has(.stage__frame.is-split) .shot-nav {
+  bottom: 44px; /* über der Produktnummer unten links */
+}
+.stage__visual:has(.stage__frame.is-split) .hotspot {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage__frame,
+  .pcard__shot,
+  .stage__split {
+    transition: none;
+  }
+}

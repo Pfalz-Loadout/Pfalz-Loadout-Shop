@@ -69,7 +69,7 @@ export function ScopeIntro() {
     // 1) Zielfernrohr erscheint
     tl.fromTo(scope.current, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'power2.out' }, 0);
     // 2) Zoom durch das Fernrohr in die Berge
-    tl.fromTo(photo.current, { scale: 1 }, { scale: 2.4, duration: 1.6 }, 0.35);
+    tl.fromTo(photo.current, { scale: 1 }, { scale: 3.4, duration: 1.8 }, 0.35);
     // 3) Zoom zurück …
     tl.to(photo.current, { scale: 1, duration: 1.1 }, 2.25);
     // … und das Fernrohr fliegt in den Header (wird zum Logo)

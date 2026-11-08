@@ -4,7 +4,7 @@ import { Fragment, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { PRODUCTS, SHOP } from '@/data/shop';
 import { useMotion, scrollToId } from '../MotionProvider';
-import { photoSrc } from '../Logo';
+import { mediaMeta } from '../Picture';
 
 /** Text in Wörter + Buchstaben zerlegen → Stencil-Aufbau Buchstabe für Buchstabe */
 function Stencil({ text, delay, step = 0.05 }: { text: string; delay: number; step?: number }) {
@@ -88,7 +88,7 @@ export function Hero() {
           <span className="dim-3">Taktische Ausrüstung · Schießstand · Gelände · Outdoor</span>
         </div>
 
-        <h1 id="hero-title" className="hero__title stencil-in" style={{ ['--hero-foto' as string]: `url("${photoSrc('large')}")` }}>
+        <h1 id="hero-title" className="hero__title stencil-in" style={{ ['--hero-foto' as string]: `url("/media/pfalz-weit-1920.webp?v=${mediaMeta('pfalz-weit').v}")` }}>
           <span className="hero__mark hero__mark--a">
             <Stencil text="PFALZ" delay={0.1} />
           </span>
