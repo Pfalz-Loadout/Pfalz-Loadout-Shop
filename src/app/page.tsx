@@ -8,6 +8,7 @@ import { Lab } from '@/components/sections/Lab';
 import { Field } from '@/components/sections/Field';
 import { Builder } from '@/components/sections/Builder';
 import { Trust } from '@/components/sections/Trust';
+import { Ticker } from '@/components/Ticker';
 
 const SITE = process.env.SITE_URL ?? 'https://pfalz-loadout.de';
 
@@ -74,6 +75,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()).replace(/</g, '\\u003c') }} />
       <Hero />
+      <Ticker />
       <Manifest />
       <Products />
       <Explode />

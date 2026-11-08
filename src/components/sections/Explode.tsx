@@ -21,10 +21,10 @@ const DETAILS = [
 
 export function Explode() {
   const section = useRef<HTMLElement>(null);
-  const { ready, reduced, desktop } = useMotion();
+  const { ready, reduced } = useMotion();
   const [idx, setIdx] = useState(0);
   const [prog, setProg] = useState(0);
-  const pinned = ready && !reduced && desktop;
+  const pinned = ready && !reduced;
 
   useEffect(() => {
     if (!pinned || !section.current) return;

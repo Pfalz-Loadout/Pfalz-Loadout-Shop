@@ -23,7 +23,15 @@ export const useMotion = () => useContext(MotionCtx);
 let lenisRef: Lenis | null = null;
 /** Für Anker-Links: sanft scrollen, wenn Lenis aktiv ist */
 export function scrollToId(id: string) {
-  const el = document.getElementById(id);
+  let el = document.getElementById(id);
+  // Mobil: Produktbühnen sind ausgeblendet → zur passenden Karte im Karussell
+  if (el && el.offsetParent === null) {
+    const card = document.getElementById(`${id}-karte`);
+    if (card) {
+      card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      el = card.closest<HTMLElement>('.products') ?? card;
+    }
+  }
   if (!el) return;
   if (lenisRef) lenisRef.scrollTo(el, { offset: -64 });
   else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -60,6 +68,30 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       (lenis as Lenis & { _raf?: (t: number) => void })._raf = raf;
     }
 
+    // Einblenden beim Scrollen: typische Inhaltsblöcke automatisch markieren
+    // (nur unterhalb des ersten Bildschirms → kein Flackern beim Laden)
+    const RV = '.sec-head, .h2, .manifest__sub, .proof, .trust__cell, .voice, .pick, .mat, .tally, .panel__body, .pcard__body li, .explode__static li, .ftr__grid > div';
+    const rvIo = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            rvIo.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
+    );
+    if (!reduced) {
+      document.querySelectorAll<HTMLElement>(RV).forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) return;
+        const sib = el.parentElement ? [...el.parentElement.children].filter((c) => c.matches(RV)) : [];
+        el.style.setProperty('--d', `${Math.min(sib.indexOf(el), 6) * 70}ms`);
+        el.classList.add('rv');
+        rvIo.observe(el);
+      });
+    }
+
     // Scan-Effekt: jede .scan-Sektion einmal „abtasten“, wenn sie sichtbar wird
     const io = new IntersectionObserver(
       (entries) => {
@@ -79,6 +111,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       io.disconnect();
+      rvIo.disconnect();
       window.removeEventListener('resize', onResize);
       if (lenis) {
         const raf = (lenis as Lenis & { _raf?: (t: number) => void })._raf;

@@ -124,7 +124,7 @@ export function FabricSlot({ color }: { color: string }) {
     <div ref={host} style={{ position: 'absolute', inset: 0 }} role="img" aria-label="Makroansicht des Oxford-Gewebes, Wassertropfen perlen ab">
       {failed && <div className="placeholder mono">Gewebeansicht nicht verfügbar</div>}
       <span className="proof__rec mono" style={{ pointerEvents: 'none' }}>
-        Live · Maus bewegt das Licht
+        Live · Licht folgt deiner Bewegung
       </span>
     </div>
   );

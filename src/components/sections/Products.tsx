@@ -1,5 +1,6 @@
 import { PRODUCTS } from '@/data/shop';
 import { ProductStage } from './ProductStage';
+import { Arsenal } from './Arsenal';
 
 export function Products() {
   return (
@@ -17,9 +18,15 @@ export function Products() {
           <span className="dim">Keine Kompromisse.</span>
         </h2>
       </div>
-      {PRODUCTS.map((p, i) => (
-        <ProductStage key={p.code} product={p} index={i} />
-      ))}
+      {/* Desktop: gepinnte Bühnen · Mobil: Wisch-Karussell */}
+      <div className="products__stages">
+        {PRODUCTS.map((p, i) => (
+          <ProductStage key={p.code} product={p} index={i} />
+        ))}
+      </div>
+      <div className="products__arsenal">
+        <Arsenal />
+      </div>
     </section>
   );
 }

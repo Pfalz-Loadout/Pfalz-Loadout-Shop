@@ -90,6 +90,10 @@ export type Product = {
   model3d?: string;
   /** Hinweistext unter dem Kaufbutton */
   note?: string;
+  /** Drei kurze Nutzen-Sätze (Mobil-Karte, Kaufargument) */
+  bullets: [string, string, string];
+  /** Wofür – kurze Einsatzzeile */
+  use: string;
 };
 
 /* ------------------------------------------------------------------ */
@@ -144,6 +148,8 @@ const OXFORD_600D_PVC = '600D Oxford-Polyester, PVC-beschichtet';
 export const PRODUCTS: Product[] = [
   {
     code: 'PL-RB01',
+    bullets: ['Waffe, 6 Magazine, Munition – ein Griff','Aufklappen = Arbeitsmatte am Stand','Abschließbar mit Zahlenschloss'],
+    use: 'Schießstand · Training · Transport',
     slug: 'range-bag',
     name: 'Range Bag',
     category: 'Kurzwaffentasche / Schießstand',
@@ -237,6 +243,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     code: 'PL-DP02',
+    bullets: ['25 Liter – ein ganzer Tag draußen','MOLLE rundum: rüste nach, was du brauchst','Gepolsterter Rücken, Brust- & Hüftgurt'],
+    use: 'Gelände · Wandern · Fahrzeug',
     slug: 'rucksack',
     name: 'Daypack 25',
     category: 'Rucksack / Gelände',
@@ -291,6 +299,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     code: 'PL-MED03',
+    bullets: ['Ein Zug – und die Pouch ist ab','Aufklappen, alles liegt offen','Passt an Rucksack, Gürtel oder Bein'],
+    use: 'Notfall · Gelände · Fahrzeug',
     slug: 'ifak',
     name: 'IFAK Pouch',
     category: 'Erste Hilfe / Schnellzugriff',
@@ -354,6 +364,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     code: 'PL-SL04',
+    bullets: ['Ein- oder Zweipunkt in Sekunden','Stufenlos 90–140 cm, ein Zug','QD: einrasten, mit einer Hand lösen'],
+    use: 'Schießstand · Jagd · Training',
     slug: 'gewehrgurt',
     name: 'Sling',
     category: 'Gewehrriemen / Ein- & Zweipunkt',

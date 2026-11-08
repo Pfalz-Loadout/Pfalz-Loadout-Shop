@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Archivo, Big_Shoulders, Big_Shoulders_Stencil, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import './mobile.css';
 import { MotionProvider } from '@/components/MotionProvider';
 import { CartProvider } from '@/components/cart/CartProvider';
 import { CartDrawer } from '@/components/cart/CartDrawer';
@@ -8,6 +9,7 @@ import { Checkout } from '@/components/cart/Checkout';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Notice } from '@/components/Notice';
+import { LoadoutBar } from '@/components/LoadoutBar';
 
 // Schriften werden beim Build heruntergeladen und selbst gehostet → keine Google-Anfragen im Browser
 const display = Big_Shoulders({ subsets: ['latin'], variable: '--font-display', axes: ['opsz'], display: 'swap' });
@@ -55,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
             <CartDrawer />
             <Checkout />
+            <LoadoutBar />
             <Notice />
           </CartProvider>
         </MotionProvider>

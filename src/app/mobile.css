@@ -1,0 +1,609 @@
+/* ==================================================================
+   MOBIL-UMBAU · Bewegung, Karussells, Loadout-Leiste
+   (wird nach globals.css geladen)
+   ================================================================== */
+img {
+  height: auto;
+}
+
+/* Einblenden beim Scrollen (Klassen vergibt MotionProvider) */
+.rv {
+  opacity: 0;
+  transform: translateY(28px);
+  clip-path: inset(0 0 12% 0);
+  transition:
+    opacity 0.7s var(--ease) var(--d, 0ms),
+    transform 0.8s var(--ease) var(--d, 0ms),
+    clip-path 0.8s var(--ease) var(--d, 0ms);
+}
+.rv.is-in {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Laufband */
+.ticker {
+  position: relative;
+  overflow: hidden;
+  border-block: 1px solid var(--line-2);
+  background: var(--basalt-2);
+  color: var(--bone-2);
+  padding: 12px 0;
+}
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker 38s linear infinite;
+}
+.ticker__row {
+  display: flex;
+  gap: 40px;
+  padding-right: 40px;
+}
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.ticker__item i {
+  width: 6px;
+  height: 6px;
+  background: var(--signal);
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Header: Icon-Warenkorb */
+.hdr__icon {
+  display: none;
+}
+@media (max-width: 600px) {
+  .hdr__cart-label {
+    display: none;
+  }
+  .hdr__icon {
+    display: block;
+  }
+  .hdr__cart {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .hdr__word {
+    font-size: 0.82rem;
+  }
+}
+
+/* Produkte: Desktop = Bühnen, Mobil = Karussell */
+.products__arsenal {
+  display: none;
+}
+@media (max-width: 960px) {
+  .products__stages {
+    display: none;
+  }
+  .products__arsenal {
+    display: block;
+  }
+}
+.arsenal {
+  margin-top: 28px;
+}
+.arsenal__track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 var(--gutter) 8px;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.arsenal__track::-webkit-scrollbar {
+  display: none;
+}
+.arsenal__nav {
+  margin-top: 14px;
+}
+.arsenal__bars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.arsenal__bars button {
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 2px solid var(--line-2);
+  background: none;
+  color: var(--bone-3);
+  font-size: 0.62rem;
+  cursor: pointer;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
+}
+.arsenal__bars button[aria-selected='true'] {
+  border-top-color: var(--signal);
+  color: var(--bone);
+}
+
+.pcard {
+  flex: 0 0 86%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: var(--basalt-2);
+  border: 1px solid var(--line);
+}
+.pcard__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 80%, rgba(237, 235, 230, 0.09), transparent 70%),
+    radial-gradient(ellipse 80% 70% at 50% 45%, #2c2c29, var(--basalt-2) 75%);
+}
+.pcard__shot {
+  position: absolute;
+  inset: 0;
+  animation: shotIn 0.6s var(--ease);
+}
+.pcard__shot picture,
+.pcard__shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.pcard__shot img {
+  object-fit: contain;
+  transform: scale(1.12) translateY(-2%);
+}
+/* Scan-Strahl beim Farbwechsel */
+.pcard__scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--signal);
+  box-shadow: 0 0 18px 2px rgba(255, 95, 31, 0.55);
+  animation: cardscan 0.9s var(--ease) forwards;
+}
+@keyframes cardscan {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(86vw);
+    opacity: 0;
+  }
+}
+.pcard__code,
+.pcard__num {
+  position: absolute;
+  top: 12px;
+  z-index: 2;
+  font-size: 0.7rem;
+}
+.pcard__code {
+  left: 12px;
+  color: var(--signal);
+}
+.pcard__num {
+  right: 12px;
+  color: var(--bone-3);
+}
+.pcard__body {
+  display: grid;
+  gap: 10px;
+  padding: 16px 16px 18px;
+}
+.pcard__name {
+  font-size: 2.9rem;
+}
+.pcard__claim {
+  margin: -4px 0 0;
+  font-family: var(--f-wide);
+  font-variation-settings: 'wdth' 112;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: var(--coyote);
+}
+.pcard__bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+.pcard__bullets li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+.pcard__bullets li::before {
+  content: '';
+  width: 10px;
+  height: 3px;
+  background: var(--signal);
+  transform: translateY(-3px);
+}
+.pcard__pick {
+  display: grid;
+  gap: 10px;
+  padding-top: 4px;
+}
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dot {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--basalt-2);
+  outline: 1px solid var(--line-2);
+  cursor: pointer;
+  transition:
+    outline-color 0.2s,
+    transform 0.2s var(--ease-snap);
+}
+.dot[aria-checked='true'] {
+  outline: 2px solid var(--signal);
+  transform: scale(1.12);
+}
+.dot:disabled {
+  opacity: 0.35;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line-2);
+  width: max-content;
+}
+.seg button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.seg button[aria-checked='true'] {
+  background: var(--bone);
+  color: var(--basalt);
+}
+.pcard__buy {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+.pcard__price {
+  font-family: var(--f-display);
+  font-variation-settings: 'opsz' 72;
+  font-weight: 800;
+  font-size: 2.3rem;
+  line-height: 0.9;
+}
+.pcard__buy .btn {
+  min-height: 48px;
+  padding: 0 18px;
+}
+.pcard__sheet summary {
+  cursor: pointer;
+  padding: 10px 0 0;
+  color: var(--bone-3);
+  list-style: none;
+}
+.pcard__sheet summary::-webkit-details-marker {
+  display: none;
+}
+.pcard__sheet summary::before {
+  content: '+ ';
+  color: var(--signal);
+}
+.pcard__sheet[open] summary::before {
+  content: '− ';
+}
+.pcard__sheet .specs {
+  margin-top: 10px;
+}
+.pcard__sheet .sheet__desc {
+  font-size: 0.9rem;
+}
+
+/* Loadout-Leiste (mobil) */
+.lbar {
+  display: none;
+}
+@media (max-width: 960px) {
+  body {
+    padding-bottom: 76px;
+  }
+  .lbar {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: 45;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 10px 10px 16px;
+    background: rgba(26, 26, 25, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--line-2);
+    border-left: 3px solid var(--signal);
+    transform: translateY(140%);
+    transition: transform 0.5s var(--ease);
+  }
+  .lbar.is-on {
+    transform: none;
+  }
+  .lbar.is-bump {
+    animation: bump 0.6s var(--ease-snap);
+  }
+}
+@keyframes bump {
+  30% {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+.lbar__info {
+  display: grid;
+  line-height: 1.15;
+}
+.lbar__label {
+  font-size: 0.64rem;
+  color: var(--bone-3);
+}
+.lbar__sum {
+  font-family: var(--f-display);
+  font-variation-settings: 'opsz' 72;
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.lbar__hint {
+  font-size: 0.62rem;
+  color: var(--signal);
+}
+.lbar__btn {
+  min-height: 46px;
+  padding: 0 16px;
+}
+
+/* Zerlegt: auch mobil gepinnt, kompakt */
+.explode {
+  height: 360vh;
+}
+.explode.is-static {
+  height: auto;
+}
+@media (max-width: 960px) {
+  .detail {
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 14px;
+    padding-top: calc(var(--hdr) + 12px);
+  }
+  .detail__text .h2 {
+    font-size: 2.4rem !important;
+    margin-bottom: 10px !important;
+  }
+  .detail__text .sec-head {
+    margin-bottom: 10px !important;
+  }
+  .detail__frame {
+    order: -1;
+    width: min(100%, 46svh);
+    aspect-ratio: 1 / 1;
+  }
+  .detail__list li {
+    display: none;
+  }
+  .detail__list li.is-on {
+    display: grid;
+    animation: shotIn 0.45s var(--ease);
+  }
+  .detail__list li.is-on p {
+    max-height: none;
+  }
+}
+.detail__grid img {
+  aspect-ratio: 1 / 1;
+}
+
+/* Materiallabor mobil: Wischkarten */
+@media (max-width: 860px) {
+  .lab__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .lab__tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .proofs {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 8px;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .proof {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+    gap: 12px;
+    align-items: start;
+    background: var(--basalt-2);
+    border: 1px solid var(--line);
+  }
+  .proof > div:last-child {
+    padding: 0 14px 16px;
+  }
+  .proof__media {
+    aspect-ratio: 4 / 3;
+    border: 0;
+  }
+  .proof__title {
+    font-size: 2.2rem;
+  }
+  .proof__rows {
+    display: none;
+  }
+  .proof__text {
+    font-size: 0.92rem;
+  }
+}
+
+/* Abstände & Dichte mobil */
+@media (max-width: 760px) {
+  .manifest,
+  .lab,
+  .builder,
+  .trust {
+    padding-block: 72px;
+  }
+  .h2 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+  .sec-head {
+    margin-bottom: 22px;
+  }
+  .trust__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .trust__cell {
+    padding: 14px;
+  }
+  .trust__cell p {
+    font-size: 0.82rem;
+  }
+  .voices {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+  .voice {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+  .pick {
+    padding: 10px;
+    gap: 10px;
+  }
+  .pick__price {
+    font-size: 0.8rem;
+  }
+  .tally__row--sum {
+    font-size: 1.9rem;
+  }
+  .panel__title {
+    font-size: 3.2rem;
+  }
+  .ftr {
+    padding-top: 48px;
+  }
+}
+
+/* Hero mobil: Wortmarke füllt die Breite, Buttons nebeneinander */
+@media (max-width: 600px) {
+  .hero__title {
+    font-size: 27.5vw;
+    line-height: 0.88;
+    align-self: center;
+  }
+  .hero__mark--b {
+    justify-self: start;
+    text-align: left;
+  }
+  .hero__meta {
+    font-size: 0.68rem;
+  }
+  .hero__meta > .dim-3 {
+    display: none;
+  }
+  .hero__claim {
+    font-size: 1.05rem;
+  }
+  .hero__cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero__cta .btn {
+    min-width: 0;
+    padding: 0 8px;
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    min-height: 50px;
+  }
+  .hero__coords {
+    font-size: 0.66rem;
+  }
+}
+
+/* Produktkarte kompakter: Preis + Button ohne Scrollen sichtbar */
+@media (max-width: 960px) {
+  .pcard__media {
+    aspect-ratio: 5 / 4;
+  }
+  .pcard__shot img {
+    transform: scale(1.28) translateY(-6%);
+  }
+  .pcard__body > .mono.dim-3:first-child {
+    display: none;
+  }
+  .pcard__body {
+    gap: 8px;
+    padding: 12px 14px 14px;
+  }
+  .pcard__name {
+    font-size: 2.5rem;
+  }
+  .pcard__bullets {
+    font-size: 0.9rem;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none;
+  }
+  .rv {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+}
