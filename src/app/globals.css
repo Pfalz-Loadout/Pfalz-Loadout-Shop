@@ -2339,3 +2339,17 @@ textarea {
 .stage__sweep {
   display: none;
 }
+
+/* Original-Freisteller (weißer Grund) auf der Sand-Packmatte: Weiß verschwindet */
+.mat__item {
+  mix-blend-mode: multiply;
+}
+
+/* Original-Freisteller: kein Platzhalter-Grau hinter den Bildern (Rahmen ist weiß) */
+.stage__frame picture,
+.pcard__shot picture,
+.detail__shot,
+.mat__item picture,
+.cline__img picture {
+  background-color: transparent !important;
+}

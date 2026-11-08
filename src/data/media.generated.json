@@ -1,27 +1,27 @@
 {
  "rb-coyote-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "cef25e89",
-  "bg": "transparent",
-  "cut": true
+  "v": "961df06a",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-coyote-offen": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "ae5f373c",
-  "bg": "transparent",
-  "cut": true
+  "v": "4cc8f0fb",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-coyote-zipper": {
   "w": 2048,
@@ -46,64 +46,64 @@
   "cut": false
  },
  "rb-oliv-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "c88adbb2",
-  "bg": "transparent",
-  "cut": true
+  "v": "3d035f0c",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-oliv-quer": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "a6de140a",
-  "bg": "transparent",
-  "cut": true
+  "v": "7589b328",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-schwarz-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "f8fd3cc2",
-  "bg": "transparent",
-  "cut": true
+  "v": "26f984ae",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-schwarz-quer": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "170e83f2",
-  "bg": "transparent",
-  "cut": true
+  "v": "d8fe608a",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-schwarz-offen": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "21944531",
-  "bg": "transparent",
-  "cut": true
+  "v": "adad3ae4",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-schwarz-dring": {
   "w": 2000,
@@ -139,28 +139,28 @@
   "cut": false
  },
  "rb-camo-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "9f657b43",
-  "bg": "transparent",
-  "cut": true
+  "v": "a70b6838",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-camo-offen": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "62504b22",
-  "bg": "transparent",
-  "cut": true
+  "v": "72132c23",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "rb-dark-1": {
   "w": 804,
@@ -185,184 +185,179 @@
   "cut": false
  },
  "dp-oliv-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 864,
+  "h": 1184,
   "widths": [
    480,
-   960,
-   1200
+   864
   ],
-  "v": "45b636e6",
-  "bg": "transparent",
-  "cut": true
+  "v": "d0042078",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "dp-oliv-seite": {
-  "w": 1200,
-  "h": 1600,
+  "w": 864,
+  "h": 1184,
   "widths": [
    480,
-   960,
-   1200
+   864
   ],
-  "v": "d83782e6",
-  "bg": "transparent",
-  "cut": true
+  "v": "0bf081aa",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "dp-oliv-ruecken": {
-  "w": 1200,
-  "h": 1600,
+  "w": 864,
+  "h": 1184,
   "widths": [
    480,
-   960,
-   1200
+   864
   ],
-  "v": "5dab1fe7",
-  "bg": "transparent",
-  "cut": true
+  "v": "145c2682",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "dp-schwarz-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 864,
+  "h": 1184,
   "widths": [
    480,
-   960,
-   1200
+   864
   ],
-  "v": "40d62e8e",
-  "bg": "transparent",
-  "cut": true
+  "v": "7bc040b8",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "dp-coyote-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 768,
+  "h": 1344,
   "widths": [
    480,
-   960,
-   1200
+   768
   ],
-  "v": "1d18a16a",
-  "bg": "transparent",
-  "cut": true
+  "v": "f58639a5",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-coyote-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "f349e477",
-  "bg": "transparent",
-  "cut": true
+  "v": "f5071c98",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-coyote-offen": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "de22fc8d",
-  "bg": "transparent",
-  "cut": true
+  "v": "d338de4f",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-coyote-seite": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "4b1ba943",
-  "bg": "transparent",
-  "cut": true
+  "v": "6d61dd24",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-oliv-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "8c199a1a",
-  "bg": "transparent",
-  "cut": true
+  "v": "7538e5a0",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-oliv-offen": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "4068897c",
-  "bg": "transparent",
-  "cut": true
+  "v": "4b72e47a",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-schwarz-front": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "b9bef035",
-  "bg": "transparent",
-  "cut": true
+  "v": "91eda229",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-schwarz-offen": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "6f73c183",
-  "bg": "transparent",
-  "cut": true
+  "v": "28cafcb9",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-rot-stage": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "c7776c4e",
-  "bg": "transparent",
-  "cut": true
+  "v": "08ee66dd",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-camo-stage": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "20debee1",
-  "bg": "transparent",
-  "cut": true
+  "v": "ee9f3dbc",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-acu-stage": {
-  "w": 1200,
-  "h": 1600,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960,
-   1200
+   1440
   ],
-  "v": "cedea35f",
-  "bg": "transparent",
-  "cut": true
+  "v": "37d881e0",
+  "bg": "rgb(248,248,248)",
+  "cut": false
  },
  "med-fahrzeug": {
   "w": 2528,

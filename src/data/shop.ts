@@ -177,10 +177,10 @@ export const PRODUCTS: Product[] = [
       { label: 'Tragen', value: 'Tragegriffe + abnehmbarer Schultergurt mit Karabinern' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL-MED03.', at: { 'rb-coyote-front': [52, 66], 'rb-oliv-front': [54, 68], 'rb-schwarz-quer': [44, 66], 'rb-camo-front': [53, 68] } },
-      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-coyote-front': [45, 39], 'rb-oliv-front': [45, 38], 'rb-schwarz-quer': [44, 38], 'rb-camo-front': [46, 37] } },
-      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-coyote-front': [14, 63], 'rb-oliv-front': [12, 66], 'rb-schwarz-quer': [84, 62], 'rb-camo-front': [15, 60] } },
-      { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 55], 'rb-camo-front': [57, 46] } },
+      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL-MED03.', at: { 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-camo-front': [55, 60] } },
+      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-camo-front': [48, 30] } },
+      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-camo-front': [18, 52] } },
+      { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-camo-front': [59, 38] } },
     ],
     lab: [
       {
@@ -268,10 +268,10 @@ export const PRODUCTS: Product[] = [
       { label: 'System', value: 'MOLLE / PALS rundum' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'PALS-Reihen auf Front und Seiten – Pouches flechten statt nur durchziehen.', at: { 'dp-oliv-front': [66, 73], 'dp-schwarz-front': [47, 71] } },
-      { label: 'Griff', text: 'Verstärkte Tragschlaufe oben.', at: { 'dp-oliv-front': [49, 20], 'dp-schwarz-front': [43, 18] } },
-      { label: 'Kompression', text: 'Seitliche Kompressionsriemen halten die Ladung ruhig.', at: { 'dp-oliv-front': [21, 63], 'dp-schwarz-front': [19, 52] } },
-      { label: 'Klett', text: 'Flauschflächen für Patches und Kennungen.', at: { 'dp-oliv-front': [58, 55] } },
+      { label: 'MOLLE', text: 'PALS-Reihen auf Front und Seiten – Pouches flechten statt nur durchziehen.', at: { 'dp-oliv-front': [64, 71], 'dp-schwarz-front': [48, 71] } },
+      { label: 'Griff', text: 'Verstärkte Tragschlaufe oben.', at: { 'dp-oliv-front': [47, 19], 'dp-schwarz-front': [44, 18] } },
+      { label: 'Kompression', text: 'Seitliche Kompressionsriemen halten die Ladung ruhig.', at: { 'dp-oliv-front': [20, 62], 'dp-schwarz-front': [20, 52] } },
+      { label: 'Klett', text: 'Flauschflächen für Patches und Kennungen.', at: { 'dp-oliv-front': [56, 54] } },
     ],
     lab: [
       {
@@ -328,10 +328,10 @@ export const PRODUCTS: Product[] = [
       { label: 'Lieferumfang', value: 'Pouch + Trägerplatte + PVC-Patch, ohne Inhalt' },
     ],
     hotspots: [
-      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [76, 41], 'med-oliv-front': [78, 41], 'med-schwarz-front': [74, 41], 'med-rot-stage': [77, 42] } },
-      { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [45, 19], 'med-oliv-front': [46, 19], 'med-schwarz-front': [41, 19], 'med-rot-stage': [42, 19] } },
-      { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [60, 36], 'med-oliv-front': [65, 36], 'med-schwarz-front': [58, 36], 'med-rot-stage': [63, 36] } },
-      { label: 'Zipper', text: 'Rundum-Reißverschluss, öffnet über die ganze Höhe.', at: { 'med-coyote-front': [24, 73], 'med-oliv-front': [20, 76], 'med-schwarz-front': [23, 71] } },
+      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [74, 41], 'med-oliv-front': [75, 41], 'med-schwarz-front': [71, 41], 'med-rot-stage': [73, 42] } },
+      { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [47, 22], 'med-oliv-front': [46, 22], 'med-schwarz-front': [42, 22], 'med-rot-stage': [43, 23] } },
+      { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [60, 37], 'med-oliv-front': [63, 37], 'med-schwarz-front': [57, 37], 'med-rot-stage': [61, 37] } },
+      { label: 'Zipper', text: 'Rundum-Reißverschluss, öffnet über die ganze Höhe.', at: { 'med-coyote-front': [28, 69], 'med-oliv-front': [23, 72], 'med-schwarz-front': [26, 67] } },
     ],
     lab: [
       {

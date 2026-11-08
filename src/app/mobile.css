@@ -159,7 +159,6 @@ img {
 }
 .pcard__shot img {
   object-fit: contain;
-  transform: scale(1.12) translateY(-2%);
 }
 /* Scan-Strahl beim Farbwechsel */
 .pcard__scan {
@@ -578,7 +577,7 @@ img {
     aspect-ratio: 5 / 4;
   }
   .pcard__shot img {
-    transform: scale(1.28) translateY(-6%);
+    transform: none;
   }
   .pcard__body > .mono.dim-3:first-child {
     display: none;

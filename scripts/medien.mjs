@@ -95,12 +95,9 @@ const MANIFEST = [
  *         2) python -I scripts/freistellen.py liste.json <MEDIEN>/freigestellt
  *         3) node scripts/medien.mjs  → nutzt automatisch freigestellt/<key>.png
  */
+// Nur Gewehrriemen: davon gibt es keine Freisteller-Originale (nur graue Studiofotos).
+// Range Bag, IFAK, Rucksack nutzen die ORIGINAL-Freisteller der Person unverändert.
 const CUT_KEYS = new Set([
-  'rb-coyote-front', 'rb-coyote-offen', 'rb-oliv-front', 'rb-oliv-quer', 'rb-schwarz-front', 'rb-schwarz-quer', 'rb-schwarz-offen',
-  'rb-camo-front', 'rb-camo-offen',
-  'dp-oliv-front', 'dp-oliv-seite', 'dp-oliv-ruecken', 'dp-schwarz-front', 'dp-coyote-front',
-  'med-coyote-front', 'med-coyote-offen', 'med-coyote-seite', 'med-oliv-front', 'med-oliv-offen', 'med-schwarz-front', 'med-schwarz-offen',
-  'med-rot-stage', 'med-camo-stage', 'med-acu-stage',
   'sl-schwarz-front', 'sl-qd-oliv', 'sl-qd-teile',
 ]);
 const CUT_DIR = path.join(SRC, 'freigestellt');
