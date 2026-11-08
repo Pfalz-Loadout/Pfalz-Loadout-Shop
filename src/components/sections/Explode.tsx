@@ -10,13 +10,14 @@ import { useMotion } from '../MotionProvider';
  * Desktop: gepinnt, Scroll schaltet Detail für Detail weiter (mit Zoom-Fahrt).
  * Mobil / reduzierte Bewegung: Raster.
  */
+/** Nahaufnahmen Coyote (Herstellerfotos, Querformat) – Rahmen ist dafür 4:3 */
 const DETAILS = [
-  { k: 'rb-coyote-front', label: 'Außenmaterial', text: '600D Oxford-Polyester mit PVC-Beschichtung – dicht gewebt, wasserabweisend.', focus: '50% 55%' },
   { k: 'rb-coyote-offen', label: 'Innenleben', text: 'Zwei gepolsterte Hauptfächer, elastische Schlaufen für bis zu 6 Magazine. Ausgeklappt: Arbeitsmatte.', focus: '50% 50%' },
-  { k: 'rb-coyote-zipper', label: 'SBS-Reißverschluss', text: 'Wasserabweisend, große Zuglaschen – auch mit Handschuhen zu greifen. Schieber abschließbar.', focus: '50% 45%' },
-  { k: 'rb-schwarz-dring', label: 'D-Ringe', text: 'D-Ringe aus stabilem Kunststoff als Aufnahme für den Schultergurt.', focus: '50% 50%' },
-  { k: 'rb-schwarz-molle', label: 'MOLLE & Klett', text: 'PALS-Gurtband mit Riegelnähten für Pouches, Flauschfläche für Patches.', focus: '50% 40%' },
-  { k: 'rb-schwarz-gurt', label: 'Schultergurt', text: 'Abnehmbar, mit drehbaren Karabinerhaken.', focus: '50% 50%' },
+  { k: 'rb-detail-zipper', label: 'SBS-Reißverschluss', text: 'Doppelschieber mit Paracord-Zuglaschen – auch mit Handschuhen zu greifen. Die Schieber sind abschließbar.', focus: '50% 40%' },
+  { k: 'rb-detail-molle-klett', label: 'MOLLE', text: 'PALS-Gurtband mit Riegelnähten: Raster für Pouches wie das IFAK PL_IFAK.', focus: '50% 50%' },
+  { k: 'rb-detail-klett-patch', label: 'Klettfeld', text: 'Flauschfläche für Namens- und Kennungspatches.', focus: '50% 50%' },
+  { k: 'rb-detail-dring-karabiner', label: 'D-Ringe & Karabiner', text: 'D-Ringe aus stabilem Kunststoff, der abnehmbare Schultergurt hängt mit Karabinerhaken daran.', focus: '45% 50%' },
+  { k: 'rb-detail-griffe', label: 'Tragegriffe', text: 'Doppelter Tragegriff, mit Klett-Griffstück zusammengefasst.', focus: '50% 45%' },
 ];
 
 export function Explode() {

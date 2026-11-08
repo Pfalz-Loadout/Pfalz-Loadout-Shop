@@ -49,6 +49,15 @@ const MANIFEST = [
   { key: 'rb-schwarz-gurt', src: `${RB}/freisteller/schwarz/81481.jpg`, sizes: DETAIL },
   { key: 'rb-camo-front', src: `${RB}/freisteller/camo/20260201_132439*.jpg`, sizes: STAGE },
   { key: 'rb-camo-offen', src: `${RB}/freisteller/camo/20260201_132525*.jpg`, sizes: STAGE },
+  { key: 'rb-coyote-seite', src: `${RB}/freisteller/coyote/coyote-seite-2faecher.jpg`, sizes: STAGE },
+  { key: 'rb-coyote-fronttasche', src: `${RB}/freisteller/coyote/coyote-fronttasche-offen.jpg`, sizes: STAGE },
+  // Detail-Nahaufnahmen Coyote (Herstellerfotos, aus Bildstreifen geschnitten; Wasserbild ohne Schriftzug)
+  ...['zipper', 'molle-klett', 'molle', 'dring-karabiner', 'klett-patch', 'griffe', 'wasser-perlt-ab'].map((n) => ({
+    key: `rb-detail-${n}`,
+    src: `${RB}/details/coyote-${n}.jpg`,
+    sizes: [480, 750],
+    q: 90,
+  })),
   { key: 'rb-dark-1', src: `${RB}/szenen-ki/schwarz/Gemini_Generated_Image_85aylf*.png`, sizes: STAGE, gemini: true },
   { key: 'rb-wald', src: `${RB}/szenen-ki/gemischt/Gemini_Generated_Image_d7z5*.png`, sizes: SCENE, gemini: true },
 

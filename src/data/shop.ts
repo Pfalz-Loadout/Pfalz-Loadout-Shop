@@ -189,6 +189,9 @@ export const PRODUCTS: Product[] = [
       { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-oliv-quer': [47, 23], 'rb-coyote-gerade': [47, 22], 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-schwarz-front': [44, 26], 'rb-camo-front': [48, 30] } },
       { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar – für den Transport nach § 12 WaffG.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-schwarz-front': [12, 52], 'rb-camo-front': [18, 52] } },
       { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-schwarz-front': [56, 43], 'rb-camo-front': [59, 38] } },
+      // Seite + Fronttasche (Coyote)
+      { label: '2 Hauptfächer', text: 'Zwei getrennte Hauptfächer mit eigenem Reißverschluss – zum Beispiel eines für die Waffe, eines für Gehörschutz und Munition.', at: { 'rb-coyote-seite': [50, 57] } },
+      { label: 'Fronttasche', text: 'Organizer mit Stift- und Werkzeugschlaufen: Kleinteile, Werkzeug, Notizen griffbereit vorn.', at: { 'rb-coyote-fronttasche': [50, 58] } },
       // aufgeklappte Ansichten
       { label: 'Magazine', text: 'Sechs elastische Schlaufen: Magazine stehen sortiert und griffbereit.', at: { 'rb-schwarz-offen': [56, 41], 'rb-coyote-offen': [62, 43], 'rb-camo-offen': [62, 44] } },
       { label: '2 Waffenfächer', text: 'Zwei gepolsterte Fächer für zwei Kurzwaffen – erprobt mit Lauflänge bis 6 Zoll.', at: { 'rb-schwarz-offen': [22, 68], 'rb-coyote-offen': [40, 72], 'rb-camo-offen': [40, 71] } },
@@ -198,11 +201,11 @@ export const PRODUCTS: Product[] = [
       {
         id: 'rb-gewebe',
         title: 'Gewebe',
-        property: 'Abriebfest & formstabil',
+        property: 'Wasserabweisend & abriebfest',
         material: OXFORD_600D_PVC,
-        source: 'Herstellerangabe',
-        text: '600 Denier: Jeder Faden wiegt 600 g auf 9.000 m. Das dichte Oxford-Gewebe hält Kanten, Kisten und Betonböden am Stand aus.',
-        media: { kind: 'shader-fabric', brief: 'Interaktive Gewebe-Struktur (läuft im Browser)' },
+        source: 'Herstellerangabe + Herstellerfoto',
+        text: 'Wasser perlt auf dem PVC-beschichteten Gewebe ab, statt einzuziehen – Regen am Stand oder nasser Boden machen der Tasche nichts. 600 Denier: Jeder Faden wiegt 600 g auf 9.000 m, das dichte Oxford-Gewebe hält Kanten, Kisten und Betonböden aus. Wasserabweisend heißt nicht wasserdicht: untertauchen sollte man sie nicht.',
+        media: { kind: 'image', src: 'rb-detail-wasser-perlt-ab', brief: 'Wassertropfen perlen auf dem Gewebe ab' },
       },
       {
         id: 'rb-matte',
@@ -237,17 +240,14 @@ export const PRODUCTS: Product[] = [
         id: 'rb-zipper',
         title: 'Reißverschluss',
         property: 'Abschließbar – Transport nach § 12 WaffG',
-        material: 'SBS-Reißverschluss, Schieber mit Ösen',
-        source: 'Herstellerangabe',
+        material: 'SBS-Reißverschluss, Schieber mit Ösen, Paracord-Zuglaschen',
+        source: 'Herstellerangabe + Herstellerfoto',
         text: 'Die Schieber treffen sich an einer Öse – dort greift das Zahlenschloss (Variante „mit Zahlenschloss“). Abgeschlossen ist die Tasche ein verschlossenes Behältnis: So transportierst du deine Waffe ungeladen und „nicht zugriffsbereit“, wie es § 12 Abs. 3 Nr. 2 WaffG für den Weg zum Stand verlangt.',
-        media: {
-          kind: 'video',
-          brief: 'Makro, 6 Sek. Loop: Hand mit Schießhandschuh öffnet den Reißverschluss einhändig. Seitenlicht von links, dunkler Hintergrund, Kamera fix auf Schieberhöhe.',
-        },
+        media: { kind: 'image', src: 'rb-detail-zipper', brief: 'Doppelschieber mit Paracord-Zuglaschen' },
       },
     ],
     // Reihenfolge immer gleich: 1. Front (Klettfeld für Patch), 2. MOLLE-Seite, 3. offen
-    stage: { schwarz: ['rb-schwarz-front', 'rb-schwarz-quer', 'rb-schwarz-offen'], oliv: ['rb-oliv-front', 'rb-oliv-quer'], coyote: ['rb-coyote-front', 'rb-coyote-gerade', 'rb-coyote-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
+    stage: { schwarz: ['rb-schwarz-front', 'rb-schwarz-quer', 'rb-schwarz-offen'], oliv: ['rb-oliv-front', 'rb-oliv-quer'], coyote: ['rb-coyote-front', 'rb-coyote-gerade', 'rb-coyote-seite', 'rb-coyote-fronttasche', 'rb-coyote-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
     cutout: { schwarz: 'rb-schwarz-front', oliv: 'rb-oliv-front', coyote: 'rb-coyote-front', camo: 'rb-camo-front' },
     model3d: '/models/pl-rb01.glb',
     note: 'Farbe des Zahlenschlosses nach Verfügbarkeit. Abgebildete Patches, Waffen und Zubehör sind nicht im Lieferumfang. Für den Transport von Waffen gelten die Vorschriften des WaffG – bitte prüfe sie für deinen Fall selbst.',

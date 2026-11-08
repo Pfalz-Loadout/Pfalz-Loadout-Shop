@@ -189,6 +189,114 @@
   "cut": false,
   "tr": 0.23
  },
+ "rb-coyote-seite": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "ba4cd9ef",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 1
+ },
+ "rb-coyote-fronttasche": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "8c7dbf5c",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 0.435
+ },
+ "rb-detail-zipper": {
+  "w": 750,
+  "h": 444,
+  "widths": [
+   480,
+   750
+  ],
+  "v": "4e6ee339",
+  "bg": "rgb(152,120,72)",
+  "cut": false,
+  "tr": 0
+ },
+ "rb-detail-molle-klett": {
+  "w": 750,
+  "h": 428,
+  "widths": [
+   480,
+   750
+  ],
+  "v": "eb3cdec8",
+  "bg": "rgb(120,88,56)",
+  "cut": false,
+  "tr": 0
+ },
+ "rb-detail-molle": {
+  "w": 750,
+  "h": 417,
+  "widths": [
+   480,
+   750
+  ],
+  "v": "9d0ab315",
+  "bg": "rgb(136,104,72)",
+  "cut": false,
+  "tr": 0
+ },
+ "rb-detail-dring-karabiner": {
+  "w": 600,
+  "h": 434,
+  "widths": [
+   480,
+   600
+  ],
+  "v": "9541360e",
+  "bg": "rgb(152,120,72)",
+  "cut": false,
+  "tr": 0
+ },
+ "rb-detail-klett-patch": {
+  "w": 750,
+  "h": 381,
+  "widths": [
+   480,
+   750
+  ],
+  "v": "f29480ac",
+  "bg": "rgb(120,88,56)",
+  "cut": false,
+  "tr": 0
+ },
+ "rb-detail-griffe": {
+  "w": 750,
+  "h": 383,
+  "widths": [
+   480,
+   750
+  ],
+  "v": "3d94d917",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 0.029
+ },
+ "rb-detail-wasser-perlt-ab": {
+  "w": 750,
+  "h": 502,
+  "widths": [
+   480,
+   750
+  ],
+  "v": "85578afc",
+  "bg": "rgb(168,136,88)",
+  "cut": false,
+  "tr": 0
+ },
  "rb-dark-1": {
   "w": 804,
   "h": 1101,
