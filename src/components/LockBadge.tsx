@@ -4,29 +4,21 @@ import { useEffect, useState } from 'react';
 import { Picture, hasMedia, mediaMeta } from './Picture';
 
 /**
- * Zahlenschloss im Vorschaubild (oben rechts) – echtes, freigestelltes Foto.
+ * Zahlenschloss im Vorschaubild (oben rechts) – Original-Herstellerfotos, freigestellt.
  * Kein Einflug: blendet weich ein, sobald „mit Zahlenschloss“ gewählt ist.
- * Farbe nach Verfügbarkeit: alle 4 s nächste Farbe, bei jedem Wechsel ein kurzes Aufleuchten.
- * Fotos je Farbe: medien/zubehoer/zahlenschloss/<farbe>.png → Medien-Key zs-<farbe>.
- * Liegt nur ein Foto vor, wechselt nur das farbige Leuchten dahinter.
+ * Farbe nach Verfügbarkeit: alle 4 s nächste Farbe. Beim Wechsel leuchtet NUR das farbige Gehäuse kurz auf
+ * (eigene Bildebene zs-<farbe>-glow, gleiche Leinwand wie das Foto) – kein Schein hinter dem Schloss.
  * Animiert werden nur opacity/transform (GPU) – keine Filter, kein Ruckeln.
+ * Quelle: medien/zubehoer/zahlenschloss/<farbe>.jpg → python -I scripts/schloss-freistellen.py → node scripts/medien.mjs zs-
  */
-const LOCK_COLORS = [
-  { key: 'schwarz', glow: '140, 140, 136' },
-  { key: 'pink', glow: '240, 98, 146' },
-  { key: 'gruen', glow: '124, 198, 63' },
-  { key: 'orange', glow: '255, 122, 31' },
-  { key: 'gelb', glow: '242, 207, 46' },
-  { key: 'blau', glow: '47, 143, 220' },
-];
+const LOCK_COLORS = ['schwarz', 'pink', 'gruen', 'orange', 'gelb', 'blau'];
 const STEP_MS = 4000;
-const grad = (rgb: string, a: number) => `radial-gradient(closest-side, rgba(${rgb}, ${a}), rgba(${rgb}, ${a * 0.35}) 55%, rgba(${rgb}, 0))`;
 
 export function LockBadge({ on }: { on: boolean }) {
   const [state, setState] = useState<'hidden' | 'in' | 'out'>(on ? 'in' : 'hidden');
   const [i, setI] = useState(0);
 
-  const photos = LOCK_COLORS.filter((c) => hasMedia(`zs-${c.key}`));
+  const photos = LOCK_COLORS.filter((c) => hasMedia(`zs-${c}`));
 
   useEffect(() => {
     if (on) setState('in');
@@ -41,36 +33,38 @@ export function LockBadge({ on }: { on: boolean }) {
 
   // Farbwechsel nur, solange sichtbar und Bewegung erlaubt
   useEffect(() => {
-    if (state !== 'in') return;
+    if (state !== 'in' || photos.length < 2) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const t = setInterval(() => setI((n) => n + 1), STEP_MS);
     return () => clearInterval(t);
-  }, [state]);
+  }, [state, photos.length]);
 
   if (!photos.length || state === 'hidden') return null;
-  // mehrere Farbfotos: Foto und Leuchten wechseln gemeinsam; nur eins: nur das Leuchten wechselt
-  const shown = photos.length > 1 ? photos[i % photos.length].key : photos[0].key;
-  const glow = photos.length > 1 ? LOCK_COLORS.find((c) => c.key === shown)! : LOCK_COLORS[i % LOCK_COLORS.length];
+  const shown = photos[i % photos.length];
+  const meta = mediaMeta(`zs-${photos[0]}`);
 
   return (
     <div className={`lockbadge is-${state}`}>
-      <div className="lockbadge__shot" style={{ aspectRatio: `${mediaMeta(`zs-${photos[0].key}`).w} / ${mediaMeta(`zs-${photos[0].key}`).h}` }}>
-        {LOCK_COLORS.map((c) => (
-          <span key={c.key} className="lockbadge__aura" style={{ background: grad(c.glow, 0.24), opacity: c.key === glow.key ? 1 : 0 }} />
-        ))}
-        {/* key = Farbwechsel → Aufleuchten startet neu */}
-        {i > 0 && <span key={i} className="lockbadge__flash" style={{ background: grad(glow.glow, 0.45) }} />}
+      <div className="lockbadge__shot" style={{ aspectRatio: `${meta.w} / ${meta.h}` }}>
         {photos.map((c) => (
           <Picture
-            key={c.key}
-            k={`zs-${c.key}`}
-            alt={c.key === shown ? 'Zahlenschloss, im Lieferumfang der Variante mit Zahlenschloss' : ''}
-            sizes="240px"
+            key={c}
+            k={`zs-${c}`}
+            alt={c === shown ? 'Zahlenschloss, im Lieferumfang der Variante mit Zahlenschloss' : ''}
+            sizes="200px"
             priority
             className="lockbadge__img"
-            style={{ opacity: c.key === shown ? 1 : 0 }}
+            style={{ opacity: c === shown ? 1 : 0 }}
           />
         ))}
+        {/* Leucht-Ebenen vorab geladen (unsichtbar); key = Farbwechsel → Aufleuchten startet neu */}
+        {photos
+          .filter((c) => hasMedia(`zs-${c}-glow`))
+          .map((c) => (
+            <span key={c === shown ? `${c}-${i}` : c} className={`lockbadge__glow${c === shown && i > 0 ? ' is-flash' : ''}`}>
+              <Picture k={`zs-${c}-glow`} alt="" sizes="200px" priority className="lockbadge__img" />
+            </span>
+          ))}
       </div>
     </div>
   );

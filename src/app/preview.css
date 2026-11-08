@@ -82,9 +82,9 @@
   position: absolute;
   z-index: 6;
   /* obere rechte Ecke des (eingepassten) Fotos: --r = Höhe/Breite des Fotos */
-  top: max(14px, calc(50cqh - 50cqw * var(--r, 1) + 2cqw));
-  right: 5cqw;
-  width: clamp(58px, 13cqw, 98px); /* Originalfoto hochkant */
+  top: max(40px, calc(50cqh - 50cqw * var(--r, 1) - 6cqw)); /* über der Fotokante, unter der Seriennummer */
+  right: 4cqw;
+  width: clamp(64px, 15.5cqw, 104px); /* inkl. transparentem Rand fürs Leuchten */
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   justify-items: end;
@@ -94,9 +94,9 @@
   backface-visibility: hidden;
 }
 .pcard__media .lockbadge {
-  top: 34px;
-  right: 10px;
-  width: clamp(46px, 14%, 66px);
+  top: 28px;
+  right: 6px;
+  width: clamp(48px, 15%, 68px);
 }
 .lockbadge.is-in {
   animation: lockin 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
@@ -148,34 +148,26 @@
   transition: opacity 1.4s ease-in-out;
   will-change: opacity;
 }
-/* farbiges Leuchten hinter dem Schloss – wechselt langsam */
-.lockbadge__aura {
+/* Aufleuchten NUR des farbigen Gehäuses: deckungsgleiche Bildebene, nur Deckkraft animiert */
+.lockbadge__glow {
   position: absolute;
-  inset: -18% -45%;
-  z-index: 1;
-  transition: opacity 1.6s ease-in-out;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
   will-change: opacity;
 }
-/* bei jedem Farbwechsel kurz heller aufleuchten */
-.lockbadge__flash {
-  position: absolute;
-  inset: -22% -52%;
-  z-index: 1;
-  opacity: 0;
-  will-change: opacity, transform;
-  animation: lockflash 1.6s ease-out;
+.lockbadge__glow.is-flash {
+  animation: lockglow 1.8s ease-in-out;
 }
-@keyframes lockflash {
+@keyframes lockglow {
   0% {
     opacity: 0;
-    transform: scale(0.92);
   }
-  30% {
-    opacity: 0.85;
+  35% {
+    opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: scale(1.06);
   }
 }
 .lockbadge__tag {
@@ -186,13 +178,12 @@
   white-space: nowrap;
 }
 @media (prefers-reduced-motion: reduce) {
-  .lockbadge .lockbadge__img,
-  .lockbadge__aura {
+  .lockbadge .lockbadge__img {
     transition: none;
   }
   .lockbadge.is-in,
   .lockbadge.is-out,
-  .lockbadge__flash {
+  .lockbadge__glow.is-flash {
     animation: none;
   }
 }

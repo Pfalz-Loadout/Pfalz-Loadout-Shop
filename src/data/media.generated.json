@@ -584,73 +584,134 @@
   "cut": false
  },
  "zs-schwarz": {
-  "w": 322,
-  "h": 671,
+  "w": 398,
+  "h": 747,
   "widths": [
    160,
    320,
-   322
+   398
   ],
-  "v": "98384392",
+  "v": "cf46c8ec",
   "bg": "transparent",
   "cut": true
  },
  "zs-pink": {
-  "w": 322,
-  "h": 678,
+  "w": 400,
+  "h": 756,
   "widths": [
    160,
    320,
-   322
+   400
   ],
-  "v": "1e17dd6b",
+  "v": "76e295e6",
   "bg": "transparent",
   "cut": true
  },
  "zs-gruen": {
-  "w": 324,
-  "h": 681,
+  "w": 402,
+  "h": 759,
   "widths": [
    160,
    320,
-   324
+   402
   ],
-  "v": "c8af3812",
+  "v": "21e84b61",
   "bg": "transparent",
   "cut": true
  },
  "zs-orange": {
-  "w": 322,
-  "h": 677,
+  "w": 400,
+  "h": 755,
   "widths": [
    160,
    320,
-   322
+   400
   ],
-  "v": "fd6e9e15",
+  "v": "bf533827",
   "bg": "transparent",
   "cut": true
  },
  "zs-gelb": {
-  "w": 325,
-  "h": 678,
+  "w": 403,
+  "h": 756,
   "widths": [
    160,
    320,
-   325
+   403
   ],
-  "v": "0440b418",
+  "v": "d367219e",
   "bg": "transparent",
   "cut": true
  },
  "zs-blau": {
-  "w": 316,
-  "h": 664,
+  "w": 390,
+  "h": 738,
   "widths": [
    160,
-   316
+   320,
+   390
   ],
-  "v": "a4acb943",
+  "v": "07f9fae5",
+  "bg": "transparent",
+  "cut": true
+ },
+ "zs-pink-glow": {
+  "w": 400,
+  "h": 756,
+  "widths": [
+   160,
+   320,
+   400
+  ],
+  "v": "b0d3d31d",
+  "bg": "transparent",
+  "cut": true
+ },
+ "zs-gruen-glow": {
+  "w": 402,
+  "h": 759,
+  "widths": [
+   160,
+   320,
+   402
+  ],
+  "v": "ecb29002",
+  "bg": "transparent",
+  "cut": true
+ },
+ "zs-orange-glow": {
+  "w": 400,
+  "h": 755,
+  "widths": [
+   160,
+   320,
+   400
+  ],
+  "v": "cf0a987d",
+  "bg": "transparent",
+  "cut": true
+ },
+ "zs-gelb-glow": {
+  "w": 403,
+  "h": 756,
+  "widths": [
+   160,
+   320,
+   403
+  ],
+  "v": "27540660",
+  "bg": "transparent",
+  "cut": true
+ },
+ "zs-blau-glow": {
+  "w": 390,
+  "h": 738,
+  "widths": [
+   160,
+   320,
+   390
+  ],
+  "v": "4b4fc56a",
   "bg": "transparent",
   "cut": true
  }
