@@ -420,3 +420,8 @@
   width: auto;
   flex-wrap: wrap;
 }
+/* dazubuchbare Optionen (Schloss, QD-Öse): „+ Extra“ in Signalfarbe statt „inklusive“ */
+.badge-incl--plus {
+  color: var(--signal);
+  font-weight: 600;
+}
