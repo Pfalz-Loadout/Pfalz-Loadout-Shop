@@ -439,9 +439,10 @@ export const PRODUCTS: Product[] = [
       },
     ],
     // je Farbe 2 Bilder (stehend, liegend); bei „+ QD-Öse“ kommt das Teilefoto dazu
-    stage: { schwarz: ['sl-schwarz-stand', 'sl-schwarz-liegend'], oliv: ['sl-oliv-stand', 'sl-oliv-liegend'] },
+    stage: { schwarz: ['sl-schwarz-stand', 'sl-schwarz-liegend', 'sl-mlok', 'sl-schaft-schwarz'], oliv: ['sl-oliv-stand', 'sl-oliv-liegend', 'sl-schaft-oliv', 'sl-mlok'] },
     optionStage: { '+ QD-Öse': ['sl-qd-teile'] },
     cutout: { schwarz: 'sl-schwarz-stand', oliv: 'sl-oliv-stand' },
+    note: 'Beispielbilder am Gewehr: abgebildete Waffe und Montageschiene sind nicht im Lieferumfang.',
   },
 ];
 

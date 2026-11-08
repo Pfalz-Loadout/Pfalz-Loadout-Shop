@@ -86,6 +86,9 @@ const MANIFEST = [
   { key: 'sl-schnalle', src: `${SL}/20251112_182741.jpg`, sizes: DETAIL },
   { key: 'sl-qd-oliv', src: `${SL}/20251112_182934.jpg`, sizes: STAGE },
   { key: 'sl-schaft-oliv', src: `${SL}/20251112_183536.jpg`, sizes: STAGE },
+  // Beispielbilder am Gewehr (Original-Fotos, nicht freigestellt)
+  { key: 'sl-mlok', src: `${SL}/20251112_183241.jpg`, sizes: STAGE },
+  { key: 'sl-schaft-schwarz', src: `${SL}/20251112_183429.jpg`, sizes: STAGE },
 
   // ---------- Einsatz / Marke ----------
   { key: 'einsatz-stand', src: 'einsatz/schiessstand-range-bag-ki.png', sizes: SCENE, gemini: true },
