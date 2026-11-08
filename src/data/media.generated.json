@@ -1008,6 +1008,32 @@
   "cut": true,
   "tr": 0.392
  },
+ "zb-patch": {
+  "w": 691,
+  "h": 693,
+  "widths": [
+   120,
+   240,
+   360
+  ],
+  "v": "32d02539",
+  "bg": "transparent",
+  "cut": true,
+  "tr": 0.1
+ },
+ "zb-patch-glow": {
+  "w": 691,
+  "h": 693,
+  "widths": [
+   120,
+   240,
+   360
+  ],
+  "v": "b841845b",
+  "bg": "transparent",
+  "cut": true,
+  "tr": 0.348
+ },
  "zs-pink-glow": {
   "w": 400,
   "h": 756,

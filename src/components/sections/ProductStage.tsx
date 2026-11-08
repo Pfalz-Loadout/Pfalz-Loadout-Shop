@@ -7,6 +7,7 @@ import { Picture, hasMedia, lockSpace } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
 import { LockBadge } from '../LockBadge';
+import { PatchBadge } from '../PatchBadge';
 import { ShotArrows } from '../ShotArrows';
 import { useVariantPicker } from './ProductCard';
 
@@ -110,6 +111,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
         >
           {/* außerhalb des 3D-Rahmens: bleibt gestochen scharf, dreht nicht mit */}
           <LockBadge on={variant.option === 'mit Zahlenschloss'} />
+          {product.badge && <PatchBadge {...product.badge} />}
           <div className={`stage__frame${splitOn ? ' is-split' : ''}`}>
             {shots.length ? (
               shots.map((k, i) => (

@@ -91,6 +91,8 @@ export type Product = {
   optionStage?: Record<string, string[]>;
   /** Geteilte Vorschau: bei dieser Ausführung erscheint rechts ein zweites Bild (z. B. QD-Montage am Gewehr) */
   optionSplit?: Record<string, { k: string; label: string }>;
+  /** Zubehör, das immer dabei ist: Abzeichen oben rechts im Vorschaubild (wie das Zahlenschloss, aber ohne Auswahl) */
+  badge?: { k: string; glow?: string; label: string };
   /** Freisteller (weißer Grund) für Loadout-Builder je Farbe */
   cutout: Partial<Record<ColorKey, string>>;
   /** 3D-Modell (GLB) – austauschbarer Platzhalter, bis dahin prozeduraler Ersatzkörper */
@@ -397,6 +399,7 @@ export const PRODUCTS: Product[] = [
     cutout: { coyote: 'med-coyote-front', oliv: 'med-oliv-front', schwarz: 'med-schwarz-front', rot: 'med-rot-stage', camo: 'med-camo-stage', acu: 'med-acu-stage' },
     model3d: '/models/pl-med03.glb',
     note: 'Lieferung ohne medizinischen Inhalt.',
+    badge: { k: 'zb-patch', glow: 'zb-patch-glow', label: 'PVC-Patch inklusive' },
   },
   {
     code: 'PL_GR',

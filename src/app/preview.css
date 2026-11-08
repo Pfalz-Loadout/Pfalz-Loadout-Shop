@@ -91,7 +91,7 @@
   --top: 38px;
   top: var(--top);
   right: 8px;
-  width: clamp(26px, calc((max(0px, 50cqh - 50cqw * var(--r, 1)) + var(--tr, 0.3) * 100cqw * var(--r, 1) - var(--top) - 6px) / 1.9), 58px);
+  width: clamp(26px, calc((max(0px, 50cqh - 50cqw * var(--r, 1)) + var(--tr, 0.3) * 100cqw * var(--r, 1) - var(--top) - 6px) / var(--badge-ar, 1.9)), var(--badge-max, 58px));
   pointer-events: none;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -364,4 +364,24 @@
 /* Montagefoto: Ausschnitt auf die QD-Öse an der Schiene */
 .stage__split img {
   object-position: 50% 62%;
+}
+
+/* Patch (immer dabei): rotes Kreuz leuchtet alle ~4,5 s kurz auf */
+.patchbadge__glow {
+  animation: patch-puls 4.5s ease-in-out 1.2s infinite;
+}
+@keyframes patch-puls {
+  0%,
+  40%,
+  100% {
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .patchbadge__glow {
+    animation: none;
+  }
 }

@@ -126,6 +126,9 @@ const MANIFEST = [
   // ---------- Zubehör: Zahlenschloss (freigestellt, Alpha; je Farbe eine Datei zubehoer/zahlenschloss/<farbe>.png) ----------
   // Original-Produktfotos (weißer Grund) → vorher: python -I scripts/schloss-freistellen.py (legt freigestellt/zs-<farbe>.png an)
   ...['schwarz', 'pink', 'gruen', 'orange', 'gelb', 'blau'].map((f) => ({ key: `zs-${f}`, src: `zubehoer/zahlenschloss/${f}.*`, sizes: [160, 320, 480], hq: true, alpha: true })),
+  // IFAK-Patch (immer dabei): freigestellt per scripts/patch-freistellen.py, Leucht-Ebene nur fürs rote Kreuz
+  { key: 'zb-patch', src: 'zubehoer/patch/patch-rotes-kreuz.jpg', sizes: [120, 240, 360], hq: true, alpha: true },
+  { key: 'zb-patch-glow', src: 'zubehoer/patch/patch-rotes-kreuz.jpg', sizes: [120, 240, 360], hq: true, alpha: true },
   // Leucht-Ebene (nur farbiges Gehäuse), gleiche Leinwand wie das Schloss
   ...['pink', 'gruen', 'orange', 'gelb', 'blau'].map((f) => ({ key: `zs-${f}-glow`, src: `zubehoer/zahlenschloss/${f}.*`, sizes: [160, 320, 480], hq: true, alpha: true })),
 ];
@@ -143,6 +146,7 @@ const CUT_KEYS = new Set([
   'sl-schwarz-stand', 'sl-schwarz-liegend', 'sl-oliv-stand', 'sl-oliv-liegend',
   'zs-schwarz', 'zs-pink', 'zs-gruen', 'zs-orange', 'zs-gelb', 'zs-blau',
   'zs-pink-glow', 'zs-gruen-glow', 'zs-orange-glow', 'zs-gelb-glow', 'zs-blau-glow',
+  'zb-patch', 'zb-patch-glow',
 ]);
 const CUT_DIR = path.join(SRC, 'freigestellt');
 
