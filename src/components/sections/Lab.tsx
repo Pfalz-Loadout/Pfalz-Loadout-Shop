@@ -20,7 +20,7 @@ function ProofMedia({ m }: { m: ProofMoment }) {
       return <CompareSlot slot={s} />;
     case 'image':
       return s.src && hasMedia(s.src) ? (
-        <Picture k={s.src} alt={m.title} sizes="(max-width: 860px) 92vw, 55vw" />
+        <Picture k={s.src} alt={m.title} sizes="(max-width: 860px) 92vw, 55vw" className={s.fit === 'contain' ? 'is-contain' : undefined} />
       ) : (
         <Placeholder slot={s} kind="Foto" />
       );

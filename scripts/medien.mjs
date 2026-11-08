@@ -97,6 +97,8 @@ const MANIFEST = [
   { key: 'einsatz-stand', src: 'einsatz/schiessstand-range-bag-ki.png', sizes: SCENE, gemini: true },
   { key: 'einsatz-pfalz', src: 'einsatz/pfalz-weinberg-abendlicht.jpg', sizes: SCENE },
   { key: 'hero-oliv-start', src: 'videos/oliv-start-geschlossen-dunkel.jpg', sizes: STAGE },
+  // Beweis Arbeitsmatte: grüne KWT aufgeklappt mit (Softair-)Pistole, echtes Studiofoto auf dunklem Grund
+  { key: 'rb-oliv-matte', src: 'videos/oliv-ende-offen-dunkel.jpg', sizes: STAGE },
   { key: 'logo-badge', src: 'logo/logo-badge.webp', sizes: [160, 320] },
 
   // ---------- Zubehör: Zahlenschloss (freigestellt, Alpha; je Farbe eine Datei zubehoer/zahlenschloss/<farbe>.png) ----------
