@@ -273,28 +273,28 @@
 }
 
 /* ------------------------------------------------------------------
-   Geteilte Vorschau (z. B. Sling + QD-Öse): Produktbild links, Montage rechts
+   Geteilte Vorschau (z. B. Sling + QD-Öse): Produktbild oben, Montage darunter
    ------------------------------------------------------------------ */
 .stage__frame,
 .pcard__shot {
-  transition: right 0.55s cubic-bezier(0.2, 0.7, 0.1, 1);
+  transition: bottom 0.55s cubic-bezier(0.2, 0.7, 0.1, 1);
 }
 .stage__frame.is-split,
 .pcard__shot.is-split {
-  right: calc(50% + 4px);
+  bottom: calc(50% + 4px);
 }
 .stage__split {
   position: absolute;
-  top: 0;
+  top: calc(50% + 4px);
   bottom: 0;
-  left: calc(50% + 4px);
+  left: 0;
   right: 0;
   z-index: 2;
   overflow: hidden;
   background: #ffffff;
   border: 1px solid var(--line);
   opacity: 0;
-  transform: translateX(14px);
+  transform: translateY(14px);
   pointer-events: none;
   transition:
     opacity 0.45s ease,
@@ -326,13 +326,10 @@
 .pcard__shot.is-split img {
   object-fit: contain;
 }
-/* Bildleiste mittig unter dem Produkt (linke Hälfte), Beschriftung rechts unten */
+/* Bildleiste mittig unter dem Riemen (obere Hälfte), Beschriftung der Montage unten rechts */
 .stage__visual:has(.stage__frame.is-split) .shot-nav,
 .pcard__media:has(.pcard__shot.is-split) .shot-nav {
-  left: 25%;
-}
-.stage__visual:has(.stage__frame.is-split) .shot-nav {
-  bottom: 44px; /* über der Produktnummer unten links */
+  bottom: calc(50% + 12px);
 }
 .stage__visual:has(.stage__frame.is-split) .hotspot {
   opacity: 0;
@@ -363,4 +360,8 @@
 .detail__frame {
   aspect-ratio: 4 / 3;
   width: min(100%, calc((100svh - var(--hdr) - 64px) * 1.333));
+}
+/* Montagefoto: Ausschnitt auf die QD-Öse an der Schiene */
+.stage__split img {
+  object-position: 50% 62%;
 }
