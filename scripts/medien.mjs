@@ -66,6 +66,13 @@ const MANIFEST = [
   { key: 'med-oliv-rueck', src: `${MED}/freisteller/oliv/IFAK_ODG_007.jpg`, sizes: STAGE },
   { key: 'med-schwarz-rueck', src: `${MED}/freisteller/schwarz/IFAK-SW-_005.jpg`, sizes: STAGE },
   { key: 'med-camo-rueck', src: `${MED}/freisteller/camo/IFAK_CAMU_005.jpg`, sizes: STAGE },
+  // Herstellerfotos (08.11.2026): Rot Rückseite + leer offen, ACU gerade, Schwarz leer offen + abgelöst von Trägerplatte, Coyote-Detail
+  { key: 'med-rot-rueck', src: `${MED}/freisteller/rot/IFAK_RED_rueck.jpg`, sizes: STAGE },
+  { key: 'med-rot-offen', src: `${MED}/freisteller/rot/IFAK_RED_offen-leer.jpg`, sizes: STAGE },
+  { key: 'med-acu-front', src: `${MED}/freisteller/acu/IFAK_ACU_front-gerade.jpg`, sizes: STAGE },
+  { key: 'med-schwarz-leer', src: `${MED}/freisteller/schwarz/IFAK_SW_offen-leer.jpg`, sizes: STAGE },
+  { key: 'med-schwarz-platte', src: `${MED}/freisteller/schwarz/IFAK_SW_traegerplatte.jpg`, sizes: STAGE },
+  { key: 'med-coyote-zipper', src: `${MED}/freisteller/coyote/IFAK_TAN_detail-zipper.jpg`, sizes: DETAIL },
   { key: 'med-oliv-front', src: `${MED}/freisteller/oliv/IFAK_ODG_001 (2).jpg`, sizes: STAGE },
   { key: 'med-oliv-offen', src: `${MED}/freisteller/oliv/IFAK_ODG_004.jpg`, sizes: STAGE },
   { key: 'med-schwarz-front', src: `${MED}/freisteller/schwarz/IFAK_SW_001 (2).jpg`, sizes: STAGE },

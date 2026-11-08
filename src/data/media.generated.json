@@ -351,6 +351,78 @@
   "cut": false,
   "tr": 0.25
  },
+ "med-rot-rueck": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "308f76ef",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 0.185
+ },
+ "med-rot-offen": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "e7a8eea1",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 0.03
+ },
+ "med-acu-front": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "56dae04a",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 0.52
+ },
+ "med-schwarz-leer": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "ea120cb7",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 1
+ },
+ "med-schwarz-platte": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "82b98d26",
+  "bg": "rgb(248,248,248)",
+  "cut": false,
+  "tr": 0.405
+ },
+ "med-coyote-zipper": {
+  "w": 800,
+  "h": 800,
+  "widths": [
+   480,
+   800
+  ],
+  "v": "7d77c262",
+  "bg": "rgb(200,168,120)",
+  "cut": false,
+  "tr": 0
+ },
  "med-oliv-front": {
   "w": 2048,
   "h": 2048,

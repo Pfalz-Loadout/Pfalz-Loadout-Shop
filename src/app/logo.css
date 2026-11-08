@@ -162,3 +162,41 @@ html.intro-vorab body::after {
   clip-path: none;
   transform: none;
 }
+
+/* Ständige Bewegung: das Foto in der Wortmarke wandert langsam (Kamerafahrt über die Berge) */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero__mark {
+    background-size: 100% 100%, 135% auto;
+  }
+  .hero__mark--a {
+    animation: hero-fahrt-a 28s ease-in-out infinite alternate;
+  }
+  .hero__mark--b {
+    animation: hero-fahrt-b 32s ease-in-out infinite alternate;
+  }
+  .hero.is-aus .hero__mark {
+    animation-play-state: paused;
+  }
+}
+@keyframes hero-fahrt-a {
+  from {
+    background-position: center, 22% 47%;
+  }
+  to {
+    background-position: center, 78% 45%;
+  }
+}
+@keyframes hero-fahrt-b {
+  from {
+    background-position: center, 80% 80%;
+  }
+  to {
+    background-position: center, 20% 76%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__mark--a,
+  .hero__mark--b {
+    animation: none;
+  }
+}

@@ -45,6 +45,15 @@ export function Hero() {
     return () => h1.removeEventListener('animationend', done);
   }, []);
 
+  // Kamerafahrt in der Schrift nur, solange der Hero sichtbar ist (spart Akku)
+  useEffect(() => {
+    const el = section.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => el.classList.toggle('is-aus', !e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   // Beim Rausscrollen: Wortmarke auseinanderziehen, Rest verblasst (Parallax-Ebenen)
   useEffect(() => {
     if (!ready || reduced || !section.current) return;

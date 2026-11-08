@@ -338,15 +338,17 @@ export const PRODUCTS: Product[] = [
       { label: 'Lieferumfang', value: 'Pouch + Trägerplatte + PVC-Patch, ohne Inhalt' },
     ],
     hotspots: [
-      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [85, 40], 'med-oliv-front': [85, 40], 'med-schwarz-front': [82, 40], 'med-rot-stage': [83, 41] } },
-      { label: 'Trägerplatte', text: 'Hinten: MOLLE-Streifen für Rucksack, Gürtel oder Weste. Die Pouch hält per Klett darauf – ein Zug, und sie ist ab.', at: { 'med-coyote-seite': [36, 55], 'med-oliv-rueck': [40, 55], 'med-schwarz-rueck': [31, 50], 'med-camo-rueck': [46, 55] } },
+      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [74, 49], 'med-oliv-front': [74, 49], 'med-schwarz-front': [70, 49], 'med-rot-stage': [72, 51] } },
+      { label: 'Trägerplatte', text: 'Hinten: MOLLE-Streifen für Rucksack, Gürtel oder Weste – abwechselnd durch die Schlaufen fädeln und unten fixieren. Die Pouch hält per Klett darauf.', at: { 'med-coyote-seite': [36, 55], 'med-oliv-rueck': [40, 55], 'med-schwarz-rueck': [31, 50], 'med-camo-rueck': [46, 55], 'med-rot-rueck': [50, 45], 'med-schwarz-platte': [62, 60] } },
+      { label: 'Abreißen', text: 'Ein Zug, und die Pouch ist von der Platte gelöst: Sie kommt mit zum Verletzten, die Platte bleibt am Rucksack.', at: { 'med-schwarz-platte': [30, 46] } },
+      { label: 'Riemen', text: 'Riemen mit Steckschnalle: die Pouch auch am Bein oder Gürtel tragen.', at: { 'med-rot-rueck': [14, 70], 'med-schwarz-platte': [86, 72] } },
       { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [47, 22], 'med-oliv-front': [46, 22], 'med-schwarz-front': [42, 22], 'med-rot-stage': [43, 23] } },
-      { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [60, 37], 'med-oliv-front': [63, 37], 'med-schwarz-front': [57, 37], 'med-rot-stage': [61, 37] } },
+      { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [53, 37], 'med-oliv-front': [56, 37], 'med-schwarz-front': [50, 37], 'med-rot-stage': [54, 37] } },
       { label: 'Zipper', text: 'Rundum-Reißverschluss mit zwei Schiebern und Paracord-Zuglaschen – öffnet über die ganze Höhe, auch mit Handschuhen.', at: { 'med-coyote-front': [28, 69], 'med-oliv-front': [23, 72], 'med-schwarz-front': [26, 67] } },
       // aufgeklappte Ansicht (Beispielbefüllung auf den Fotos)
-      { label: 'Deckel', text: 'Fächer und mehrere Gummibänder halten Verbände, Feuerstarter oder Lampe an ihrem Platz.', at: { 'med-coyote-offen': [58, 40], 'med-oliv-offen': [62, 40], 'med-schwarz-offen': [55, 40] } },
-      { label: 'Gummischlaufen', text: 'Taschen und kräftige Gummischlaufen im Boden: Kompressen, Verbände und Tücher sitzen fest.', at: { 'med-coyote-offen': [57, 57], 'med-oliv-offen': [55, 58], 'med-schwarz-offen': [48, 60] } },
-      { label: 'Netzfach', text: 'Netzfach mit Reißverschluss in der Klappe für Kleinteile: Handschuhe, Schere, Pinzette, Sicherheitsnadeln. Inhalt nicht im Lieferumfang.', at: { 'med-coyote-offen': [40, 73], 'med-oliv-offen': [42, 75], 'med-schwarz-offen': [55, 74] } },
+      { label: 'Deckel', text: 'Fächer und mehrere Gummibänder halten Verbände, Feuerstarter oder Lampe an ihrem Platz.', at: { 'med-coyote-offen': [58, 40], 'med-oliv-offen': [62, 40], 'med-schwarz-offen': [55, 40], 'med-schwarz-leer': [45, 38], 'med-rot-offen': [62, 33] } },
+      { label: 'Gummischlaufen', text: 'Taschen und kräftige Gummischlaufen im Boden: Kompressen, Verbände und Tücher sitzen fest.', at: { 'med-coyote-offen': [57, 57], 'med-oliv-offen': [55, 58], 'med-schwarz-offen': [48, 60], 'med-schwarz-leer': [56, 56], 'med-rot-offen': [55, 56] } },
+      { label: 'Netzfach', text: 'Netzfach mit Reißverschluss in der Klappe für Kleinteile: Handschuhe, Schere, Pinzette, Sicherheitsnadeln. Inhalt nicht im Lieferumfang.', at: { 'med-coyote-offen': [40, 73], 'med-oliv-offen': [42, 75], 'med-schwarz-offen': [55, 74], 'med-schwarz-leer': [50, 73], 'med-rot-offen': [42, 70] } },
     ],
     lab: [
       {
@@ -355,11 +357,24 @@ export const PRODUCTS: Product[] = [
         property: 'Abreißen mit einer Hand',
         material: 'Großflächige Klettverbindung zur Trägerplatte',
         source: 'Produktbeschreibung',
-        text: 'Die Pouch bleibt am Rucksack, bis du sie brauchst. Dann: Zuglasche greifen, abreißen, aufklappen.',
+        text: 'Die Trägerplatte bleibt am Rucksack, Gürtel oder Bein. Die Pouch hält per Klett darauf, bis du sie brauchst – dann Zuglasche greifen, abreißen, aufklappen. Du nimmst nur das Kit mit zum Verletzten.',
         media: {
-          kind: 'video',
-          timer: true,
-          brief: 'Echtzeit, ungeschnitten, 4–6 Sek.: IFAK am Rucksack, Hand greift Zuglasche, reißt ab, klappt auf. Der Timer im Overlay zeigt die echte Videolaufzeit. Kamera seitlich, Tageslicht, draußen.',
+          kind: 'image',
+          src: 'med-schwarz-platte',
+          brief: 'Pouch und Trägerplatte getrennt (Herstellerfoto)',
+        },
+      },
+      {
+        id: 'med-zipper',
+        title: 'Reißverschluss',
+        property: 'Greifbar – auch mit Handschuhen',
+        material: 'Rundum-Reißverschluss, 2 Schieber, Paracord-Zuglaschen mit Griffstück',
+        source: 'Herstellerfoto',
+        text: 'Die Zuglaschen aus Paracord mit geriffeltem Griffstück findest du auch blind und mit Handschuhen. Zwei Schieber: Die Pouch lässt sich von beiden Seiten öffnen. Dichtes Oxford-Gewebe, Klettfläche für Patches.',
+        media: {
+          kind: 'image',
+          src: 'med-coyote-zipper',
+          brief: 'Detail: Gewebe, Reißverschluss, Paracord-Zuglaschen',
         },
       },
       {
@@ -375,8 +390,8 @@ export const PRODUCTS: Product[] = [
         },
       },
     ],
-    // Front, Rückseite, aufgeklappt (Rot/ACU: keine weiteren Fotos vorhanden)
-    stage: { coyote: ['med-coyote-front', 'med-coyote-seite', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-rueck', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-rueck', 'med-schwarz-offen'], rot: ['med-rot-stage'], camo: ['med-camo-stage', 'med-camo-rueck'], acu: ['med-acu-stage'] },
+    // Front, Rückseite, aufgeklappt; Schwarz zusätzlich abgelöst von der Trägerplatte (leer = so wird geliefert)
+    stage: { coyote: ['med-coyote-front', 'med-coyote-seite', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-rueck', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-rueck', 'med-schwarz-leer', 'med-schwarz-platte'], rot: ['med-rot-stage', 'med-rot-rueck', 'med-rot-offen'], camo: ['med-camo-stage', 'med-camo-rueck'], acu: ['med-acu-stage', 'med-acu-front'] },
     cutout: { coyote: 'med-coyote-front', oliv: 'med-oliv-front', schwarz: 'med-schwarz-front', rot: 'med-rot-stage', camo: 'med-camo-stage', acu: 'med-acu-stage' },
     model3d: '/models/pl-med03.glb',
     note: 'Lieferung ohne medizinischen Inhalt.',
