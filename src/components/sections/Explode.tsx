@@ -6,7 +6,7 @@ import { Picture } from '../Picture';
 import { useMotion } from '../MotionProvider';
 
 /**
- * „Zerlegt“: PL-RB01 Baugruppe für Baugruppe – echte Detailfotos statt 3D.
+ * „Zerlegt“: PL_KWT Baugruppe für Baugruppe – echte Detailfotos statt 3D.
  * Desktop: gepinnt, Scroll schaltet Detail für Detail weiter (mit Zoom-Fahrt).
  * Mobil / reduzierte Bewegung: Raster.
  */
@@ -45,7 +45,7 @@ export function Explode() {
 
   return (
     <section ref={section} className={`explode scan${pinned ? '' : ' is-static'}`} aria-labelledby="explode-h">
-      <div className="scan__beam" data-hud="ANALYSE // PL-RB01 ZERLEGT" />
+      <div className="scan__beam" data-hud="ANALYSE // PL_KWT ZERLEGT" />
       {pinned ? (
         <div className="explode__pin">
           <div className="wrap detail">
@@ -54,7 +54,7 @@ export function Explode() {
                 <span className="sec-head__label" id="explode-h">
                   Zerlegt
                 </span>
-                <span className="dim-3">PL-RB01 · {DETAILS.length} Details</span>
+                <span className="dim-3">PL_KWT · {DETAILS.length} Details</span>
               </div>
               <h2 className="display h2" style={{ fontSize: 'clamp(2.6rem, 5.4vw, 5.2rem)', marginBottom: 28 }}>
                 Was drin
@@ -90,7 +90,7 @@ export function Explode() {
               ))}
               <span className="detail__scan" style={{ top: `${(local * 100).toFixed(1)}%` }} aria-hidden="true" />
               <span className="stage__code mono">
-                PL-RB01 · DETAIL {String(idx + 1).padStart(2, '0')}/{String(DETAILS.length).padStart(2, '0')}
+                PL_KWT · DETAIL {String(idx + 1).padStart(2, '0')}/{String(DETAILS.length).padStart(2, '0')}
               </span>
             </div>
           </div>
@@ -101,7 +101,7 @@ export function Explode() {
             <span className="sec-head__label" id="explode-h">
               Zerlegt
             </span>
-            <span className="dim-3">PL-RB01 · {DETAILS.length} Details</span>
+            <span className="dim-3">PL_KWT · {DETAILS.length} Details</span>
           </div>
           <h2 className="display h2" style={{ marginBottom: 28 }}>
             Was drin steckt.

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { COLORS, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
+import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
@@ -112,7 +112,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
           )}
           <span className="stage__serial mono">{product.serial}</span>
           <span className="stage__code mono">
-            {product.code} · {COLORS[color].label}
+            {colorCode(product, color)} · {COLORS[color].label}
           </span>
           {shots.length > 0 &&
             product.hotspots.map((h, i) => {
@@ -143,7 +143,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
 
         <div className="sheet" style={{ direction: 'ltr' }}>
           <div className="sheet__top mono">
-            <span className="sheet__code">{product.code}</span>
+            <span className="sheet__code">{colorCode(product, color)}</span>
             <span>{product.category}</span>
             <span>
               {String(index + 1).padStart(2, '0')} / 04

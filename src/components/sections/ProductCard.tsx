@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { COLORS, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
+import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product } from '@/data/shop';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull } from '../MotionProvider';
@@ -45,7 +45,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           )}
           <span className="pcard__scan" aria-hidden="true" />
         </div>
-        <span className="pcard__code mono">{product.code}</span>
+        <span className="pcard__code mono">{colorCode(product, color)}</span>
         <span className="pcard__num mono">{String(index + 1).padStart(2, '0')}/04</span>
       </div>
 

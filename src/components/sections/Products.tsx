@@ -10,7 +10,7 @@ export function Products() {
           <span className="sec-head__label" id="products-h">
             Ausrüstung – 4 Teile
           </span>
-          <span className="dim-3">PL-RB01 · PL-DP02 · PL-MED03 · PL-SL04</span>
+          <span className="dim-3">PL_KWT · PL_AP · PL_IFAK · PL_GR</span>
         </div>
         <h2 className="display h2">
           Vier Teile.

@@ -371,7 +371,7 @@ export function QdSlot() {
         </text>
       </g>
       <text x="24" y="314" fill="#9a978f" fontFamily="monospace" fontSize="10">
-        SCHEMA · NICHT MASSSTÄBLICH · PL-SL04
+        SCHEMA · NICHT MASSSTÄBLICH · PL_GR
       </text>
     </svg>
   );
@@ -443,7 +443,7 @@ export function LengthSlot() {
         GURTBAND 3,2 CM · NYLON
       </text>
       <text x={X0} y="300" fill="#9a978f" fontFamily="monospace" fontSize="10">
-        SCHEMA · PL-SL04
+        SCHEMA · PL_GR
       </text>
     </svg>
   );

@@ -14,6 +14,9 @@ export type StockState = 'lager' | 'wenige' | 'ausverkauft';
 
 export type ColorKey = 'schwarz' | 'oliv' | 'coyote' | 'camo' | 'acu' | 'rot' | 'grau-camo' | 'gruen-camo';
 
+/** Farbnummer im Produktcode: 01 ist immer Schwarz, 02 immer Oliv usw. */
+export const COLOR_NO: Record<ColorKey, string> = {'schwarz':'01', 'oliv':'02', 'coyote':'03', 'camo':'04', 'rot':'05', 'acu':'06', 'grau-camo':'07', 'gruen-camo':'08'};
+
 export const COLORS: Record<ColorKey, { label: string; swatch: string }> = {
   schwarz: { label: 'Schwarz', swatch: '#1b1b1b' },
   oliv: { label: 'Oliv', swatch: '#4a5236' },
@@ -115,7 +118,7 @@ export const SHOP = {
     carrier: 'DHL / Hermes',
   },
   /** Mengenrabatt: −10 % auf ein Produkt, sobald mind. 3 Stück davon im Warenkorb liegen (Farben gemischt zählen) */
-  volume: { percent: 10, minQty: 3, codes: ['PL-RB01', 'PL-MED03'] as string[], label: '−10 % ab 3 IFAK oder 3 Range Bags' },
+  volume: { percent: 10, minQty: 3, codes: ['PL_KWT', 'PL_IFAK'] as string[], label: '−10 % ab 3 IFAK oder 3 Range Bags' },
   /** Kleinunternehmerregelung */
   vatNote: 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.',
   /** Zahlungsarten – Klarna ist vorbereitet, aber aus, bis ein Klarna-Händlerkonto steht */
@@ -147,25 +150,25 @@ const OXFORD_600D_PVC = '600D Oxford-Polyester, PVC-beschichtet';
 
 export const PRODUCTS: Product[] = [
   {
-    code: 'PL-RB01',
+    code: 'PL_KWT',
     bullets: ['Waffe, 6 Magazine, Munition – ein Griff','Aufklappen = Arbeitsmatte am Stand','Abschließbar mit Zahlenschloss'],
     use: 'Schießstand · Training · Transport',
     slug: 'range-bag',
     name: 'Range Bag',
     category: 'Kurzwaffentasche / Schießstand',
-    serial: 'SN 01-0425-RB',
+    serial: 'SN KWT-0425',
     claim: 'Alles für die Bahn. In einer Hand.',
     description:
       'Die Schießstandtasche für Kurzwaffe, Magazine, Gehörschutz und Munition. Zwei gepolsterte Hauptfächer, Munitionsfach und Schlaufen für bis zu 6 Magazine. Ausgeklappt wird das Innenfutter zur sauberen Arbeitsmatte – zum Reinigen und Warten direkt am Stand.',
     variants: [
       // Preis = Wunsch-Erlös + PayPal-Gebühr (2,49 % + 0,35 €), auf ,90 gerundet
-      { sku: 'PL-RB01-SW', color: 'schwarz', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL-RB01-SW-LOCK', color: 'schwarz', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
-      { sku: 'PL-RB01-OD', color: 'oliv', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL-RB01-OD-LOCK', color: 'oliv', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
-      { sku: 'PL-RB01-CY', color: 'coyote', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL-RB01-CY-LOCK', color: 'coyote', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
-      { sku: 'PL-RB01-CA', color: 'camo', priceCents: 3090, stock: 'ausverkauft' },
+      { sku: 'PL_KWT_01', color: 'schwarz', priceCents: 3090, stock: 'lager' },
+      { sku: 'PL_KWT_01-ZS', color: 'schwarz', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
+      { sku: 'PL_KWT_02', color: 'oliv', priceCents: 3090, stock: 'lager' },
+      { sku: 'PL_KWT_02-ZS', color: 'oliv', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
+      { sku: 'PL_KWT_03', color: 'coyote', priceCents: 3090, stock: 'lager' },
+      { sku: 'PL_KWT_03-ZS', color: 'coyote', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
+      { sku: 'PL_KWT_04', color: 'camo', priceCents: 3090, stock: 'ausverkauft' },
     ],
     specs: [
       { label: 'Maße', value: '33 × 24 cm' },
@@ -177,7 +180,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Tragen', value: 'Tragegriffe + abnehmbarer Schultergurt mit Karabinern' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL-MED03.', at: { 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-camo-front': [55, 60] } },
+      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL_IFAK.', at: { 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-camo-front': [55, 60] } },
       { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-camo-front': [48, 30] } },
       { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-camo-front': [18, 52] } },
       { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-camo-front': [59, 38] } },
@@ -242,19 +245,19 @@ export const PRODUCTS: Product[] = [
     note: 'Abgebildete Patches, Waffen und Zubehör sind nicht im Lieferumfang. Für den Transport von Waffen gelten die Vorschriften des WaffG – bitte prüfe sie für deinen Fall selbst.',
   },
   {
-    code: 'PL-DP02',
+    code: 'PL_AP',
     bullets: ['37 Liter bei nur 1,7 kg', 'Laptopfach 15" + Trinkblasenfach', 'MOLLE rundum, 1050D Nylon'],
     use: 'Gelände · Pendeln · Mehrtagestour',
     slug: 'rucksack',
     name: 'Assault Pack 37',
     category: 'Rucksack / 37 Liter',
-    serial: 'SN 02-0425-DP',
+    serial: 'SN AP-0425',
     claim: 'Gepackt für alles, was der Tag bringt.',
     description:
       'Mittelgroßer Taktik-Rucksack für den Alltag und das Gelände: 37 Liter Volumen bei nur 1,7 kg. Gepolstertes Laptopfach bis 15 Zoll, verstecktes Fach mit Klett-Innenseite, fleecegefütterte Brillentasche, Trinkblasenfach und rundum MOLLE-Schlaufen. Aus robustem, wasserabweisendem 1050D Nylon.',
     variants: [
-      { sku: 'PL-DP02-SW', color: 'schwarz', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL-DP02-OD', color: 'oliv', priceCents: 3090, stock: 'lager' },
+      { sku: 'PL_AP_01', color: 'schwarz', priceCents: 3090, stock: 'lager' },
+      { sku: 'PL_AP_02', color: 'oliv', priceCents: 3090, stock: 'lager' },
     ],
     specs: [
       { label: 'Volumen', value: '37 l' },
@@ -301,23 +304,23 @@ export const PRODUCTS: Product[] = [
     model3d: '/models/pl-dp02.glb',
   },
   {
-    code: 'PL-MED03',
+    code: 'PL_IFAK',
     bullets: ['Ein Zug – und die Pouch ist ab','Aufklappen, alles liegt offen','Passt an Rucksack, Gürtel oder Bein'],
     use: 'Notfall · Gelände · Fahrzeug',
     slug: 'ifak',
     name: 'IFAK Pouch',
     category: 'Erste Hilfe / Schnellzugriff',
-    serial: 'SN 03-0425-MED',
+    serial: 'SN IFAK-0425',
     claim: 'Aufreißen. Aufklappen. Handeln.',
     description:
       'Erste-Hilfe-Pouch für dein Individual First Aid Kit. Die Tasche sitzt per Klett auf einer MOLLE-Trägerplatte und lässt sich im Notfall mit einem Zug abreißen. Der Rundum-Reißverschluss öffnet über die ganze Höhe, innen halten Gummischlaufen und ein Netzfach alles an seinem Platz. Inklusive PVC-Patch.',
     variants: [
-      { sku: 'PL-MED03-SW', color: 'schwarz', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-MED03-OD', color: 'oliv', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-MED03-CY', color: 'coyote', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-MED03-RT', color: 'rot', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-MED03-CA', color: 'camo', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-MED03-ACU', color: 'acu', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_IFAK_01', color: 'schwarz', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_IFAK_02', color: 'oliv', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_IFAK_03', color: 'coyote', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_IFAK_05', color: 'rot', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_IFAK_04', color: 'camo', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_IFAK_06', color: 'acu', priceCents: 1090, stock: 'lager' },
     ],
     specs: [
       { label: 'Maße', value: '21 × 15 × 11 cm' },
@@ -366,22 +369,22 @@ export const PRODUCTS: Product[] = [
     note: 'Lieferung ohne medizinischen Inhalt.',
   },
   {
-    code: 'PL-SL04',
+    code: 'PL_GR',
     bullets: ['Ein- oder Zweipunkt in Sekunden','Stufenlos 90–140 cm, ein Zug','QD: einrasten, mit einer Hand lösen'],
     use: 'Schießstand · Jagd · Training',
     slug: 'gewehrgurt',
     name: 'Sling',
     category: 'Gewehrriemen / Ein- & Zweipunkt',
-    serial: 'SN 04-0425-SL',
+    serial: 'SN GR-0425',
     claim: 'Hält, wenn die Hände frei sein müssen.',
     description:
       'Gewehrriemen mit QD-Anschluss, in Sekunden zwischen Ein- und Zweipunkt umgebaut. Nylon-Gurtband 3,2 cm, Länge stufenlos von 90 bis 140 cm – zum Tragen lang, im Anschlag kurz.',
     variants: [
       // Riemen in Schwarz oder Oliv, optional mit QD-Öse (Montageset) für +2 €
-      { sku: 'PL-SL04-SW', color: 'schwarz', option: 'Riemen', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-SL04-SW-QD', color: 'schwarz', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
-      { sku: 'PL-SL04-OD', color: 'oliv', option: 'Riemen', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-SL04-OD-QD', color: 'oliv', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
+      { sku: 'PL_GR_01', color: 'schwarz', option: 'Riemen', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_GR_01-QD', color: 'schwarz', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
+      { sku: 'PL_GR_02', color: 'oliv', option: 'Riemen', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL_GR_02-QD', color: 'oliv', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
     ],
     specs: [
       { label: 'Typ', value: 'Ein- / Zweipunkt, schnell umbaubar' },
@@ -441,6 +444,9 @@ export const PRODUCTS: Product[] = [
 /* ------------------------------------------------------------------ */
 
 export const productByCode = (code: string) => PRODUCTS.find((p) => p.code === code);
+
+/** Code inkl. Farbe, z. B. PL_KWT_01 = Kurzwaffentasche Schwarz */
+export const colorCode = (p: Product, color: ColorKey) => `${p.code}_${COLOR_NO[color]}`;
 
 export function findVariant(sku: string): { product: Product; variant: Variant } | undefined {
   for (const product of PRODUCTS) {

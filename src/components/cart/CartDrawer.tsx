@@ -82,7 +82,7 @@ export function CartDrawer() {
                   <div className="cline__img">{key && hasMedia(key) && <Picture k={key} alt="" sizes="64px" />}</div>
                   <div>
                     <div className="cline__name">
-                      <span className="mono signal">{l.code}</span> {l.name}
+                      <span className="mono signal">{l.sku}</span> {l.name}
                     </div>
                     <div className="mono dim-3">{l.variantLabel}</div>
                     <div className="qty" role="group" aria-label={`Menge ${l.name}`}>

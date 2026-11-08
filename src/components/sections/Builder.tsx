@@ -8,10 +8,10 @@ import { pull, useMotion } from '../MotionProvider';
 
 /** Positionen auf der Packmatte (Knolling-Layout), Prozent der Matte */
 const SLOTS: Record<string, { left: number; top: number; width: number; rot: number }> = {
-  'PL-DP02': { left: 4, top: 6, width: 38, rot: -2 },
-  'PL-RB01': { left: 44, top: 8, width: 40, rot: 1.5 },
-  'PL-MED03': { left: 46, top: 52, width: 22, rot: -3 },
-  'PL-SL04': { left: 72, top: 50, width: 24, rot: 4 },
+  'PL_AP': { left: 4, top: 6, width: 38, rot: -2 },
+  'PL_KWT': { left: 44, top: 8, width: 40, rot: 1.5 },
+  'PL_IFAK': { left: 46, top: 52, width: 22, rot: -3 },
+  'PL_GR': { left: 72, top: 50, width: 24, rot: 4 },
 };
 
 type Sel = { on: boolean; sku: string };
@@ -125,7 +125,7 @@ export function Builder() {
                   <span
                     key={p.code}
                     className="mat__label"
-                    style={{ left: `${slot.left + 1}%`, top: `${Math.min(92, slot.top + (p.code === 'PL-DP02' || p.code === 'PL-RB01' ? 44 : 40))}%`, opacity: sel[p.code].on ? 1 : 0 }}
+                    style={{ left: `${slot.left + 1}%`, top: `${Math.min(92, slot.top + (p.code === 'PL_AP' || p.code === 'PL_KWT' ? 44 : 40))}%`, opacity: sel[p.code].on ? 1 : 0 }}
                   >
                     {p.code} · {COLORS[v.color].label}
                   </span>
