@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
-import { Picture, hasMedia } from '../Picture';
+import { Picture, hasMedia, mediaMeta } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
 import { LockBadge } from '../LockBadge';
+import { ShotArrows } from '../ShotArrows';
 import { useVariantPicker } from './ProductCard';
 
 const STOCK_TEXT = { lager: 'Auf Lager – Versand in 1–2 Werktagen', wenige: 'Nur noch wenige', ausverkauft: 'Ausverkauft' };
@@ -24,11 +25,15 @@ export function ProductStage({ product, index }: { product: Product; index: numb
   // gemeinsame Auswahl-Logik: Farben in Code-Reihenfolge, 01 Schwarz vorausgewählt
   const { colors, color, setColor, options, option, setOption, variant } = useVariantPicker(product);
   const optRef = useRef<HTMLElement | null>(null);
-  const shots = (product.stage[color] ?? []).filter(hasMedia);
+  const baseShots = (product.stage[color] ?? []).filter(hasMedia);
+  const extraShots = (product.optionStage?.[option ?? ''] ?? []).filter(hasMedia);
+  const shots = [...baseShots, ...extraShots];
   const [shot, setShot] = useState(0);
   const [openSpot, setOpenSpot] = useState<number | null>(null);
 
   useEffect(() => setShot(0), [color]);
+  // Zubehör gewählt (z. B. QD-Öse) → direkt das Zusatzbild zeigen
+  useEffect(() => setShot(extraShots.length ? baseShots.length : 0), [option]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Scroll: Foto dreht sich leicht in 3D, Lichtkante wandert, zweites Foto blendet ein
   useEffect(() => {
@@ -68,7 +73,13 @@ export function ProductStage({ product, index }: { product: Product; index: numb
     <article ref={root} className="stage scan" id={product.slug} aria-labelledby={`${product.slug}-h`}>
       <div className="scan__beam" data-hud={`ZIEL ERFASST // ${product.code}`} />
       <div className="wrap stage__pin" style={flip && desktop ? { direction: 'rtl' } : undefined}>
-        <div className="stage__visual hud" style={{ direction: 'ltr' }}>
+        <div
+          className="stage__visual hud"
+          // --r = Seitenverhältnis (H/B) des aktuellen Fotos → Schloss sitzt an dessen oberer rechter Ecke
+          style={{ direction: 'ltr', ['--r' as string]: shots[shot] ? mediaMeta(shots[shot]).h / mediaMeta(shots[shot]).w : 1 }}
+        >
+          {/* außerhalb des 3D-Rahmens: bleibt gestochen scharf, dreht nicht mit */}
+          <LockBadge on={variant.option === 'mit Zahlenschloss'} />
           <div className="stage__frame">
             {shots.length ? (
               shots.map((k, i) => (
@@ -98,17 +109,7 @@ export function ProductStage({ product, index }: { product: Product; index: numb
               ))}
             </div>
           )}
-          {shots.length > 1 && (
-            <button
-              type="button"
-              className="shot-next mono"
-              onClick={() => setShot((i) => (i + 1) % shots.length)}
-              aria-label={`Nächstes Bild (${shot + 1} von ${shots.length})`}
-            >
-              {shot + 1}/{shots.length} <span aria-hidden="true">›</span>
-            </button>
-          )}
-          <LockBadge on={variant.option === 'mit Zahlenschloss'} origin={optRef} />
+          <ShotArrows index={shot} count={shots.length} onChange={setShot} />
           <span className="stage__serial mono">{product.serial}</span>
           <span className="stage__code mono">
             {colorCode(product, color)} · {colorName(color)}

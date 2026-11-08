@@ -1,77 +1,77 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Picture, hasMedia, mediaMeta } from './Picture';
 
 /**
- * Zahlenschloss-Badge: fliegt beim Wählen von „mit Zahlenschloss“ vom Auswahl-Button
- * ins Produktbild, bleibt dort leuchtend stehen und verblasst beim Abwählen.
- * Gezeichnet nach den verfügbaren Schlössern: TSA-Vorhängeschloss, Stahlbügel,
- * schwarzes Gehäuse mit farbigem U-Rahmen (Farbe nach Verfügbarkeit → Rahmen wechselt langsam durch).
+ * Zahlenschloss im Vorschaubild (oben rechts) – echtes, freigestelltes Foto.
+ * Kein Einflug: blendet weich ein, sobald „mit Zahlenschloss“ gewählt ist.
+ * Farbe nach Verfügbarkeit: alle 4 s nächste Farbe, bei jedem Wechsel ein kurzes Aufleuchten.
+ * Fotos je Farbe: medien/zubehoer/zahlenschloss/<farbe>.png → Medien-Key zs-<farbe>.
+ * Liegt nur ein Foto vor, wechselt nur das farbige Leuchten dahinter.
+ * Animiert werden nur opacity/transform (GPU) – keine Filter, kein Ruckeln.
  */
-export function LockBadge({ on, origin }: { on: boolean; origin: React.RefObject<HTMLElement | null> }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<'hidden' | 'in' | 'out'>(on ? 'in' : 'hidden');
-  const first = useRef(true);
+const LOCK_COLORS = [
+  { key: 'schwarz', glow: '140, 140, 136' },
+  { key: 'pink', glow: '240, 98, 146' },
+  { key: 'gruen', glow: '124, 198, 63' },
+  { key: 'orange', glow: '255, 122, 31' },
+  { key: 'gelb', glow: '242, 207, 46' },
+  { key: 'blau', glow: '47, 143, 220' },
+];
+const STEP_MS = 4000;
+const grad = (rgb: string, a: number) => `radial-gradient(closest-side, rgba(${rgb}, ${a}), rgba(${rgb}, ${a * 0.35}) 55%, rgba(${rgb}, 0))`;
 
-  useLayoutEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
-    if (on) {
-      // Flugweg: vom angeklickten Button zur Endposition im Bild
-      const el = ref.current;
-      const o = origin.current;
-      if (el && o) {
-        const a = o.getBoundingClientRect();
-        const b = el.getBoundingClientRect();
-        el.style.setProperty('--dx', `${a.left + a.width / 2 - (b.left + b.width / 2)}px`);
-        el.style.setProperty('--dy', `${a.top + a.height / 2 - (b.top + b.height / 2)}px`);
-      }
-      setState('in');
-    } else if (state !== 'hidden') {
-      setState('out');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+export function LockBadge({ on }: { on: boolean }) {
+  const [state, setState] = useState<'hidden' | 'in' | 'out'>(on ? 'in' : 'hidden');
+  const [i, setI] = useState(0);
+
+  const photos = LOCK_COLORS.filter((c) => hasMedia(`zs-${c.key}`));
+
+  useEffect(() => {
+    if (on) setState('in');
+    else setState((s) => (s === 'hidden' ? s : 'out'));
   }, [on]);
 
   useEffect(() => {
     if (state !== 'out') return;
-    const t = setTimeout(() => setState('hidden'), 500);
+    const t = setTimeout(() => setState('hidden'), 520);
     return () => clearTimeout(t);
   }, [state]);
 
+  // Farbwechsel nur, solange sichtbar und Bewegung erlaubt
+  useEffect(() => {
+    if (state !== 'in') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const t = setInterval(() => setI((n) => n + 1), STEP_MS);
+    return () => clearInterval(t);
+  }, [state]);
+
+  if (!photos.length || state === 'hidden') return null;
+  // mehrere Farbfotos: Foto und Leuchten wechseln gemeinsam; nur eins: nur das Leuchten wechselt
+  const shown = photos.length > 1 ? photos[i % photos.length].key : photos[0].key;
+  const glow = photos.length > 1 ? LOCK_COLORS.find((c) => c.key === shown)! : LOCK_COLORS[i % LOCK_COLORS.length];
+
   return (
-    <div ref={ref} className={`lockbadge is-${state}`} aria-hidden={state !== 'in'}>
-      <svg viewBox="0 0 100 132" role="img" aria-label="Zahlenschloss inklusive, Farbe nach Verfügbarkeit">
-        <defs>
-          <linearGradient id="lb-steel" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#8d8d89" />
-            <stop offset="0.35" stopColor="#f4f4f2" />
-            <stop offset="0.7" stopColor="#a9a9a5" />
-            <stop offset="1" stopColor="#e2e2de" />
-          </linearGradient>
-        </defs>
-        {/* Bügel */}
-        <path d="M29 58 V32 a21 21 0 0 1 42 0 V58" fill="none" stroke="url(#lb-steel)" strokeWidth="8" strokeLinecap="round" />
-        {/* Gehäuse schwarz + farbiger U-Rahmen */}
-        <rect x="12" y="50" width="76" height="78" rx="11" fill="#141414" />
-        <rect className="lockbadge__frame" x="12" y="58" width="76" height="70" rx="11" />
-        <rect x="29" y="56" width="42" height="62" rx="6" fill="#151515" />
-        <rect x="12" y="50" width="76" height="9" rx="4" fill="#1d1d1c" />
-        {/* TSA-Raute */}
-        <path d="M43 70 l7 -6 l7 6 l-7 6 Z" fill="#d42a2a" />
-        <path d="M46 70 l4 -3 l4 3 l-4 3 Z" fill="#ffffff" opacity="0.85" />
-        {/* drei Zahlenräder */}
-        {[86, 98, 110].map((y) => (
-          <g key={y}>
-            <rect x="34" y={y - 7} width="32" height="11" rx="2" fill="#0b0b0b" />
-            <text x="50" y={y + 2} textAnchor="middle" fontFamily="monospace" fontSize="9" fontWeight="700" fill="#efede8" letterSpacing="2">
-              301
-            </text>
-          </g>
+    <div className={`lockbadge is-${state}`}>
+      <div className="lockbadge__shot" style={{ aspectRatio: `${mediaMeta(`zs-${photos[0].key}`).w} / ${mediaMeta(`zs-${photos[0].key}`).h}` }}>
+        {LOCK_COLORS.map((c) => (
+          <span key={c.key} className="lockbadge__aura" style={{ background: grad(c.glow, 0.32), opacity: c.key === glow.key ? 1 : 0 }} />
         ))}
-      </svg>
+        {/* key = Farbwechsel → Aufleuchten startet neu */}
+        {i > 0 && <span key={i} className="lockbadge__flash" style={{ background: grad(glow.glow, 0.55) }} />}
+        {photos.map((c) => (
+          <Picture
+            key={c.key}
+            k={`zs-${c.key}`}
+            alt={c.key === shown ? 'Zahlenschloss, im Lieferumfang der Variante mit Zahlenschloss' : ''}
+            sizes="240px"
+            priority
+            className="lockbadge__img"
+            style={{ opacity: c.key === shown ? 1 : 0 }}
+          />
+        ))}
+      </div>
       <span className="lockbadge__tag mono">+ Zahlenschloss</span>
     </div>
   );

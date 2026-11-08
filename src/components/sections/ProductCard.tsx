@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
 import { LockBadge } from '../LockBadge';
+import { ShotArrows } from '../ShotArrows';
 import { Picture, hasMedia } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull } from '../MotionProvider';
@@ -37,9 +38,12 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
   const { add } = useCart();
   const { colors, color, setColor, options, option, setOption, variant } = useVariantPicker(product);
   const btn = useRef<HTMLButtonElement>(null);
-  const shots = (product.stage[color] ?? []).filter(hasMedia);
+  const baseShots = (product.stage[color] ?? []).filter(hasMedia);
+  const extraShots = (product.optionStage?.[option ?? ''] ?? []).filter(hasMedia);
+  const shots = [...baseShots, ...extraShots];
   const [shotIdx, setShotIdx] = useState(0);
   useEffect(() => setShotIdx(0), [color]);
+  useEffect(() => setShotIdx(extraShots.length ? baseShots.length : 0), [option]); // eslint-disable-line react-hooks/exhaustive-deps
   const shot = shots[shotIdx % Math.max(1, shots.length)];
   const soldOut = variant.stock === 'ausverkauft';
   const optRef = useRef<HTMLElement | null>(null);
@@ -56,17 +60,8 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           )}
           <span className="pcard__scan" aria-hidden="true" />
         </div>
-        {shots.length > 1 && (
-          <button
-            type="button"
-            className="shot-next mono"
-            onClick={() => setShotIdx((i) => (i + 1) % shots.length)}
-            aria-label={`Nächstes Bild (${(shotIdx % shots.length) + 1} von ${shots.length})`}
-          >
-            {(shotIdx % shots.length) + 1}/{shots.length} <span aria-hidden="true">›</span>
-          </button>
-        )}
-        <LockBadge on={variant.option === 'mit Zahlenschloss'} origin={optRef} />
+        <ShotArrows index={shotIdx % Math.max(1, shots.length)} count={shots.length} onChange={setShotIdx} />
+        <LockBadge on={variant.option === 'mit Zahlenschloss'} />
         <span className="pcard__code mono">{colorCode(product, color)}</span>
         <span className="pcard__num mono">{String(index + 1).padStart(2, '0')}/04</span>
       </div>

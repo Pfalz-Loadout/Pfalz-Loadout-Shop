@@ -76,6 +76,10 @@ const MANIFEST = [
 
   // ---------- Sling ----------
   { key: 'sl-schwarz-front', src: `${SL}/20251112_182804.jpg`, sizes: STAGE },
+  { key: 'sl-schwarz-stand', src: `${SL}/20251112_182827.jpg`, sizes: STAGE },
+  { key: 'sl-schwarz-liegend', src: `${SL}/20251112_182624.jpg`, sizes: STAGE },
+  { key: 'sl-oliv-stand', src: `${SL}/20251112_182734.jpg`, sizes: STAGE },
+  { key: 'sl-oliv-liegend', src: `${SL}/20251112_182721.jpg`, sizes: STAGE },
   { key: 'sl-oliv-front', src: `${SL}/20251112_182734.jpg`, sizes: STAGE },
   { key: 'sl-duo', src: `${SL}/20251112_182710.jpg`, sizes: STAGE },
   { key: 'sl-qd-teile', src: `${SL}/20251112_183038.jpg`, sizes: DETAIL },
@@ -88,6 +92,10 @@ const MANIFEST = [
   { key: 'einsatz-pfalz', src: 'einsatz/pfalz-weinberg-abendlicht.jpg', sizes: SCENE },
   { key: 'hero-oliv-start', src: 'videos/oliv-start-geschlossen-dunkel.jpg', sizes: STAGE },
   { key: 'logo-badge', src: 'logo/logo-badge.webp', sizes: [160, 320] },
+
+  // ---------- Zubehör: Zahlenschloss (freigestellt, Alpha; je Farbe eine Datei zubehoer/zahlenschloss/<farbe>.png) ----------
+  // Original-Produktfotos (weißer Grund) → vorher: python -I scripts/schloss-freistellen.py (legt freigestellt/zs-<farbe>.png an)
+  ...['schwarz', 'pink', 'gruen', 'orange', 'gelb', 'blau'].map((f) => ({ key: `zs-${f}`, src: `zubehoer/zahlenschloss/${f}.*`, sizes: [160, 320, 480], hq: true, alpha: true })),
 ];
 
 /**
@@ -100,6 +108,8 @@ const MANIFEST = [
 // Range Bag, IFAK, Rucksack nutzen die ORIGINAL-Freisteller der Person unverändert.
 const CUT_KEYS = new Set([
   'sl-schwarz-front', 'sl-qd-oliv', 'sl-qd-teile',
+  'sl-schwarz-stand', 'sl-schwarz-liegend', 'sl-oliv-stand', 'sl-oliv-liegend',
+  'zs-schwarz', 'zs-pink', 'zs-gruen', 'zs-orange', 'zs-gelb', 'zs-blau',
 ]);
 const CUT_DIR = path.join(SRC, 'freigestellt');
 
@@ -164,9 +174,10 @@ async function run() {
       const widths = item.sizes.filter((s) => s < w).concat(item.sizes.some((s) => s >= w) ? [w] : []);
       const uniq = [...new Set(widths)].sort((a, b) => a - b);
       for (const width of uniq) {
-        const base = sharp(buf).resize({ width, withoutEnlargement: true });
-        await base.clone().avif({ quality: 52, effort: 4 }).toFile(path.join(OUT, `${item.key}-${width}.avif`));
-        await base.clone().webp({ quality: 74 }).toFile(path.join(OUT, `${item.key}-${width}.webp`));
+        let base = sharp(buf).resize({ width, withoutEnlargement: true, kernel: 'lanczos3' });
+        if (item.hq) base = base.sharpen({ sigma: 0.5, m1: 0.6, m2: 1.2 }); // Schloss: knackig nach dem Verkleinern
+        await base.clone().avif({ quality: item.hq ? 72 : 52, effort: item.hq ? 7 : 4 }).toFile(path.join(OUT, `${item.key}-${width}.avif`));
+        await base.clone().webp(item.hq ? { quality: 92, alphaQuality: 100, smartSubsample: true } : { quality: 74 }).toFile(path.join(OUT, `${item.key}-${width}.webp`));
       }
       // Durchschnittsfarbe als Platzhalter-Hintergrund
       const { dominant } = await sharp(buf).stats();
@@ -175,7 +186,7 @@ async function run() {
         h,
         widths: uniq,
         v: crypto.createHash('sha1').update(buf).digest('hex').slice(0, 8), // Cache-Buster
-        bg: cut ? 'transparent' : `rgb(${dominant.r},${dominant.g},${dominant.b})`,
+        bg: cut || item.alpha ? 'transparent' : `rgb(${dominant.r},${dominant.g},${dominant.b})`,
         cut,
       };
       console.log(`OK ${item.key.padEnd(22)} ${w}x${h} -> ${uniq.join('/')}`);

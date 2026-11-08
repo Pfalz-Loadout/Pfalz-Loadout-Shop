@@ -5,6 +5,7 @@ import { Manifest } from '@/components/sections/Manifest';
 import { Products } from '@/components/sections/Products';
 import { Explode } from '@/components/sections/Explode';
 import { Lab } from '@/components/sections/Lab';
+import { Packliste } from '@/components/sections/Packliste';
 import { Field } from '@/components/sections/Field';
 import { Builder } from '@/components/sections/Builder';
 import { Trust } from '@/components/sections/Trust';
@@ -80,6 +81,7 @@ export default function Page() {
       <Products />
       <Explode />
       <Lab />
+      <Packliste />
       <Field />
       <Builder />
       <Trust />

@@ -2,22 +2,7 @@
    Produktvorschau: Wolken-Rand, „Nächstes Bild“, Zahlenschloss-Badge
    ================================================================== */
 
-/* Rahmen weg – das Foto löst sich weich in den Papiergrund auf */
-.stage__frame,
-.pcard__media,
-.detail__frame {
-  background: transparent !important;
-  border: 0 !important;
-}
-.pcard {
-  background: transparent;
-}
-.stage__frame picture,
-.pcard__shot picture,
-.detail__shot {
-  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 52%, rgba(0, 0, 0, 0.6) 66%, transparent 82%);
-  mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 52%, rgba(0, 0, 0, 0.6) 66%, transparent 82%);
-}
+/* Wolken-Rand entfernt (08.11.2026, Wunsch der Inhaberin): Fotos wieder vollständig im weißen Rahmen */
 /* HUD-Ecken auf hellem Grund dezenter */
 .stage__visual.hud::before,
 .stage__visual.hud::after,
@@ -26,151 +11,191 @@
   opacity: 0.35;
 }
 
-/* Nächstes Bild */
-.shot-next {
+/* Bildwechsel: Pfeile links/rechts direkt auf dem Vorschaubild */
+.shot-arrow {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 36px;
-  padding: 0 12px;
+  top: 64%;
+  z-index: 7;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  padding: 0;
   border: 1px solid var(--line-2);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
   color: var(--bone);
-  font-size: 0.72rem;
   cursor: pointer;
-  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px rgba(20, 20, 20, 0.12);
   transition:
     transform 0.2s var(--ease-snap),
-    border-color 0.2s;
+    border-color 0.2s,
+    background-color 0.2s;
 }
-.shot-next span {
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--signal);
-  transition: transform 0.25s var(--ease-snap);
+.shot-arrow--prev {
+  left: 10px;
 }
-.shot-next:hover {
-  border-color: var(--bone);
+.shot-arrow--next {
+  right: 10px;
 }
-.shot-next:hover span {
-  transform: translateX(3px);
+.shot-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.shot-next:active {
-  transform: scale(0.95);
+.shot-arrow:hover {
+  border-color: var(--signal);
+  color: var(--signal-ink);
+}
+.shot-arrow:active {
+  transform: scale(0.92);
+}
+.shot-arrow:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.shot-count {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 6;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--bone-2);
+  font-size: 0.68rem;
 }
 .stage__code {
   bottom: 14px;
 }
 
-/* Zahlenschloss: fliegt ein, leuchtet, verblasst */
+/* ------------------------------------------------------------------
+   Zahlenschloss: echtes Foto oben rechts im Vorschaubild.
+   Nur opacity/transform animiert (keine Filter, keine Blend-Modi) → kein Ruckeln.
+   ------------------------------------------------------------------ */
+.stage__visual {
+  container-type: size;
+}
 .lockbadge {
   position: absolute;
-  left: 7%;
-  bottom: 9%;
-  z-index: 5;
-  width: clamp(54px, 15%, 92px);
+  z-index: 6;
+  /* obere rechte Ecke des (eingepassten) Fotos: --r = Höhe/Breite des Fotos */
+  top: max(14px, calc(50cqh - 50cqw * var(--r, 1) + 4cqw));
+  right: 6cqw;
+  width: clamp(72px, 17cqw, 124px); /* Originalfoto hochkant */
   display: grid;
-  justify-items: center;
-  gap: 4px;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: end;
+  gap: 8px;
   pointer-events: none;
-  opacity: 0;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
-.lockbadge svg {
+.pcard__media .lockbadge {
+  top: 34px;
+  right: 10px;
+  width: clamp(56px, 17%, 84px);
+}
+.lockbadge.is-in {
+  animation: lockin 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+.lockbadge.is-out {
+  animation: lockout 0.5s ease-in both;
+}
+@keyframes lockin {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0) scale(0.98);
+  }
+}
+@keyframes lockout {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0) scale(0.99);
+  }
+}
+.lockbadge__shot {
+  position: relative;
   width: 100%;
-  height: auto;
-  overflow: visible;
 }
-.lockbadge__frame {
-  fill: #f2d13a;
-  animation: lockcolors 9s linear infinite;
+/* weicher Bodenschatten als Verlauf (statt drop-shadow-Filter) */
+.lockbadge__shot::after {
+  content: '';
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: -5%;
+  height: 9%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(20, 20, 20, 0.22), rgba(20, 20, 20, 0));
+  z-index: 0;
 }
-@keyframes lockcolors {
-  0%,
-  14% {
-    fill: #f2d13a;
+.lockbadge .lockbadge__img,
+.lockbadge .lockbadge__img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent !important;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.lockbadge .lockbadge__img {
+  z-index: 2;
+  transition: opacity 1.4s ease-in-out;
+  will-change: opacity;
+}
+/* farbiges Leuchten hinter dem Schloss – wechselt langsam */
+.lockbadge__aura {
+  position: absolute;
+  inset: -18% -45%;
+  z-index: 1;
+  transition: opacity 1.6s ease-in-out;
+  will-change: opacity;
+}
+/* bei jedem Farbwechsel kurz heller aufleuchten */
+.lockbadge__flash {
+  position: absolute;
+  inset: -22% -52%;
+  z-index: 1;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: lockflash 1.6s ease-out;
+}
+@keyframes lockflash {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
   }
-  17%,
-  31% {
-    fill: #ff5f1f;
+  30% {
+    opacity: 0.85;
   }
-  34%,
-  48% {
-    fill: #f28aa0;
-  }
-  51%,
-  65% {
-    fill: #8ccf3f;
-  }
-  68%,
-  82% {
-    fill: #2bb3d6;
-  }
-  85%,
   100% {
-    fill: #2a2a28;
+    opacity: 0;
+    transform: scale(1.06);
   }
 }
 .lockbadge__tag {
   padding: 3px 7px;
   background: var(--bone);
   color: var(--basalt-2);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   white-space: nowrap;
 }
-.lockbadge.is-in {
-  opacity: 1;
-  animation:
-    lockfly 0.85s var(--ease) both,
-    lockglow 2.4s 0.85s ease-in-out infinite;
-}
-.lockbadge.is-out {
-  animation: lockout 0.45s var(--ease) both;
-}
-@keyframes lockfly {
-  0% {
-    opacity: 0.2;
-    transform: translate(var(--dx, 160px), var(--dy, 120px)) scale(0.35) rotate(-28deg);
-  }
-  70% {
-    opacity: 1;
-    transform: translate(0, 0) scale(1.12) rotate(4deg);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes lockglow {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 6px rgba(255, 95, 31, 0.45));
-  }
-  50% {
-    filter: drop-shadow(0 0 16px rgba(255, 95, 31, 0.9));
-  }
-}
-@keyframes lockout {
-  from {
-    opacity: 1;
-    transform: none;
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.85) translateY(8px);
-    filter: blur(3px);
-  }
-}
 @media (prefers-reduced-motion: reduce) {
-  .lockbadge.is-in {
-    animation: none;
-    filter: drop-shadow(0 0 10px rgba(255, 95, 31, 0.7));
+  .lockbadge .lockbadge__img,
+  .lockbadge__aura {
+    transition: none;
   }
-  .lockbadge__frame {
+  .lockbadge.is-in,
+  .lockbadge.is-out,
+  .lockbadge__flash {
     animation: none;
   }
 }

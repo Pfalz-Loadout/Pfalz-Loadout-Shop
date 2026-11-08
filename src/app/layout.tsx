@@ -3,6 +3,7 @@ import { Archivo, Big_Shoulders, Big_Shoulders_Stencil, JetBrains_Mono } from 'n
 import './globals.css';
 import './mobile.css';
 import './preview.css';
+import './packliste.css';
 import { MotionProvider } from '@/components/MotionProvider';
 import { CartProvider } from '@/components/cart/CartProvider';
 import { CartDrawer } from '@/components/cart/CartDrawer';

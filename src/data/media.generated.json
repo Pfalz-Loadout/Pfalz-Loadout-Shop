@@ -419,6 +419,54 @@
   "bg": "transparent",
   "cut": true
  },
+ "sl-schwarz-stand": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "d052ac84",
+  "bg": "transparent",
+  "cut": true
+ },
+ "sl-schwarz-liegend": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "b73c5728",
+  "bg": "transparent",
+  "cut": true
+ },
+ "sl-oliv-stand": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "453e7385",
+  "bg": "transparent",
+  "cut": true
+ },
+ "sl-oliv-liegend": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "22d6f0dc",
+  "bg": "transparent",
+  "cut": true
+ },
  "sl-oliv-front": {
   "w": 3000,
   "h": 4000,

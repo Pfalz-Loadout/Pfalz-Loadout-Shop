@@ -1,0 +1,328 @@
+/* ------------------------------------------------------------------
+   IFAK-Packliste (M.A.R.C.H.)
+   ------------------------------------------------------------------ */
+.pack {
+  padding-block: clamp(80px, 14vh, 160px);
+}
+.pack__intro {
+  max-width: 62ch;
+  margin: 0 0 clamp(32px, 5vw, 56px);
+  color: var(--bone-2);
+  font-size: 1.05rem;
+}
+.pack__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(20px, 4vw, 64px);
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .pack__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Foto mit Zonen-Markern */
+.pack__photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  background: var(--basalt-2);
+  border: 1px solid var(--line);
+}
+.pack__photo picture,
+.pack__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  background-color: transparent !important;
+}
+.pack__photo figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+}
+.pack__pin {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translate(-9px, -50%);
+  opacity: 0.28;
+  transition: opacity 0.35s var(--ease);
+  pointer-events: none;
+}
+.pack__pin i {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--bone);
+  background: var(--basalt-2);
+}
+.pack__pin b {
+  padding: 3px 7px;
+  background: var(--bone);
+  color: var(--basalt-2);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.pack__pin.is-on {
+  opacity: 1;
+}
+.pack__pin.is-on i {
+  border-color: var(--signal);
+  background: var(--signal);
+}
+.pack__pin.is-on i::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--signal);
+  animation: pack-ping 1.6s var(--ease) infinite;
+}
+.pack__pin.is-on b {
+  opacity: 1;
+  transform: none;
+}
+.pack__pin.is-hot b {
+  background: var(--signal);
+  color: #140a04;
+}
+@keyframes pack-ping {
+  from {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* M A R C H – Reiter */
+.pack__tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.pack__tab {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  min-height: 44px;
+  padding: 12px 10px 10px;
+  border: 1px solid var(--line-2);
+  background: var(--basalt-2);
+  color: var(--bone);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+.pack__tab .display {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+}
+.pack__tab .mono {
+  font-size: 0.66rem;
+  line-height: 1.2;
+  color: var(--bone-3);
+}
+.pack__tab:hover {
+  border-color: var(--bone);
+}
+.pack__tab[aria-selected='true'] {
+  background: var(--bone);
+  border-color: var(--bone);
+  color: var(--basalt);
+}
+.pack__tab[aria-selected='true'] .display {
+  color: var(--signal);
+}
+.pack__tab[aria-selected='true'] .mono {
+  color: var(--basalt);
+}
+.pack__tab:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.pack__step {
+  animation: pack-in 0.4s var(--ease);
+}
+@keyframes pack-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.pack__lead {
+  margin: 10px 0 20px;
+  font-size: 1.15rem;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+.pack__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-2);
+}
+.pack__items li {
+  padding: 14px 0 14px 14px;
+  border-bottom: 1px solid var(--line-2);
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s var(--ease);
+}
+.pack__items li:hover {
+  border-left-color: var(--signal);
+}
+.pack__item-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+.pack__item-head strong {
+  font-size: 1.05rem;
+}
+.pack__item-head .mono {
+  color: var(--coyote-ink);
+  font-size: 0.68rem;
+}
+.pack__items p {
+  margin: 4px 0 0;
+  color: var(--bone-2);
+}
+
+/* Warum Gaze */
+.pack__why {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
+  margin-top: clamp(48px, 7vw, 88px);
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--basalt-2);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--signal);
+}
+.pack__stat {
+  display: grid;
+  gap: 6px;
+}
+.pack__stat .display {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+}
+.pack__why p {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--bone-2);
+}
+.pack__why p strong {
+  color: var(--bone);
+}
+@media (max-width: 760px) {
+  .pack__why {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pack__why p {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Listen */
+.pack__lists {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: clamp(40px, 6vw, 72px);
+}
+@media (max-width: 860px) {
+  .pack__lists {
+    grid-template-columns: 1fr;
+  }
+}
+.pack__h3 {
+  margin: 0 0 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-2);
+  font-weight: 600;
+}
+.pack__dash {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  color: var(--bone-2);
+}
+.pack__dash li {
+  position: relative;
+  padding-left: 22px;
+}
+.pack__dash li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 12px;
+  height: 2px;
+  background: var(--signal);
+}
+.pack__rip {
+  margin: 0 0 18px;
+  color: var(--bone-2);
+}
+.pack__legal {
+  margin: clamp(40px, 6vw, 72px) 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-2);
+  max-width: 90ch;
+  font-size: 0.9rem;
+  color: var(--bone-2);
+}
+.pack__legal strong {
+  color: var(--bone);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pack__pin.is-on i::after,
+  .pack__step {
+    animation: none;
+  }
+}
+
+/* Feinschliff: Foto direkt auf Papier, Bildunterschrift lesbar, Reiter mobil nur Buchstaben */
+.pack__photo {
+  background: transparent;
+  border: 0;
+}
+.pack__photo picture {
+  background-color: transparent !important;
+}
+.pack__photo figcaption {
+  padding: 3px 7px;
+  background: rgba(244, 243, 239, 0.9);
+}
+@media (max-width: 560px) {
+  .pack__tab {
+    justify-items: center;
+    padding: 10px 4px;
+  }
+  .pack__tab .mono {
+    display: none;
+  }
+}

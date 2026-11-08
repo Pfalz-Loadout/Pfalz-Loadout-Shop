@@ -87,6 +87,8 @@ export type Product = {
   lab: ProofMoment[];
   /** Bühne: Studiofotos je Farbe (Basisname in /public/media/…) */
   stage: Partial<Record<ColorKey, string[]>>;
+  /** Zusatzbilder, die bei einer gewählten Ausführung hinten angehängt werden (z. B. QD-Teile) */
+  optionStage?: Record<string, string[]>;
   /** Freisteller (weißer Grund) für Loadout-Builder je Farbe */
   cutout: Partial<Record<ColorKey, string>>;
   /** 3D-Modell (GLB) – austauschbarer Platzhalter, bis dahin prozeduraler Ersatzkörper */
@@ -180,10 +182,10 @@ export const PRODUCTS: Product[] = [
       { label: 'Tragen', value: 'Tragegriffe + abnehmbarer Schultergurt mit Karabinern' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL_IFAK.', at: { 'rb-oliv-quer': [45, 56], 'rb-coyote-gerade': [42, 60], 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-camo-front': [55, 60] } },
-      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-oliv-quer': [47, 23], 'rb-coyote-gerade': [47, 22], 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-camo-front': [48, 30] } },
-      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-camo-front': [18, 52] } },
-      { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-camo-front': [59, 38] } },
+      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL_IFAK.', at: { 'rb-oliv-quer': [45, 56], 'rb-coyote-gerade': [42, 60], 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-schwarz-front': [54, 57], 'rb-camo-front': [55, 60] } },
+      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-oliv-quer': [47, 23], 'rb-coyote-gerade': [47, 22], 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-schwarz-front': [44, 26], 'rb-camo-front': [48, 30] } },
+      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-schwarz-front': [12, 52], 'rb-camo-front': [18, 52] } },
+      { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-schwarz-front': [56, 43], 'rb-camo-front': [59, 38] } },
     ],
     lab: [
       {
@@ -239,8 +241,9 @@ export const PRODUCTS: Product[] = [
         },
       },
     ],
-    stage: { schwarz: ['rb-schwarz-quer', 'rb-schwarz-offen'], oliv: ['rb-oliv-quer', 'rb-oliv-front'], coyote: ['rb-coyote-gerade', 'rb-coyote-front', 'rb-coyote-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
-    cutout: { schwarz: 'rb-schwarz-quer', oliv: 'rb-oliv-quer', coyote: 'rb-coyote-gerade', camo: 'rb-camo-front' },
+    // Reihenfolge immer gleich: 1. Front (Klettfeld für Patch), 2. MOLLE-Seite, 3. offen
+    stage: { schwarz: ['rb-schwarz-front', 'rb-schwarz-quer', 'rb-schwarz-offen'], oliv: ['rb-oliv-front', 'rb-oliv-quer'], coyote: ['rb-coyote-front', 'rb-coyote-gerade', 'rb-coyote-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
+    cutout: { schwarz: 'rb-schwarz-front', oliv: 'rb-oliv-front', coyote: 'rb-coyote-front', camo: 'rb-camo-front' },
     model3d: '/models/pl-rb01.glb',
     note: 'Farbe des Zahlenschlosses nach Verfügbarkeit. Abgebildete Patches, Waffen und Zubehör sind nicht im Lieferumfang. Für den Transport von Waffen gelten die Vorschriften des WaffG – bitte prüfe sie für deinen Fall selbst.',
   },
@@ -395,9 +398,9 @@ export const PRODUCTS: Product[] = [
       { label: 'Option + QD-Öse', value: '+2 €: QD-Swivel, Montageplatte, Schrauben, Nutensteine, Inbus' },
     ],
     hotspots: [
-      { label: 'Schnalle', text: 'Schiebeschnalle: Länge stufenlos von 90 bis 140 cm.', at: { 'sl-schwarz-front': [53, 43], 'sl-oliv-front': [56, 45] } },
+      { label: 'Schnalle', text: 'Schiebeschnalle: Länge stufenlos von 90 bis 140 cm.', at: { 'sl-schwarz-front': [53, 43], 'sl-oliv-front': [56, 45], 'sl-schwarz-stand': [50, 45], 'sl-oliv-stand': [48, 41] } },
       { label: 'Umbau-Clip', text: 'Schnell zwischen Ein- und Zweipunkt wechseln.', at: { 'sl-qd-oliv': [58, 44] } },
-      { label: 'QD-Swivel', text: 'Drückknopf-Swivel: einrasten, drehen, mit einer Hand lösen.', at: { 'sl-schwarz-front': [23, 23], 'sl-oliv-front': [55, 89], 'sl-qd-oliv': [84, 65], 'sl-qd-teile': [21, 75] } },
+      { label: 'QD-Swivel', text: 'Drückknopf-Swivel: einrasten, drehen, mit einer Hand lösen.', at: { 'sl-schwarz-front': [23, 23], 'sl-oliv-front': [55, 89], 'sl-qd-oliv': [84, 65], 'sl-qd-teile': [21, 75], 'sl-oliv-stand': [50, 76] } },
       { label: 'QD-Öse', text: 'Optional (+2 €): Montageplatte, Schrauben, Nutensteine und Inbus.', at: { 'sl-qd-oliv': [28, 70], 'sl-qd-teile': [21, 57] } },
       { label: 'Gurtband', text: 'Nylon, 3,2 cm breit.', at: { 'sl-qd-oliv': [34, 39] } },
     ],
@@ -434,8 +437,10 @@ export const PRODUCTS: Product[] = [
         media: { kind: 'scale-length', brief: 'Animierte Messskala (läuft im Browser)' },
       },
     ],
-    stage: { schwarz: ['sl-schwarz-front', 'sl-qd-teile'], oliv: ['sl-qd-oliv', 'sl-qd-teile'] },
-    cutout: { schwarz: 'sl-schwarz-front', oliv: 'sl-qd-oliv' },
+    // je Farbe 2 Bilder (stehend, liegend); bei „+ QD-Öse“ kommt das Teilefoto dazu
+    stage: { schwarz: ['sl-schwarz-stand', 'sl-schwarz-liegend'], oliv: ['sl-oliv-stand', 'sl-oliv-liegend'] },
+    optionStage: { '+ QD-Öse': ['sl-qd-teile'] },
+    cutout: { schwarz: 'sl-schwarz-stand', oliv: 'sl-oliv-stand' },
   },
 ];
 

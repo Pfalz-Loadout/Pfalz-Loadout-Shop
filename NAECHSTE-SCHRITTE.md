@@ -18,10 +18,22 @@ Zweite Quelle (PPF Germany, Blog „IFAK: Was in dein Erste-Hilfe-Kit für den E
 - Wartung: Ablaufdaten (Gaze, Chest Seals), Hitze im Auto, nach Einsatz auffüllen, üben.
 - Idee für den Shop: Packliste-Grafik in der Pouch (Schichten antippbar) + Quellenangaben (TCCC, ERC 2025, S3-Leitlinie Polytrauma) + Hinweis „ersetzt keine Ausbildung“. Rip-Away-Funktion des IFAK als Kaufargument verknüpfen.
 
+**Erledigt (08.11.2026):** Abschnitt „Packliste“ (`src/components/sections/Packliste.tsx`, `src/app/packliste.css`) nach dem Materiallabor: M.A.R.C.H.-Reiter, Zonen-Marker auf dem Foto der offenen Pouch, „Gehört nicht rein“, Pflege, Rip-Away-Argument, Pflichthinweise + Quellen. Texte sollte die Inhaberin noch fachlich gegenlesen.
+
 ## 2. Zahlenschloss-Fotos
-Echte Fotos (Schwarz, Pink, Grün, Orange, Gelb, Blau, weißer Grund) nach
-`OneDrive\Dokumente\Claude\pfalz-loadout-shop\medien\zubehoer\zahlenschloss\` legen →
-`src/components/LockBadge.tsx` von SVG auf Fotos umstellen (Farbwechsel per Überblendung).
+**Umgestellt (08.11.2026):** LockBadge zeigt jetzt ein echtes Foto oben rechts im Vorschaubild (kein Einflug), Farbleuchten wechselt alle 4 s mit kurzem Aufleuchten.
+Retuschierter Ausschnitt verworfen („hässlich“) → liegt nur noch in `zahlenschloss\_alt\`. Die Inhaberin hat ORIGINAL-Produktfotos (800×800, weißer Grund, hochkant, Farben schwarz/pink/grün/orange/gelb/blau) im Chat gezeigt – sie müssen als Dateien in den Ordner:
+`medien\zubehoer\zahlenschloss\schwarz.jpg, pink.jpg, gruen.jpg, orange.jpg, gelb.jpg, blau.jpg`
+Dann: `python -I scripts/schloss-freistellen.py` (rembg-venv) → `node scripts/medien.mjs zs-` → fertig (Komponente + Manifest sind vorbereitet). Bis dahin erscheint KEIN Schloss im Bild.
+Außerdem gezeigt: Gruppenfoto aller Farben auf dunklem Grund mit Pfalz-Loadout-Logo – Kandidat fürs Materiallabor/Range-Bag-Zubehör.
+
+## 2c. Weitere Änderungen 08.11.2026
+- Wolken-Rand der Produktfotos entfernt (wieder weißer Rahmen).
+- Bildwechsel per Pfeil links/rechts auf dem Vorschaubild (`src/components/ShotArrows.tsx`), Zähler unten rechts.
+- Gurt: je Farbe 2 Fotos (stehend, liegend, freigestellt), bei „+ QD-Öse“ wird `sl-qd-teile` als 3. Bild angehängt und angezeigt (`optionStage` in shop.ts).
+
+## 2b. Range Bag (KWT) Bildreihenfolge
+**Erledigt (08.11.2026):** immer 1. Front mit Klettfeld (Patch), 2. MOLLE-Seite, 3. offen. Schwarz-Front war vorher gar nicht drin. Camo hat kein Foto der Klett-Seite → fehlt noch.
 
 ## 3. Für echte Bestellungen (trägt die Inhaberin selbst in Vercel ein)
 `SMTP_PASS`, `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` (zuerst Sandbox), `BANK_INHABER`, `BANK_IBAN`, `BANK_BIC`, `BANK_NAME` → danach Testbestellung PayPal + Überweisung inkl. Mails.
