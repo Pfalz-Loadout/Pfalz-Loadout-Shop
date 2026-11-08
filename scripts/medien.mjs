@@ -182,6 +182,23 @@ async function run() {
         await base.clone().avif({ quality: item.hq ? 72 : 52, effort: item.hq ? 7 : 4 }).toFile(path.join(OUT, `${item.key}-${width}.avif`));
         await base.clone().webp(item.hq ? { quality: 92, alphaQuality: 100, smartSubsample: true } : { quality: 74 }).toFile(path.join(OUT, `${item.key}-${width}.webp`));
       }
+      // Freiraum oben rechts (Anteil der Bildhöhe ohne Produkt im rechten 22-%-Streifen) → Platz fürs Zahlenschloss
+      const probe = await sharp(buf).resize({ width: 200 }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      let tr = 1;
+      {
+        const { data, info } = probe;
+        const x0 = Math.floor(info.width * 0.78);
+        outer: for (let y = 0; y < info.height; y++) {
+          for (let x = x0; x < info.width; x++) {
+            const i = (y * info.width + x) * 4;
+            const lum = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+            if (data[i + 3] > 32 && lum < 232) {
+              tr = y / info.height;
+              break outer;
+            }
+          }
+        }
+      }
       // Durchschnittsfarbe als Platzhalter-Hintergrund
       const { dominant } = await sharp(buf).stats();
       meta[item.key] = {
@@ -191,6 +208,7 @@ async function run() {
         v: crypto.createHash('sha1').update(buf).digest('hex').slice(0, 8), // Cache-Buster
         bg: cut || item.alpha ? 'transparent' : `rgb(${dominant.r},${dominant.g},${dominant.b})`,
         cut,
+        tr: Math.round(tr * 1000) / 1000,
       };
       console.log(`OK ${item.key.padEnd(22)} ${w}x${h} -> ${uniq.join('/')}`);
     } catch (e) {

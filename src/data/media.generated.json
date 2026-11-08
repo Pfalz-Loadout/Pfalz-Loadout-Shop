@@ -9,7 +9,8 @@
   ],
   "v": "556dca25",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.275
  },
  "rb-coyote-front": {
   "w": 2048,
@@ -21,7 +22,8 @@
   ],
   "v": "961df06a",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.335
  },
  "rb-coyote-offen": {
   "w": 2048,
@@ -33,7 +35,8 @@
   ],
   "v": "4cc8f0fb",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.125
  },
  "rb-coyote-zipper": {
   "w": 2048,
@@ -44,7 +47,8 @@
   ],
   "v": "c9a3763f",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "rb-coyote-griff": {
   "w": 2000,
@@ -55,7 +59,8 @@
   ],
   "v": "d13e0a63",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.346
  },
  "rb-oliv-front": {
   "w": 2048,
@@ -67,7 +72,8 @@
   ],
   "v": "3d035f0c",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.41
  },
  "rb-oliv-quer": {
   "w": 2048,
@@ -79,7 +85,8 @@
   ],
   "v": "7589b328",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.26
  },
  "rb-schwarz-front": {
   "w": 2048,
@@ -91,7 +98,8 @@
   ],
   "v": "26f984ae",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.385
  },
  "rb-schwarz-quer": {
   "w": 2048,
@@ -103,7 +111,8 @@
   ],
   "v": "d8fe608a",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.265
  },
  "rb-schwarz-offen": {
   "w": 2048,
@@ -115,7 +124,8 @@
   ],
   "v": "adad3ae4",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.18
  },
  "rb-schwarz-dring": {
   "w": 2000,
@@ -126,7 +136,8 @@
   ],
   "v": "ce0f20a2",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.158
  },
  "rb-schwarz-molle": {
   "w": 2000,
@@ -137,7 +148,8 @@
   ],
   "v": "9fa64310",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.162
  },
  "rb-schwarz-gurt": {
   "w": 2000,
@@ -148,7 +160,8 @@
   ],
   "v": "fdac5c01",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.124
  },
  "rb-camo-front": {
   "w": 2048,
@@ -160,7 +173,8 @@
   ],
   "v": "a70b6838",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.32
  },
  "rb-camo-offen": {
   "w": 2048,
@@ -172,7 +186,8 @@
   ],
   "v": "72132c23",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.23
  },
  "rb-dark-1": {
   "w": 804,
@@ -183,7 +198,8 @@
   ],
   "v": "7c5da064",
   "bg": "rgb(24,24,24)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "rb-wald": {
   "w": 1042,
@@ -194,7 +210,8 @@
   ],
   "v": "d0488e31",
   "bg": "rgb(56,56,40)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "dp-oliv-front": {
   "w": 864,
@@ -205,7 +222,8 @@
   ],
   "v": "d0042078",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.23
  },
  "dp-oliv-seite": {
   "w": 864,
@@ -216,7 +234,8 @@
   ],
   "v": "0bf081aa",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.358
  },
  "dp-oliv-ruecken": {
   "w": 864,
@@ -227,7 +246,8 @@
   ],
   "v": "145c2682",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.292
  },
  "dp-schwarz-front": {
   "w": 864,
@@ -238,7 +258,8 @@
   ],
   "v": "7bc040b8",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.201
  },
  "dp-coyote-front": {
   "w": 768,
@@ -249,7 +270,8 @@
   ],
   "v": "f58639a5",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "med-coyote-front": {
   "w": 2048,
@@ -261,7 +283,8 @@
   ],
   "v": "f5071c98",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.285
  },
  "med-coyote-offen": {
   "w": 2048,
@@ -273,7 +296,8 @@
   ],
   "v": "d338de4f",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.16
  },
  "med-coyote-seite": {
   "w": 2048,
@@ -285,7 +309,8 @@
   ],
   "v": "6d61dd24",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.475
  },
  "med-oliv-front": {
   "w": 2048,
@@ -297,7 +322,8 @@
   ],
   "v": "7538e5a0",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.255
  },
  "med-oliv-offen": {
   "w": 2048,
@@ -309,7 +335,8 @@
   ],
   "v": "4b72e47a",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.05
  },
  "med-schwarz-front": {
   "w": 2048,
@@ -321,7 +348,8 @@
   ],
   "v": "91eda229",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 1
  },
  "med-schwarz-offen": {
   "w": 2048,
@@ -333,7 +361,8 @@
   ],
   "v": "28cafcb9",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 1
  },
  "med-rot-stage": {
   "w": 2048,
@@ -345,7 +374,8 @@
   ],
   "v": "08ee66dd",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.385
  },
  "med-camo-stage": {
   "w": 2048,
@@ -357,7 +387,8 @@
   ],
   "v": "ee9f3dbc",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.315
  },
  "med-acu-stage": {
   "w": 2048,
@@ -369,7 +400,8 @@
   ],
   "v": "37d881e0",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0.325
  },
  "med-fahrzeug": {
   "w": 2528,
@@ -381,7 +413,8 @@
   ],
   "v": "4dd58bfa",
   "bg": "rgb(8,8,8)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "med-feld": {
   "w": 2512,
@@ -393,7 +426,8 @@
   ],
   "v": "eaf898ec",
   "bg": "rgb(216,152,88)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "med-wald": {
   "w": 2528,
@@ -405,7 +439,8 @@
   ],
   "v": "b2dbe3ff",
   "bg": "rgb(8,8,8)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "sl-schwarz-front": {
   "w": 1200,
@@ -417,7 +452,8 @@
   ],
   "v": "d1b6d241",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.644
  },
  "sl-schwarz-stand": {
   "w": 1200,
@@ -429,7 +465,8 @@
   ],
   "v": "d052ac84",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.551
  },
  "sl-schwarz-liegend": {
   "w": 1200,
@@ -441,7 +478,8 @@
   ],
   "v": "b73c5728",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.584
  },
  "sl-oliv-stand": {
   "w": 1200,
@@ -453,7 +491,8 @@
   ],
   "v": "453e7385",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 1
  },
  "sl-oliv-liegend": {
   "w": 1200,
@@ -465,7 +504,8 @@
   ],
   "v": "22d6f0dc",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.536
  },
  "sl-oliv-front": {
   "w": 3000,
@@ -477,7 +517,8 @@
   ],
   "v": "a70a1b18",
   "bg": "rgb(200,200,200)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "sl-duo": {
   "w": 3000,
@@ -489,7 +530,8 @@
   ],
   "v": "42afad54",
   "bg": "rgb(216,216,232)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "sl-qd-teile": {
   "w": 1200,
@@ -500,7 +542,8 @@
   ],
   "v": "c7e8c3e3",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.584
  },
  "sl-schnalle": {
   "w": 3000,
@@ -511,7 +554,8 @@
   ],
   "v": "690a259f",
   "bg": "rgb(232,232,232)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "sl-qd-oliv": {
   "w": 1200,
@@ -523,7 +567,8 @@
   ],
   "v": "948302fa",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.554
  },
  "sl-schaft-oliv": {
   "w": 3000,
@@ -535,7 +580,8 @@
   ],
   "v": "2fbe9247",
   "bg": "rgb(232,232,232)",
-  "cut": false
+  "cut": false,
+  "tr": 0.109
  },
  "einsatz-stand": {
   "w": 952,
@@ -546,7 +592,8 @@
   ],
   "v": "efa6c006",
   "bg": "rgb(248,248,248)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "einsatz-pfalz": {
   "w": 2000,
@@ -558,7 +605,8 @@
   ],
   "v": "0da7d50b",
   "bg": "rgb(24,8,8)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "hero-oliv-start": {
   "w": 1440,
@@ -570,7 +618,8 @@
   ],
   "v": "7a46febe",
   "bg": "rgb(24,24,24)",
-  "cut": false
+  "cut": false,
+  "tr": 0
  },
  "logo-badge": {
   "w": 1024,
@@ -581,7 +630,8 @@
   ],
   "v": "0cb55571",
   "bg": "rgb(8,8,8)",
-  "cut": false
+  "cut": false,
+  "tr": 0.165
  },
  "zs-schwarz": {
   "w": 398,
@@ -593,7 +643,8 @@
   ],
   "v": "cf46c8ec",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.392
  },
  "zs-pink": {
   "w": 400,
@@ -605,7 +656,8 @@
   ],
   "v": "76e295e6",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.394
  },
  "zs-gruen": {
   "w": 402,
@@ -617,7 +669,8 @@
   ],
   "v": "21e84b61",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.392
  },
  "zs-orange": {
   "w": 400,
@@ -629,7 +682,8 @@
   ],
   "v": "bf533827",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.397
  },
  "zs-gelb": {
   "w": 403,
@@ -641,7 +695,8 @@
   ],
   "v": "d367219e",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.387
  },
  "zs-blau": {
   "w": 390,
@@ -653,7 +708,8 @@
   ],
   "v": "07f9fae5",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.392
  },
  "zs-pink-glow": {
   "w": 400,
@@ -665,7 +721,8 @@
   ],
   "v": "b0d3d31d",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.41
  },
  "zs-gruen-glow": {
   "w": 402,
@@ -677,7 +734,8 @@
   ],
   "v": "ecb29002",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.41
  },
  "zs-orange-glow": {
   "w": 400,
@@ -689,7 +747,8 @@
   ],
   "v": "cf0a987d",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.413
  },
  "zs-gelb-glow": {
   "w": 403,
@@ -701,7 +760,8 @@
   ],
   "v": "27540660",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.408
  },
  "zs-blau-glow": {
   "w": 390,
@@ -713,6 +773,7 @@
   ],
   "v": "4b4fc56a",
   "bg": "transparent",
-  "cut": true
+  "cut": true,
+  "tr": 0.407
  }
 }

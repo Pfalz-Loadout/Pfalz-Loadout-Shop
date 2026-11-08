@@ -1,6 +1,6 @@
 import media from '@/data/media.generated.json';
 
-type MediaMeta = { w: number; h: number; widths: number[]; bg: string; v?: string };
+type MediaMeta = { w: number; h: number; widths: number[]; bg: string; v?: string; /** Freiraum oben rechts (Anteil der Höhe) */ tr?: number };
 const MEDIA = media as Record<string, MediaMeta>;
 
 export const hasMedia = (key?: string) => !!key && key in MEDIA;
@@ -49,4 +49,17 @@ export function Picture({ k, alt, sizes = '100vw', className, priority, style }:
       />
     </picture>
   );
+}
+
+/**
+ * CSS-Variablen für den Platz des Zahlenschlosses im Vorschaubild:
+ * --r = Höhe/Breite des Fotos, --tr = kleinster Freiraum oben rechts über alle Ansichten.
+ */
+export function lockSpace(keys: string[]): Record<string, number> {
+  const metas = keys.map((k) => MEDIA[k]).filter(Boolean);
+  if (!metas.length) return { '--r': 1, '--tr': 0.3 };
+  return {
+    '--r': metas[0].h / metas[0].w,
+    '--tr': Math.min(...metas.map((m) => m.tr ?? 0.3)),
+  };
 }

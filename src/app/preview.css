@@ -75,28 +75,29 @@
    Zahlenschloss: echtes Foto oben rechts im Vorschaubild.
    Nur opacity/transform animiert (keine Filter, keine Blend-Modi) → kein Ruckeln.
    ------------------------------------------------------------------ */
-.stage__visual {
+.stage__visual,
+.pcard__media {
   container-type: size;
 }
+/*
+ * Zahlenschloss ganz oben rechts. Größe so, dass es NIE das Produkt überdeckt:
+ * frei bis = Fotokante oben + kleinster Freiraum oben rechts aller Ansichten (--tr, aus der Medien-Pipeline).
+ * 1.9 = Höhe/Breite der Schloss-Leinwand.
+ */
 .lockbadge {
   position: absolute;
   z-index: 6;
-  /* obere rechte Ecke des (eingepassten) Fotos: --r = Höhe/Breite des Fotos */
-  top: max(40px, calc(50cqh - 50cqw * var(--r, 1) - 6cqw)); /* über der Fotokante, unter der Seriennummer */
-  right: 4cqw;
-  width: clamp(64px, 15.5cqw, 104px); /* inkl. transparentem Rand fürs Leuchten */
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  justify-items: end;
-  gap: 8px;
+  top: 10px;
+  right: 10px;
+  width: clamp(26px, calc((max(0px, 50cqh - 50cqw * var(--r, 1)) + var(--tr, 0.3) * 100cqw * var(--r, 1) - 12px) / 1.9), 58px);
   pointer-events: none;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
-.pcard__media .lockbadge {
-  top: 28px;
-  right: 6px;
-  width: clamp(48px, 15%, 68px);
+/* Seriennummer / Kartennummer rücken nach links, solange das Schloss da ist */
+.stage__visual:has(.lockbadge) .stage__serial,
+.pcard__media:has(.lockbadge) .pcard__num {
+  right: 78px;
 }
 .lockbadge.is-in {
   animation: lockin 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
@@ -119,18 +120,6 @@
 .lockbadge__shot {
   position: relative;
   width: 100%;
-}
-/* weicher Bodenschatten als Verlauf (statt drop-shadow-Filter) */
-.lockbadge__shot::after {
-  content: '';
-  position: absolute;
-  left: 4%;
-  right: 4%;
-  bottom: -5%;
-  height: 9%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(20, 20, 20, 0.22), rgba(20, 20, 20, 0));
-  z-index: 0;
 }
 .lockbadge .lockbadge__img,
 .lockbadge .lockbadge__img img {

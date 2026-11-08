@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
 import { LockBadge } from '../LockBadge';
 import { ShotArrows } from '../ShotArrows';
-import { Picture, hasMedia } from '../Picture';
+import { Picture, hasMedia, lockSpace } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull } from '../MotionProvider';
 
@@ -50,7 +50,7 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
 
   return (
     <article className="pcard" id={`${product.slug}-karte`} aria-labelledby={`${product.slug}-k`}>
-      <div className="pcard__media">
+      <div className="pcard__media" style={lockSpace(shot ? [shot] : [])}>
         {/* key = Farbe → neues Bild läuft mit Scan-Effekt ein */}
         <div className="pcard__shot" key={`${color}-${shotIdx}`}>
           {shot ? (

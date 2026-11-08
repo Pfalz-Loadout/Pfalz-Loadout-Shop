@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { COLORS, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
-import { Picture, hasMedia, mediaMeta } from '../Picture';
+import { Picture, hasMedia, lockSpace } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull, useMotion } from '../MotionProvider';
 import { LockBadge } from '../LockBadge';
@@ -89,7 +89,8 @@ export function ProductStage({ product, index }: { product: Product; index: numb
         <div
           className="stage__visual hud"
           // --r = Seitenverhältnis (H/B) des aktuellen Fotos → Schloss sitzt an dessen oberer rechter Ecke
-          style={{ direction: 'ltr', ['--r' as string]: shots[shot] ? mediaMeta(shots[shot]).h / mediaMeta(shots[shot]).w : 1 }}
+          // --tr = kleinster Freiraum oben rechts über alle Ansichten → Schloss bleibt gleich groß und überdeckt nie das Produkt
+          style={{ direction: 'ltr', ...lockSpace(shots) }}
         >
           {/* außerhalb des 3D-Rahmens: bleibt gestochen scharf, dreht nicht mit */}
           <LockBadge on={variant.option === 'mit Zahlenschloss'} />

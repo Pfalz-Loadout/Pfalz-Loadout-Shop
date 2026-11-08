@@ -153,7 +153,7 @@ const OXFORD_600D_PVC = '600D Oxford-Polyester, PVC-beschichtet';
 export const PRODUCTS: Product[] = [
   {
     code: 'PL_KWT',
-    bullets: ['Waffe, 6 Magazine, Munition – ein Griff','Aufklappen = Arbeitsmatte am Stand','Abschließbar mit Zahlenschloss'],
+    bullets: ['Waffe, 6 Magazine, Munition – ein Griff','Aufklappen = Arbeitsmatte am Stand','Abschließbar – Transport nach § 12 WaffG'],
     use: 'Schießstand · Training · Transport',
     slug: 'range-bag',
     name: 'Range Bag',
@@ -176,6 +176,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Maße', value: '33 × 24 cm' },
       { label: 'Material', value: OXFORD_600D_PVC },
       { label: 'Reißverschluss', value: 'SBS, wasserabweisend, abschließbar' },
+      { label: 'Transport', value: 'Abgeschlossen = verschlossenes Behältnis, „nicht zugriffsbereit“ (§ 12 Abs. 3 Nr. 2 WaffG)' },
       { label: 'Magazinplätze', value: 'bis zu 6 (elastische Schlaufen)' },
       { label: 'Fächer', value: '2 gepolsterte Hauptfächer, Munitionsfach, Fronttasche' },
       { label: 'Außen', value: 'MOLLE-Gurtband, Klettfläche für Patches' },
@@ -184,7 +185,7 @@ export const PRODUCTS: Product[] = [
     hotspots: [
       { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL_IFAK.', at: { 'rb-oliv-quer': [45, 56], 'rb-coyote-gerade': [42, 60], 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 58], 'rb-schwarz-quer': [45, 58], 'rb-schwarz-front': [54, 57], 'rb-camo-front': [55, 60] } },
       { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-oliv-quer': [47, 23], 'rb-coyote-gerade': [47, 22], 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-schwarz-front': [44, 26], 'rb-camo-front': [48, 30] } },
-      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-schwarz-front': [12, 52], 'rb-camo-front': [18, 52] } },
+      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar – für den Transport nach § 12 WaffG.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-schwarz-front': [12, 52], 'rb-camo-front': [18, 52] } },
       { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-schwarz-front': [56, 43], 'rb-camo-front': [59, 38] } },
     ],
     lab: [
@@ -231,10 +232,10 @@ export const PRODUCTS: Product[] = [
       {
         id: 'rb-zipper',
         title: 'Reißverschluss',
-        property: 'Wasserabweisend & abschließbar',
+        property: 'Abschließbar – Transport nach § 12 WaffG',
         material: 'SBS-Reißverschluss, Schieber mit Ösen',
         source: 'Herstellerangabe',
-        text: 'Die Schieber treffen sich an einer Öse – dort greift das Zahlenschloss (Variante „mit Zahlenschloss“).',
+        text: 'Die Schieber treffen sich an einer Öse – dort greift das Zahlenschloss (Variante „mit Zahlenschloss“). Abgeschlossen ist die Tasche ein verschlossenes Behältnis: So transportierst du deine Waffe ungeladen und „nicht zugriffsbereit“, wie es § 12 Abs. 3 Nr. 2 WaffG für den Weg zum Stand verlangt.',
         media: {
           kind: 'video',
           brief: 'Makro, 6 Sek. Loop: Hand mit Schießhandschuh öffnet den Reißverschluss einhändig. Seitenlicht von links, dunkler Hintergrund, Kamera fix auf Schieberhöhe.',
