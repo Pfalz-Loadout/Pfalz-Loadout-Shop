@@ -345,3 +345,16 @@
     transition: none;
   }
 }
+
+/* Bühne: Vorschaubild bleibt stehen, „Alle Daten“ klappt nur nach unten auf.
+   (Die frühere Anheftung beim Scrollen diente der Scroll-Drehung – die gibt es nicht mehr.) */
+@media (min-width: 961px) {
+  .stage {
+    height: auto;
+  }
+  .stage__pin {
+    position: relative;
+    top: auto;
+    align-items: start;
+  }
+}

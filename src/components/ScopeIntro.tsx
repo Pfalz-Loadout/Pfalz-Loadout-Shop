@@ -5,12 +5,17 @@ import { gsap } from 'gsap';
 import { SCOPE_FOCUS, SCOPE_IMG_STYLE, photoSrc } from './Logo';
 
 /**
- * Intro (einmal pro Besuch): Blick durchs Zielfernrohr auf die echten Pfälzer Berge →
- * Zoom hinein → Zoom zurück, das Zielfernrohr fliegt in den Header und wird zum Logo
- * (die Berge bleiben im Scope). Klick, Taste oder Scrollen überspringt.
- * Nur transform/opacity animiert. Bei „Bewegung reduzieren“ entfällt das Intro.
+ * Intro (einmal pro Besuch):
+ * 1) Ladephase: kleiner Fadenkreuz-Ring „Ziel wird erfasst“, während das große Foto lädt UND dekodiert wird
+ *    (sonst ruckelt der Zoom). Lädt es nicht innerhalb von 7 s, entfällt das Intro.
+ * 2) Blick durchs Zielfernrohr → Zoom auf den Berg → Zoom zurück, das Fernrohr fliegt in den Header
+ *    und wird zum Logo (die Landschaft bleibt im Scope).
+ * Klick, Taste oder Scrollen überspringt. Nur transform/opacity animiert. Bei „Bewegung reduzieren“ entfällt das Intro.
  */
 const KEY = 'pl-intro-gesehen';
+const MAX_LADEZEIT = 7000;
+const MIN_LADEANZEIGE = 650;
+
 /** Entscheidung nur einmal pro Seitenaufruf treffen (robust gegen doppelte Effekte im Entwicklungsmodus) */
 let entscheidung: boolean | null = null;
 function introZeigen() {
@@ -25,26 +30,90 @@ function introZeigen() {
   return entscheidung;
 }
 
+type Phase = 'aus' | 'laden' | 'intro';
+
 export function ScopeIntro() {
-  const [show, setShow] = useState(false);
+  const [phase, setPhase] = useState<Phase>('aus');
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<HTMLDivElement>(null);
   const photo = useRef<HTMLImageElement>(null);
   const reticle = useRef<SVGSVGElement>(null);
+  const loader = useRef<HTMLDivElement>(null);
 
+  const beenden = () => {
+    document.documentElement.classList.remove('intro-vorab', 'intro-laeuft');
+    setPhase('aus');
+  };
+
+  // Start: Overlay + Ladephase
   useEffect(() => {
     if (!introZeigen()) {
       document.documentElement.classList.remove('intro-vorab', 'intro-laeuft');
       return;
     }
     document.documentElement.classList.add('intro-laeuft');
-    setShow(true);
+    setPhase('laden');
   }, []);
 
+  // Ladephase: Foto vollständig laden + dekodieren, mindestens kurz die Ladeanzeige zeigen
   useEffect(() => {
-    if (!show || !root.current || !scope.current || !photo.current || !reticle.current) return;
+    if (phase !== 'laden') return;
+    document.documentElement.classList.remove('intro-vorab'); // eigenes Overlay ist jetzt da
+    let fertig = false;
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = photoSrc('large');
+    // geladen = Datei da; danach kurz aufs Dekodieren warten (max. 0,6 s – in Hintergrund-Tabs kommt die Bestätigung nie)
+    const geladen = new Promise<void>((res, rej) => {
+      const nachLaden = () => {
+        const t = setTimeout(res, 600);
+        const fertigDekodiert = () => {
+          clearTimeout(t);
+          res();
+        };
+        if (img.decode) img.decode().then(fertigDekodiert, fertigDekodiert);
+        else fertigDekodiert();
+      };
+      img.onerror = () => rej(new Error('Foto nicht geladen'));
+      if (img.complete && img.naturalWidth) nachLaden();
+      else img.onload = nachLaden;
+    });
+    const minZeit = new Promise((r) => setTimeout(r, MIN_LADEANZEIGE));
+    const notaus = setTimeout(() => !fertig && beenden(), MAX_LADEZEIT);
+    Promise.all([geladen, minZeit])
+      .then(() => {
+        if (fertig) return;
+        fertig = true;
+        clearTimeout(notaus);
+        // Ladeanzeige per CSS ausblenden, dann Intro (unabhängig vom Animations-Takt)
+        loader.current?.classList.add('is-weg');
+        setTimeout(() => setPhase('intro'), 320);
+      })
+      .catch(() => {
+        fertig = true;
+        clearTimeout(notaus);
+        beenden();
+      });
+    const skip = () => {
+      fertig = true;
+      clearTimeout(notaus);
+      beenden();
+    };
+    window.addEventListener('pointerdown', skip, { once: true });
+    window.addEventListener('keydown', skip, { once: true });
+    return () => {
+      fertig = true;
+      clearTimeout(notaus);
+      window.removeEventListener('pointerdown', skip);
+      window.removeEventListener('keydown', skip);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
+
+  // Intro-Zeitleiste
+  useEffect(() => {
+    if (phase !== 'intro' || !root.current || !scope.current || !photo.current || !reticle.current) return;
     const html = document.documentElement;
-    html.classList.remove('intro-vorab'); // eigenes Overlay ist jetzt da
     html.classList.add('intro-laeuft');
     const target = document.querySelector<HTMLElement>('.hdr .logo__scope');
     // Zielposition vorab messen (Header ist fix) → Flug ist Teil der Zeitleiste
@@ -62,13 +131,13 @@ export function ScopeIntro() {
       defaults: { ease: 'power2.inOut' },
       onComplete: () => {
         html.classList.remove('intro-laeuft');
-        setShow(false);
+        setPhase('aus');
       },
     });
 
     // 1) Zielfernrohr erscheint
     tl.fromTo(scope.current, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'power2.out' }, 0);
-    // 2) Zoom durch das Fernrohr in die Berge
+    // 2) Zoom durch das Fernrohr auf den Berg
     tl.fromTo(photo.current, { scale: 1 }, { scale: 3.4, duration: 1.8 }, 0.35);
     // 3) Zoom zurück …
     tl.to(photo.current, { scale: 1, duration: 1.1 }, 2.25);
@@ -94,33 +163,48 @@ export function ScopeIntro() {
       window.removeEventListener('touchmove', skip);
       html.classList.remove('intro-laeuft');
     };
-  }, [show]);
+  }, [phase]);
 
-  if (!show) return null;
+  if (phase === 'aus') return null;
   const dots = [-4, -3, -2, -1, 1, 2, 3, 4];
   return (
     <div ref={root} className="intro" aria-hidden="true">
-      <div ref={scope} className="intro__scope">
-        <div className="intro__glass">
-          <img ref={photo} src={photoSrc('large')} alt="" style={{ ...SCOPE_IMG_STYLE, transformOrigin: SCOPE_FOCUS }} />
-          <span className="intro__vignette" />
+      {phase === 'laden' && (
+        <div ref={loader} className="intro__loader">
+          <svg viewBox="-50 -50 100 100" className="intro__loader-ring">
+            <circle r="44" className="intro__loader-track" />
+            <circle r="44" className="intro__loader-arc" />
+            <line x1="-30" y1="0" x2="-10" y2="0" />
+            <line x1="10" y1="0" x2="30" y2="0" />
+            <line x1="0" y1="-30" x2="0" y2="-10" />
+            <line x1="0" y1="10" x2="0" y2="30" />
+            <circle r="1.8" className="intro__loader-dot" />
+          </svg>
+          <span className="intro__loader-text mono">Ziel wird erfasst</span>
         </div>
-        <svg ref={reticle} className="intro__reticle" viewBox="-100 -100 200 200">
-          <line x1="-100" y1="0" x2="-6" y2="0" />
-          <line x1="6" y1="0" x2="100" y2="0" />
-          <line x1="0" y1="-100" x2="0" y2="-6" />
-          <line x1="0" y1="6" x2="0" y2="100" />
-          {dots.map((d) => (
-            <g key={d}>
-              <circle cx={d * 11} cy="0" r="1.6" />
-              <circle cx="0" cy={d * 11} r="1.6" />
-            </g>
-          ))}
-          <circle cx="0" cy="0" r="0.9" className="intro__center" />
-        </svg>
-        <span className="intro__ring" />
-      </div>
-      <span className="intro__hint mono">Klicken zum Überspringen</span>
+      )}
+      {phase === 'intro' && (
+        <div ref={scope} className="intro__scope" style={{ opacity: 0 }}>
+          <div className="intro__glass">
+            <img ref={photo} src={photoSrc('large')} alt="" decoding="sync" style={{ ...SCOPE_IMG_STYLE, transformOrigin: SCOPE_FOCUS }} />
+            <span className="intro__vignette" />
+          </div>
+          <svg ref={reticle} className="intro__reticle" viewBox="-100 -100 200 200">
+            <line x1="-100" y1="0" x2="-6" y2="0" />
+            <line x1="6" y1="0" x2="100" y2="0" />
+            <line x1="0" y1="-100" x2="0" y2="-6" />
+            <line x1="0" y1="6" x2="0" y2="100" />
+            {dots.map((d) => (
+              <g key={d}>
+                <circle cx={d * 11} cy="0" r="1.6" />
+                <circle cx="0" cy={d * 11} r="1.6" />
+              </g>
+            ))}
+            <circle cx="0" cy="0" r="0.9" className="intro__center" />
+          </svg>
+          <span className="intro__ring" />
+        </div>
+      )}
     </div>
   );
 }

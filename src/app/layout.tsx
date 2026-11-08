@@ -11,6 +11,7 @@ import { CartDrawer } from '@/components/cart/CartDrawer';
 import { Checkout } from '@/components/cart/Checkout';
 import { Header } from '@/components/Header';
 import { ScopeIntro } from '@/components/ScopeIntro';
+import { photoSrc } from '@/components/Logo';
 import { Footer } from '@/components/Footer';
 import { Notice } from '@/components/Notice';
 import { LoadoutBar } from '@/components/LoadoutBar';
@@ -54,7 +55,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(sessionStorage.getItem('pl-intro-gesehen')!=='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-vorab','intro-laeuft')}catch(e){}",
+              // Intro läuft gleich → Foto fürs Zielfernrohr sofort vorladen (sonst ruckelt der Zoom)
+              `try{if(sessionStorage.getItem('pl-intro-gesehen')!=='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-vorab','intro-laeuft');var l=document.createElement('link');l.rel='preload';l.as='image';l.href=${JSON.stringify(photoSrc('large'))};l.fetchPriority='high';document.head.appendChild(l)}}catch(e){}`,
           }}
         />
         <a className="skip" href="#main">
