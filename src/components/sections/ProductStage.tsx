@@ -35,24 +35,37 @@ export function ProductStage({ product, index }: { product: Product; index: numb
   // Zubehör gewählt (z. B. QD-Öse) → direkt das Zusatzbild zeigen
   useEffect(() => setShot(extraShots.length ? baseShots.length : 0), [option]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Scroll: Foto dreht sich leicht in 3D, Lichtkante wandert, zweites Foto blendet ein
+  // Foto kippt leicht mit der Maus (nicht mehr mit dem Scrollen) – weich nachgeführt, beim Verlassen zurück
+  useEffect(() => {
+    if (!ready || reduced || !desktop || !root.current) return;
+    const visual = root.current.querySelector<HTMLElement>('.stage__visual');
+    const frame = root.current.querySelector<HTMLElement>('.stage__frame');
+    if (!visual || !frame) return;
+    const rotY = gsap.quickTo(frame, 'rotateY', { duration: 0.6, ease: 'power3.out' });
+    const rotX = gsap.quickTo(frame, 'rotateX', { duration: 0.6, ease: 'power3.out' });
+    const move = (e: PointerEvent) => {
+      const r = visual.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      rotY(x * 12);
+      rotX(-y * 8);
+    };
+    const leave = () => {
+      rotY(0);
+      rotX(0);
+    };
+    visual.addEventListener('pointermove', move);
+    visual.addEventListener('pointerleave', leave);
+    return () => {
+      visual.removeEventListener('pointermove', move);
+      visual.removeEventListener('pointerleave', leave);
+      gsap.set(frame, { rotateY: 0, rotateX: 0 });
+    };
+  }, [ready, reduced, desktop]);
+
   useEffect(() => {
     if (!ready || reduced || !desktop || !root.current) return;
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: root.current,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 0.6,
-        },
-      });
-      tl.fromTo('.stage__frame', { rotateY: -9, rotateX: 3 }, { rotateY: 9, rotateX: -2, ease: 'none' }, 0).fromTo(
-        '.stage__sweep',
-        { '--sweep': '-60%' },
-        { '--sweep': '60%', ease: 'none' },
-        0,
-      );
       // Datenblatt-Zeilen bauen sich einmalig auf (wie ein Ausdruck)
       gsap.from('.specs__row', {
         opacity: 0,

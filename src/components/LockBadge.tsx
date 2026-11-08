@@ -56,10 +56,10 @@ export function LockBadge({ on }: { on: boolean }) {
     <div className={`lockbadge is-${state}`}>
       <div className="lockbadge__shot" style={{ aspectRatio: `${mediaMeta(`zs-${photos[0].key}`).w} / ${mediaMeta(`zs-${photos[0].key}`).h}` }}>
         {LOCK_COLORS.map((c) => (
-          <span key={c.key} className="lockbadge__aura" style={{ background: grad(c.glow, 0.32), opacity: c.key === glow.key ? 1 : 0 }} />
+          <span key={c.key} className="lockbadge__aura" style={{ background: grad(c.glow, 0.24), opacity: c.key === glow.key ? 1 : 0 }} />
         ))}
         {/* key = Farbwechsel → Aufleuchten startet neu */}
-        {i > 0 && <span key={i} className="lockbadge__flash" style={{ background: grad(glow.glow, 0.55) }} />}
+        {i > 0 && <span key={i} className="lockbadge__flash" style={{ background: grad(glow.glow, 0.45) }} />}
         {photos.map((c) => (
           <Picture
             key={c.key}
@@ -72,7 +72,6 @@ export function LockBadge({ on }: { on: boolean }) {
           />
         ))}
       </div>
-      <span className="lockbadge__tag mono">+ Zahlenschloss</span>
     </div>
   );
 }
