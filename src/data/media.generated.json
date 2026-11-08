@@ -1,0 +1,704 @@
+{
+ "rb-coyote-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "abd0182e",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-coyote-offen": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "c6923a36",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-coyote-zipper": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "188f7e77",
+  "bg": "rgb(216,216,216)",
+  "cut": false
+ },
+ "rb-coyote-dring": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "bf6bbfb5",
+  "bg": "rgb(200,216,248)",
+  "cut": false
+ },
+ "rb-coyote-klett": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "9a1454ad",
+  "bg": "rgb(200,200,216)",
+  "cut": false
+ },
+ "rb-coyote-gurt": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "78e4cc53",
+  "bg": "rgb(200,200,200)",
+  "cut": false
+ },
+ "rb-oliv-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "4252c81c",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-oliv-quer": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "ee9877c9",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-schwarz-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "7f496b6c",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-schwarz-offen": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "0781e732",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-cut-coyote": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "961df06a",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "rb-cut-oliv": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "3d035f0c",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "rb-cut-schwarz": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "26f984ae",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "rb-cut-camo": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "9f657b43",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-dark-1": {
+  "w": 804,
+  "h": 1101,
+  "widths": [
+   480,
+   804
+  ],
+  "v": "7c5da064",
+  "bg": "rgb(24,24,24)",
+  "cut": false
+ },
+ "rb-dark-2": {
+  "w": 804,
+  "h": 1101,
+  "widths": [
+   480,
+   804
+  ],
+  "v": "6619151e",
+  "bg": "rgb(8,8,8)",
+  "cut": false
+ },
+ "rb-dark-coyote": {
+  "w": 893,
+  "h": 1012,
+  "widths": [
+   480,
+   893
+  ],
+  "v": "14379a9c",
+  "bg": "rgb(8,8,8)",
+  "cut": false
+ },
+ "rb-wald": {
+  "w": 1042,
+  "h": 863,
+  "widths": [
+   768,
+   1042
+  ],
+  "v": "d0488e31",
+  "bg": "rgb(56,56,40)",
+  "cut": false
+ },
+ "dp-schwarz-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "c9176fec",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-schwarz-quer": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "2959ebbd",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-schwarz-offen": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "48923621",
+  "bg": "rgb(56,56,56)",
+  "cut": false
+ },
+ "dp-schwarz-ruecken": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "0e37d50d",
+  "bg": "rgb(216,216,216)",
+  "cut": false
+ },
+ "dp-graucamo-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "a066a13c",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-graucamo-quer": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "e104c7a3",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-gruencamo-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "aeeacadf",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-gruencamo-quer": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "3084d75f",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-cut-schwarz": {
+  "w": 750,
+  "h": 750,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "24defb50",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "dp-cut-graucamo": {
+  "w": 750,
+  "h": 866,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "64e4a095",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "dp-cut-gruencamo": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "314bd1bb",
+  "bg": "rgb(232,232,248)",
+  "cut": false
+ },
+ "dp-traeger": {
+  "w": 952,
+  "h": 952,
+  "widths": [
+   480,
+   952
+  ],
+  "v": "a1bede6f",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-coyote-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "8537d8f8",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-coyote-offen": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "08c34cac",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-coyote-platte": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "bb44364d",
+  "bg": "rgb(216,216,232)",
+  "cut": false
+ },
+ "med-oliv-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "482ede1e",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-oliv-offen": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "ecb5dc0a",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-schwarz-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "773d14fb",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-schwarz-offen": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "3714e473",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-schwarz-platte": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "1906f8d9",
+  "bg": "rgb(232,232,232)",
+  "cut": false
+ },
+ "med-cut-schwarz": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "91eda229",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-cut-oliv": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "7538e5a0",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-cut-coyote": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "f5071c98",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-cut-rot": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "08ee66dd",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-cut-camo": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "ee9f3dbc",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-cut-acu": {
+  "w": 2048,
+  "h": 2048,
+  "widths": [
+   360,
+   720
+  ],
+  "v": "37d881e0",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "med-rot-stage": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "c7776c4e",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-camo-stage": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "20debee1",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-acu-stage": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "cedea35f",
+  "bg": "transparent",
+  "cut": true
+ },
+ "med-fahrzeug": {
+  "w": 2528,
+  "h": 1696,
+  "widths": [
+   768,
+   1280,
+   1920
+  ],
+  "v": "4dd58bfa",
+  "bg": "rgb(8,8,8)",
+  "cut": false
+ },
+ "med-feld": {
+  "w": 2512,
+  "h": 1696,
+  "widths": [
+   768,
+   1280,
+   1920
+  ],
+  "v": "eaf898ec",
+  "bg": "rgb(216,152,88)",
+  "cut": false
+ },
+ "med-wald": {
+  "w": 2528,
+  "h": 1696,
+  "widths": [
+   768,
+   1280,
+   1920
+  ],
+  "v": "b2dbe3ff",
+  "bg": "rgb(8,8,8)",
+  "cut": false
+ },
+ "sl-schwarz-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "d1b6d241",
+  "bg": "transparent",
+  "cut": true
+ },
+ "sl-oliv-front": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960,
+   1440
+  ],
+  "v": "a70a1b18",
+  "bg": "rgb(200,200,200)",
+  "cut": false
+ },
+ "sl-duo": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960,
+   1440
+  ],
+  "v": "42afad54",
+  "bg": "rgb(216,216,232)",
+  "cut": false
+ },
+ "sl-qd-teile": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "c7e8c3e3",
+  "bg": "transparent",
+  "cut": true
+ },
+ "sl-schnalle": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960
+  ],
+  "v": "690a259f",
+  "bg": "rgb(232,232,232)",
+  "cut": false
+ },
+ "sl-qd-oliv": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "948302fa",
+  "bg": "transparent",
+  "cut": true
+ },
+ "sl-schaft-oliv": {
+  "w": 3000,
+  "h": 4000,
+  "widths": [
+   480,
+   960,
+   1440
+  ],
+  "v": "2fbe9247",
+  "bg": "rgb(232,232,232)",
+  "cut": false
+ },
+ "einsatz-stand": {
+  "w": 952,
+  "h": 952,
+  "widths": [
+   768,
+   952
+  ],
+  "v": "efa6c006",
+  "bg": "rgb(248,248,248)",
+  "cut": false
+ },
+ "einsatz-pfalz": {
+  "w": 2000,
+  "h": 1334,
+  "widths": [
+   768,
+   1280,
+   1920
+  ],
+  "v": "0da7d50b",
+  "bg": "rgb(24,8,8)",
+  "cut": false
+ },
+ "hero-oliv-start": {
+  "w": 1440,
+  "h": 1920,
+  "widths": [
+   480,
+   960,
+   1440
+  ],
+  "v": "7a46febe",
+  "bg": "rgb(24,24,24)",
+  "cut": false
+ },
+ "logo-badge": {
+  "w": 1024,
+  "h": 1024,
+  "widths": [
+   160,
+   320
+  ],
+  "v": "0cb55571",
+  "bg": "rgb(8,8,8)",
+  "cut": false
+ }
+}
