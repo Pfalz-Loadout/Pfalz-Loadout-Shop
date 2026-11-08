@@ -114,8 +114,8 @@ export const SHOP = {
     handlingDays: '1–2 Werktage',
     carrier: 'DHL / Hermes',
   },
-  /** Bundle-Rabatt im Loadout-Builder: gilt automatisch ab X verschiedenen Produkten – TODO-PREIS */
-  bundle: { minDistinctProducts: 2, percent: 10 },
+  /** Mengenrabatt: −10 % auf ein Produkt, sobald mind. 3 Stück davon im Warenkorb liegen (Farben gemischt zählen) */
+  volume: { percent: 10, minQty: 3, codes: ['PL-RB01', 'PL-MED03'] as string[], label: '−10 % ab 3 IFAK oder 3 Range Bags' },
   /** Kleinunternehmerregelung */
   vatNote: 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.',
   /** Zahlungsarten – Klarna ist vorbereitet, aber aus, bis ein Klarna-Händlerkonto steht */
@@ -177,10 +177,10 @@ export const PRODUCTS: Product[] = [
       { label: 'Tragen', value: 'Tragegriffe + abnehmbarer Schultergurt mit Karabinern' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL-MED03.', at: { 'rb-coyote-front': [55, 62], 'rb-oliv-front': [62, 70], 'rb-schwarz-front': [62, 66] } },
-      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-coyote-front': [47, 27], 'rb-oliv-front': [52, 30], 'rb-schwarz-front': [50, 33] } },
-      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-coyote-front': [10, 55], 'rb-oliv-front': [12, 55], 'rb-schwarz-front': [8, 60] } },
-      { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-oliv-front': [68, 40], 'rb-schwarz-front': [62, 45] } },
+      { label: 'MOLLE', text: 'Gurtbandraster für Pouches – z. B. das IFAK PL-MED03.', at: { 'rb-coyote-front': [52, 66], 'rb-oliv-front': [54, 68], 'rb-schwarz-front': [55, 65], 'rb-camo-front': [53, 68] } },
+      { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-coyote-front': [45, 39], 'rb-oliv-front': [45, 38], 'rb-schwarz-front': [49, 29], 'rb-camo-front': [46, 37] } },
+      { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar.', at: { 'rb-coyote-front': [14, 63], 'rb-oliv-front': [12, 66], 'rb-schwarz-front': [13, 55], 'rb-camo-front': [15, 60] } },
+      { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [55, 55], 'rb-oliv-front': [54, 55], 'rb-schwarz-front': [66, 43], 'rb-camo-front': [57, 46] } },
     ],
     lab: [
       {
@@ -236,39 +236,42 @@ export const PRODUCTS: Product[] = [
         },
       },
     ],
-    stage: { coyote: ['rb-coyote-front', 'rb-coyote-offen'], oliv: ['rb-oliv-front', 'rb-oliv-quer'], schwarz: ['rb-schwarz-front', 'rb-schwarz-offen'], camo: ['rb-cut-camo'] },
-    cutout: { coyote: 'rb-coyote-front', oliv: 'rb-oliv-front', schwarz: 'rb-schwarz-front', camo: 'rb-cut-camo' },
+    stage: { coyote: ['rb-coyote-front', 'rb-coyote-offen'], oliv: ['rb-oliv-front', 'rb-oliv-quer'], schwarz: ['rb-schwarz-front', 'rb-schwarz-offen'], camo: ['rb-camo-front', 'rb-camo-offen'] },
+    cutout: { coyote: 'rb-coyote-front', oliv: 'rb-oliv-front', schwarz: 'rb-schwarz-front', camo: 'rb-camo-front' },
     model3d: '/models/pl-rb01.glb',
     note: 'Abgebildete Patches, Waffen und Zubehör sind nicht im Lieferumfang. Für den Transport von Waffen gelten die Vorschriften des WaffG – bitte prüfe sie für deinen Fall selbst.',
   },
   {
     code: 'PL-DP02',
-    bullets: ['25 Liter – ein ganzer Tag draußen','MOLLE rundum: rüste nach, was du brauchst','Gepolsterter Rücken, Brust- & Hüftgurt'],
-    use: 'Gelände · Wandern · Fahrzeug',
+    bullets: ['37 Liter bei nur 1,7 kg', 'Laptopfach 15" + Trinkblasenfach', 'MOLLE rundum, 1050D Nylon'],
+    use: 'Gelände · Pendeln · Mehrtagestour',
     slug: 'rucksack',
-    name: 'Daypack 25',
-    category: 'Rucksack / Gelände',
+    name: 'Assault Pack 37',
+    category: 'Rucksack / 37 Liter',
     serial: 'SN 02-0425-DP',
-    claim: 'Ein Tag draußen. Alles am Mann.',
+    claim: 'Gepackt für alles, was der Tag bringt.',
     description:
-      'Robuster Tagesrucksack mit 25 Litern, MOLLE-Gurtband rundum und mehreren Fächern. Gepolsterter Rücken mit Netzbezug, Brust- und Hüftgurt. Erweiterbar mit Pouches wie dem IFAK PL-MED03.',
+      'Mittelgroßer Taktik-Rucksack für den Alltag und das Gelände: 37 Liter Volumen bei nur 1,7 kg. Gepolstertes Laptopfach bis 15 Zoll, verstecktes Fach mit Klett-Innenseite, fleecegefütterte Brillentasche, Trinkblasenfach und rundum MOLLE-Schlaufen. Aus robustem, wasserabweisendem 1050D Nylon.',
     variants: [
       { sku: 'PL-DP02-SW', color: 'schwarz', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL-DP02-GC', color: 'grau-camo', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL-DP02-GN', color: 'gruen-camo', priceCents: 3090, stock: 'lager' },
+      { sku: 'PL-DP02-OD', color: 'oliv', priceCents: 3090, stock: 'lager' },
     ],
     specs: [
-      { label: 'Volumen', value: 'ca. 25 l' },
-      { label: 'Maße', value: 'folgt' }, // TODO-DATEN
-      { label: 'Gewicht', value: 'folgt' }, // TODO-DATEN
-      { label: 'Material', value: 'Oxford-Gewebe, beschichtet (Angabe folgt)' }, // TODO-DATEN
+      { label: 'Volumen', value: '37 l' },
+      { label: 'Gewicht', value: '1,7 kg' },
+      { label: 'Material', value: '1050D Nylon, wasserabweisend' },
+      { label: 'Maße', value: 'Hauptfach 50,8 × 31,8 × 20,3 cm' },
+      { label: 'Fronttasche', value: '31,8 × 27,9 × 5 cm, mit Organizer' },
+      { label: 'Laptop', value: 'gepolstertes Fach bis 15 Zoll' },
+      { label: 'Trinkblase', value: 'Fach 43 × 32 cm am Rücken' },
+      { label: 'Extras', value: 'verstecktes Fach mit Klett, Fleece-Brillentasche' },
       { label: 'System', value: 'MOLLE / PALS rundum' },
-      { label: 'Rücken', value: 'gepolstert, Netzbezug, Brust- & Hüftgurt' },
     ],
     hotspots: [
-      { label: 'MOLLE', text: 'PALS-Reihen auf Front und Seiten – Pouches flechten statt nur durchziehen.', at: { 'dp-schwarz-front': [50, 72], 'dp-graucamo-front': [45, 45], 'dp-gruencamo-front': [40, 55] } },
-      { label: 'Kompression', text: 'Kompressionsriemen mit Steckschnallen halten die Ladung ruhig.', at: { 'dp-schwarz-front': [15, 55], 'dp-graucamo-front': [82, 63], 'dp-gruencamo-front': [70, 55] } },
-      { label: 'Griff', text: 'Verstärkte Tragschlaufe oben.', at: { 'dp-schwarz-front': [40, 20], 'dp-graucamo-front': [42, 20], 'dp-gruencamo-front': [55, 18] } },
+      { label: 'MOLLE', text: 'PALS-Reihen auf Front und Seiten – Pouches flechten statt nur durchziehen.', at: { 'dp-oliv-front': [66, 73], 'dp-schwarz-front': [47, 71] } },
+      { label: 'Griff', text: 'Verstärkte Tragschlaufe oben.', at: { 'dp-oliv-front': [49, 20], 'dp-schwarz-front': [43, 18] } },
+      { label: 'Kompression', text: 'Seitliche Kompressionsriemen halten die Ladung ruhig.', at: { 'dp-oliv-front': [21, 63], 'dp-schwarz-front': [19, 52] } },
+      { label: 'Klett', text: 'Flauschflächen für Patches und Kennungen.', at: { 'dp-oliv-front': [58, 55] } },
     ],
     lab: [
       {
@@ -284,7 +287,7 @@ export const PRODUCTS: Product[] = [
         id: 'dp-wasser',
         title: 'Beschichtung',
         property: 'Wasserabweisend',
-        material: 'Beschichtetes Oxford-Gewebe',
+        material: '1050D Nylon, beschichtet',
         source: 'Herstellerangabe',
         text: 'Regen perlt ab, statt einzuziehen. Wasserabweisend heißt nicht wasserdicht – für Dauerregen gehört Wichtiges in einen Packsack.',
         media: {
@@ -293,8 +296,8 @@ export const PRODUCTS: Product[] = [
         },
       },
     ],
-    stage: { schwarz: ['dp-schwarz-front', 'dp-schwarz-quer'], 'grau-camo': ['dp-graucamo-front', 'dp-graucamo-quer'], 'gruen-camo': ['dp-gruencamo-front', 'dp-gruencamo-quer'] },
-    cutout: { schwarz: 'dp-schwarz-front', 'grau-camo': 'dp-graucamo-front', 'gruen-camo': 'dp-gruencamo-front' },
+    stage: { oliv: ['dp-oliv-front'], schwarz: ['dp-schwarz-front'] },
+    cutout: { oliv: 'dp-oliv-front', schwarz: 'dp-schwarz-front' },
     model3d: '/models/pl-dp02.glb',
   },
   {
@@ -325,10 +328,10 @@ export const PRODUCTS: Product[] = [
       { label: 'Lieferumfang', value: 'Pouch + Trägerplatte + PVC-Patch, ohne Inhalt' },
     ],
     hotspots: [
-      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [49, 52], 'med-oliv-front': [45, 50], 'med-schwarz-front': [49, 50], 'med-rot-stage': [78, 42] } },
-      { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [60, 20], 'med-oliv-front': [35, 21], 'med-schwarz-front': [36, 18], 'med-rot-stage': [47, 19] } },
-      { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [57, 43], 'med-oliv-front': [63, 36], 'med-rot-stage': [66, 36] } },
-      { label: 'Zipper', text: 'Rundum-Reißverschluss, öffnet über die ganze Höhe.', at: { 'med-coyote-front': [8, 60], 'med-oliv-front': [21, 63], 'med-schwarz-front': [75, 47] } },
+      { label: 'Patch', text: 'Klettfläche + PVC-Patch: im Ernstfall sofort erkennbar.', at: { 'med-coyote-front': [76, 41], 'med-oliv-front': [78, 41], 'med-schwarz-front': [74, 41], 'med-rot-stage': [77, 42] } },
+      { label: 'Zuglasche', text: 'Griff zum Abreißen von der Trägerplatte.', at: { 'med-coyote-front': [45, 19], 'med-oliv-front': [46, 19], 'med-schwarz-front': [41, 19], 'med-rot-stage': [42, 19] } },
+      { label: 'Schnalle', text: 'Steckschnalle hält die Pouch geschlossen, bis du ziehst.', at: { 'med-coyote-front': [60, 36], 'med-oliv-front': [65, 36], 'med-schwarz-front': [58, 36], 'med-rot-stage': [63, 36] } },
+      { label: 'Zipper', text: 'Rundum-Reißverschluss, öffnet über die ganze Höhe.', at: { 'med-coyote-front': [24, 73], 'med-oliv-front': [20, 76], 'med-schwarz-front': [23, 71] } },
     ],
     lab: [
       {
@@ -358,7 +361,7 @@ export const PRODUCTS: Product[] = [
       },
     ],
     stage: { coyote: ['med-coyote-front', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-offen'], rot: ['med-rot-stage'], camo: ['med-camo-stage'], acu: ['med-acu-stage'] },
-    cutout: { schwarz: 'med-schwarz-front', oliv: 'med-oliv-front', coyote: 'med-coyote-front', rot: 'med-rot-stage', camo: 'med-camo-stage', acu: 'med-acu-stage' },
+    cutout: { coyote: 'med-coyote-front', oliv: 'med-oliv-front', schwarz: 'med-schwarz-front', rot: 'med-rot-stage', camo: 'med-camo-stage', acu: 'med-acu-stage' },
     model3d: '/models/pl-med03.glb',
     note: 'Lieferung ohne medizinischen Inhalt.',
   },
@@ -374,23 +377,25 @@ export const PRODUCTS: Product[] = [
     description:
       'Gewehrriemen mit QD-Anschluss, in Sekunden zwischen Ein- und Zweipunkt umgebaut. Nylon-Gurtband 3,2 cm, Länge stufenlos von 90 bis 140 cm – zum Tragen lang, im Anschlag kurz.',
     variants: [
-      // Schwarz = nur Riemen, Oliv = Riemen + QD-Montageset (Aufpreis +3 € vorläufig)
-      { sku: 'PL-SL04-SW', color: 'schwarz', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL-SL04-OD-QD', color: 'oliv', option: '+ QD-Montage', priceCents: 1390, stock: 'lager' },
+      // Riemen in Schwarz oder Oliv, optional mit QD-Öse (Montageset) für +2 €
+      { sku: 'PL-SL04-SW', color: 'schwarz', option: 'Riemen', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL-SL04-SW-QD', color: 'schwarz', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
+      { sku: 'PL-SL04-OD', color: 'oliv', option: 'Riemen', priceCents: 1090, stock: 'lager' },
+      { sku: 'PL-SL04-OD-QD', color: 'oliv', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
     ],
     specs: [
       { label: 'Typ', value: 'Ein- / Zweipunkt, schnell umbaubar' },
       { label: 'Anschluss', value: 'QD (Quick Detach)' },
       { label: 'Gurtband', value: 'Nylon, 3,2 cm breit' },
       { label: 'Länge', value: 'stufenlos 90–140 cm' },
-      { label: 'Schwarz', value: 'Riemen' },
-      { label: 'Oliv', value: 'Riemen + QD-Montageset (Swivel, Montageplatte, Schrauben, Nutensteine, Inbus)' },
+      { label: 'Farben', value: 'Schwarz, Oliv' },
+      { label: 'Option + QD-Öse', value: '+2 €: QD-Swivel, Montageplatte, Schrauben, Nutensteine, Inbus' },
     ],
     hotspots: [
       { label: 'Schnalle', text: 'Schiebeschnalle: Länge stufenlos von 90 bis 140 cm.', at: { 'sl-schwarz-front': [53, 43], 'sl-oliv-front': [56, 45] } },
       { label: 'Umbau-Clip', text: 'Schnell zwischen Ein- und Zweipunkt wechseln.', at: { 'sl-qd-oliv': [58, 44] } },
       { label: 'QD-Swivel', text: 'Drückknopf-Swivel: einrasten, drehen, mit einer Hand lösen.', at: { 'sl-schwarz-front': [23, 23], 'sl-oliv-front': [55, 89], 'sl-qd-oliv': [84, 65], 'sl-qd-teile': [21, 75] } },
-      { label: 'Montageset', text: 'Montageplatte, Schrauben, Nutensteine und Inbus – nur bei Oliv dabei.', at: { 'sl-qd-oliv': [28, 70], 'sl-qd-teile': [21, 57] } },
+      { label: 'QD-Öse', text: 'Optional (+2 €): Montageplatte, Schrauben, Nutensteine und Inbus.', at: { 'sl-qd-oliv': [28, 70], 'sl-qd-teile': [21, 57] } },
       { label: 'Gurtband', text: 'Nylon, 3,2 cm breit.', at: { 'sl-qd-oliv': [34, 39] } },
     ],
     lab: [
@@ -413,7 +418,7 @@ export const PRODUCTS: Product[] = [
         property: 'Drücken, einsetzen, einrasten',
         material: 'QD-Swivel mit Drückknopf und Sperrkugeln, Montageplatte',
         source: 'Funktionsprinzip QD',
-        text: 'Knopf drücken, Swivel in die Montageplatte setzen, loslassen – die Sperrkugeln greifen und halten. Zum Lösen wieder drücken, mit einer Hand. Montageset nur bei der Variante Oliv.',
+        text: 'Knopf drücken, Swivel in die Montageplatte setzen, loslassen – die Sperrkugeln greifen und halten. Zum Lösen wieder drücken, mit einer Hand. Die QD-Öse gibt es als Option für +2 €.',
         media: { kind: 'svg-qd', brief: 'Animierte Schnittzeichnung (läuft im Browser)' },
       },
       {
@@ -426,7 +431,7 @@ export const PRODUCTS: Product[] = [
         media: { kind: 'scale-length', brief: 'Animierte Messskala (läuft im Browser)' },
       },
     ],
-    stage: { schwarz: ['sl-schwarz-front'], oliv: ['sl-qd-oliv', 'sl-qd-teile'] },
+    stage: { schwarz: ['sl-schwarz-front', 'sl-qd-teile'], oliv: ['sl-qd-oliv', 'sl-qd-teile'] },
     cutout: { schwarz: 'sl-schwarz-front', oliv: 'sl-qd-oliv' },
   },
 ];
@@ -458,8 +463,12 @@ export type Totals = {
   discountCents: number;
   shippingCents: number;
   totalCents: number;
+  /** irgendein Mengenrabatt aktiv */
   bundleActive: boolean;
-  distinctProducts: number;
+  /** Produkte (Namen), für die der Rabatt greift */
+  discountFor: string[];
+  /** Hinweis, wie viele Stück bis zum Rabatt fehlen – oder null */
+  volumeHint: string | null;
   missingForFreeShippingCents: number;
 };
 
@@ -485,9 +494,26 @@ export function computeTotals(cart: CartLine[]): Totals {
     .filter((x): x is NonNullable<typeof x> => x !== null);
 
   const subtotalCents = lines.reduce((s, l) => s + l.lineCents, 0);
-  const distinctProducts = new Set(lines.map((l) => l.code)).size;
-  const bundleActive = distinctProducts >= SHOP.bundle.minDistinctProducts;
-  const discountCents = bundleActive ? Math.round((subtotalCents * SHOP.bundle.percent) / 100) : 0;
+  // Mengenrabatt je Produkt (z. B. 3× IFAK in beliebigen Farben)
+  const V = SHOP.volume;
+  let discountCents = 0;
+  const discountFor: string[] = [];
+  let volumeHint: string | null = null;
+  let bestMissing = Infinity;
+  for (const code of V.codes) {
+    const own = lines.filter((l) => l.code === code);
+    const qty = own.reduce((s, l) => s + l.qty, 0);
+    if (!qty) continue;
+    const name = own[0].name;
+    if (qty >= V.minQty) {
+      discountCents += Math.round((own.reduce((s, l) => s + l.lineCents, 0) * V.percent) / 100);
+      discountFor.push(name);
+    } else if (V.minQty - qty < bestMissing) {
+      bestMissing = V.minQty - qty;
+      volumeHint = `Noch ${bestMissing}× ${name} → −${V.percent} %`;
+    }
+  }
+  const bundleActive = discountCents > 0;
   const afterDiscount = subtotalCents - discountCents;
   const free = afterDiscount >= SHOP.shipping.freeFromCents;
   const shippingCents = lines.length === 0 || free ? 0 : SHOP.shipping.flatCents;
@@ -498,7 +524,8 @@ export function computeTotals(cart: CartLine[]): Totals {
     shippingCents,
     totalCents: afterDiscount + shippingCents,
     bundleActive,
-    distinctProducts,
+    discountFor,
+    volumeHint,
     missingForFreeShippingCents: free ? 0 : Math.max(0, SHOP.shipping.freeFromCents - afterDiscount),
   };
 }

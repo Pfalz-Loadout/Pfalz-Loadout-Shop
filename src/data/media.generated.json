@@ -7,7 +7,7 @@
    960,
    1200
   ],
-  "v": "abd0182e",
+  "v": "cef25e89",
   "bg": "transparent",
   "cut": true
  },
@@ -19,52 +19,30 @@
    960,
    1200
   ],
-  "v": "c6923a36",
+  "v": "ae5f373c",
   "bg": "transparent",
   "cut": true
  },
  "rb-coyote-zipper": {
-  "w": 3000,
-  "h": 4000,
+  "w": 2048,
+  "h": 2048,
   "widths": [
    480,
    960
   ],
-  "v": "188f7e77",
-  "bg": "rgb(216,216,216)",
+  "v": "c9a3763f",
+  "bg": "rgb(248,248,248)",
   "cut": false
  },
- "rb-coyote-dring": {
-  "w": 3000,
-  "h": 4000,
+ "rb-coyote-griff": {
+  "w": 2000,
+  "h": 2666,
   "widths": [
    480,
    960
   ],
-  "v": "bf6bbfb5",
-  "bg": "rgb(200,216,248)",
-  "cut": false
- },
- "rb-coyote-klett": {
-  "w": 3000,
-  "h": 4000,
-  "widths": [
-   480,
-   960
-  ],
-  "v": "9a1454ad",
-  "bg": "rgb(200,200,216)",
-  "cut": false
- },
- "rb-coyote-gurt": {
-  "w": 3000,
-  "h": 4000,
-  "widths": [
-   480,
-   960
-  ],
-  "v": "78e4cc53",
-  "bg": "rgb(200,200,200)",
+  "v": "d13e0a63",
+  "bg": "rgb(248,248,248)",
   "cut": false
  },
  "rb-oliv-front": {
@@ -75,7 +53,7 @@
    960,
    1200
   ],
-  "v": "4252c81c",
+  "v": "c88adbb2",
   "bg": "transparent",
   "cut": true
  },
@@ -87,7 +65,7 @@
    960,
    1200
   ],
-  "v": "ee9877c9",
+  "v": "a6de140a",
   "bg": "transparent",
   "cut": true
  },
@@ -99,7 +77,19 @@
    960,
    1200
   ],
-  "v": "7f496b6c",
+  "v": "f8fd3cc2",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-schwarz-quer": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "170e83f2",
   "bg": "transparent",
   "cut": true
  },
@@ -111,51 +101,64 @@
    960,
    1200
   ],
-  "v": "0781e732",
+  "v": "21944531",
   "bg": "transparent",
   "cut": true
  },
- "rb-cut-coyote": {
-  "w": 2048,
-  "h": 2048,
+ "rb-schwarz-dring": {
+  "w": 2000,
+  "h": 2666,
   "widths": [
-   360,
-   720
+   480,
+   960
   ],
-  "v": "961df06a",
+  "v": "ce0f20a2",
   "bg": "rgb(248,248,248)",
   "cut": false
  },
- "rb-cut-oliv": {
-  "w": 2048,
-  "h": 2048,
+ "rb-schwarz-molle": {
+  "w": 2000,
+  "h": 2666,
   "widths": [
-   360,
-   720
+   480,
+   960
   ],
-  "v": "3d035f0c",
+  "v": "9fa64310",
   "bg": "rgb(248,248,248)",
   "cut": false
  },
- "rb-cut-schwarz": {
-  "w": 2048,
-  "h": 2048,
+ "rb-schwarz-gurt": {
+  "w": 2000,
+  "h": 2666,
   "widths": [
-   360,
-   720
+   480,
+   960
   ],
-  "v": "26f984ae",
+  "v": "fdac5c01",
   "bg": "rgb(248,248,248)",
   "cut": false
  },
- "rb-cut-camo": {
+ "rb-camo-front": {
   "w": 1200,
   "h": 1600,
   "widths": [
-   360,
-   720
+   480,
+   960,
+   1200
   ],
   "v": "9f657b43",
+  "bg": "transparent",
+  "cut": true
+ },
+ "rb-camo-offen": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "62504b22",
   "bg": "transparent",
   "cut": true
  },
@@ -170,28 +173,6 @@
   "bg": "rgb(24,24,24)",
   "cut": false
  },
- "rb-dark-2": {
-  "w": 804,
-  "h": 1101,
-  "widths": [
-   480,
-   804
-  ],
-  "v": "6619151e",
-  "bg": "rgb(8,8,8)",
-  "cut": false
- },
- "rb-dark-coyote": {
-  "w": 893,
-  "h": 1012,
-  "widths": [
-   480,
-   893
-  ],
-  "v": "14379a9c",
-  "bg": "rgb(8,8,8)",
-  "cut": false
- },
  "rb-wald": {
   "w": 1042,
   "h": 863,
@@ -203,6 +184,42 @@
   "bg": "rgb(56,56,40)",
   "cut": false
  },
+ "dp-oliv-front": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "45b636e6",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-oliv-seite": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "d83782e6",
+  "bg": "transparent",
+  "cut": true
+ },
+ "dp-oliv-ruecken": {
+  "w": 1200,
+  "h": 1600,
+  "widths": [
+   480,
+   960,
+   1200
+  ],
+  "v": "5dab1fe7",
+  "bg": "transparent",
+  "cut": true
+ },
  "dp-schwarz-front": {
   "w": 1200,
   "h": 1600,
@@ -211,11 +228,11 @@
    960,
    1200
   ],
-  "v": "c9176fec",
+  "v": "40d62e8e",
   "bg": "transparent",
   "cut": true
  },
- "dp-schwarz-quer": {
+ "dp-coyote-front": {
   "w": 1200,
   "h": 1600,
   "widths": [
@@ -223,123 +240,9 @@
    960,
    1200
   ],
-  "v": "2959ebbd",
+  "v": "1d18a16a",
   "bg": "transparent",
   "cut": true
- },
- "dp-schwarz-offen": {
-  "w": 3000,
-  "h": 4000,
-  "widths": [
-   480,
-   960
-  ],
-  "v": "48923621",
-  "bg": "rgb(56,56,56)",
-  "cut": false
- },
- "dp-schwarz-ruecken": {
-  "w": 3000,
-  "h": 4000,
-  "widths": [
-   480,
-   960
-  ],
-  "v": "0e37d50d",
-  "bg": "rgb(216,216,216)",
-  "cut": false
- },
- "dp-graucamo-front": {
-  "w": 1200,
-  "h": 1600,
-  "widths": [
-   480,
-   960,
-   1200
-  ],
-  "v": "a066a13c",
-  "bg": "transparent",
-  "cut": true
- },
- "dp-graucamo-quer": {
-  "w": 1200,
-  "h": 1600,
-  "widths": [
-   480,
-   960,
-   1200
-  ],
-  "v": "e104c7a3",
-  "bg": "transparent",
-  "cut": true
- },
- "dp-gruencamo-front": {
-  "w": 1200,
-  "h": 1600,
-  "widths": [
-   480,
-   960,
-   1200
-  ],
-  "v": "aeeacadf",
-  "bg": "transparent",
-  "cut": true
- },
- "dp-gruencamo-quer": {
-  "w": 1200,
-  "h": 1600,
-  "widths": [
-   480,
-   960,
-   1200
-  ],
-  "v": "3084d75f",
-  "bg": "transparent",
-  "cut": true
- },
- "dp-cut-schwarz": {
-  "w": 750,
-  "h": 750,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "24defb50",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "dp-cut-graucamo": {
-  "w": 750,
-  "h": 866,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "64e4a095",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "dp-cut-gruencamo": {
-  "w": 3000,
-  "h": 4000,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "314bd1bb",
-  "bg": "rgb(232,232,248)",
-  "cut": false
- },
- "dp-traeger": {
-  "w": 952,
-  "h": 952,
-  "widths": [
-   480,
-   952
-  ],
-  "v": "a1bede6f",
-  "bg": "rgb(248,248,248)",
-  "cut": false
  },
  "med-coyote-front": {
   "w": 1200,
@@ -349,7 +252,7 @@
    960,
    1200
   ],
-  "v": "8537d8f8",
+  "v": "f349e477",
   "bg": "transparent",
   "cut": true
  },
@@ -361,20 +264,21 @@
    960,
    1200
   ],
-  "v": "08c34cac",
+  "v": "de22fc8d",
   "bg": "transparent",
   "cut": true
  },
- "med-coyote-platte": {
-  "w": 3000,
-  "h": 4000,
+ "med-coyote-seite": {
+  "w": 1200,
+  "h": 1600,
   "widths": [
    480,
-   960
+   960,
+   1200
   ],
-  "v": "bb44364d",
-  "bg": "rgb(216,216,232)",
-  "cut": false
+  "v": "4b1ba943",
+  "bg": "transparent",
+  "cut": true
  },
  "med-oliv-front": {
   "w": 1200,
@@ -384,7 +288,7 @@
    960,
    1200
   ],
-  "v": "482ede1e",
+  "v": "8c199a1a",
   "bg": "transparent",
   "cut": true
  },
@@ -396,7 +300,7 @@
    960,
    1200
   ],
-  "v": "ecb5dc0a",
+  "v": "4068897c",
   "bg": "transparent",
   "cut": true
  },
@@ -408,7 +312,7 @@
    960,
    1200
   ],
-  "v": "773d14fb",
+  "v": "b9bef035",
   "bg": "transparent",
   "cut": true
  },
@@ -420,86 +324,9 @@
    960,
    1200
   ],
-  "v": "3714e473",
+  "v": "6f73c183",
   "bg": "transparent",
   "cut": true
- },
- "med-schwarz-platte": {
-  "w": 3000,
-  "h": 4000,
-  "widths": [
-   480,
-   960
-  ],
-  "v": "1906f8d9",
-  "bg": "rgb(232,232,232)",
-  "cut": false
- },
- "med-cut-schwarz": {
-  "w": 2048,
-  "h": 2048,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "91eda229",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "med-cut-oliv": {
-  "w": 2048,
-  "h": 2048,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "7538e5a0",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "med-cut-coyote": {
-  "w": 2048,
-  "h": 2048,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "f5071c98",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "med-cut-rot": {
-  "w": 2048,
-  "h": 2048,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "08ee66dd",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "med-cut-camo": {
-  "w": 2048,
-  "h": 2048,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "ee9f3dbc",
-  "bg": "rgb(248,248,248)",
-  "cut": false
- },
- "med-cut-acu": {
-  "w": 2048,
-  "h": 2048,
-  "widths": [
-   360,
-   720
-  ],
-  "v": "37d881e0",
-  "bg": "rgb(248,248,248)",
-  "cut": false
  },
  "med-rot-stage": {
   "w": 1200,

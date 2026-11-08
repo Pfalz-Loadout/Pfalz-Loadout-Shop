@@ -75,7 +75,7 @@ export function orderText(totals: Totals) {
   const rows = totals.lines.map((l) => `${l.qty} × ${l.code} ${l.name} (${l.variantLabel})  ${formatEuro(l.lineCents)}`);
   rows.push('');
   rows.push(`Zwischensumme  ${formatEuro(totals.subtotalCents)}`);
-  if (totals.discountCents) rows.push(`Set-Rabatt −${SHOP.bundle.percent} %  − ${formatEuro(totals.discountCents)}`);
+  if (totals.discountCents) rows.push(`Mengenrabatt −${SHOP.volume.percent} % (${totals.discountFor.join(', ')})  − ${formatEuro(totals.discountCents)}`);
   rows.push(`Versand  ${totals.shippingCents ? formatEuro(totals.shippingCents) : 'kostenlos'}`);
   rows.push(`GESAMT  ${formatEuro(totals.totalCents)}`);
   rows.push(SHOP.vatNote);

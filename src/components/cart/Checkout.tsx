@@ -144,7 +144,7 @@ export function Checkout() {
               </div>
               {totals.bundleActive && (
                 <div className="sum__row signal">
-                  <span>Set-Rabatt −{SHOP.bundle.percent} %</span>
+                  <span>Mengenrabatt −{SHOP.volume.percent} % ({totals.discountFor.join(', ')})</span>
                   <span>− {formatEuro(totals.discountCents)}</span>
                 </div>
               )}

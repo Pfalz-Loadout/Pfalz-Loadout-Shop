@@ -14,9 +14,9 @@ const DETAILS = [
   { k: 'rb-coyote-front', label: 'Außenmaterial', text: '600D Oxford-Polyester mit PVC-Beschichtung – dicht gewebt, wasserabweisend.', focus: '50% 55%' },
   { k: 'rb-coyote-offen', label: 'Innenleben', text: 'Zwei gepolsterte Hauptfächer, elastische Schlaufen für bis zu 6 Magazine. Ausgeklappt: Arbeitsmatte.', focus: '50% 50%' },
   { k: 'rb-coyote-zipper', label: 'SBS-Reißverschluss', text: 'Wasserabweisend, große Zuglaschen – auch mit Handschuhen zu greifen. Schieber abschließbar.', focus: '50% 45%' },
-  { k: 'rb-coyote-dring', label: 'D-Ringe', text: 'Metall-D-Ringe als Aufnahme für den Schultergurt.', focus: '50% 50%' },
-  { k: 'rb-coyote-klett', label: 'MOLLE & Klett', text: 'PALS-Gurtband mit Riegelnähten für Pouches, Flauschfläche für Patches.', focus: '50% 40%' },
-  { k: 'rb-coyote-gurt', label: 'Schultergurt', text: 'Abnehmbar, mit drehbaren Karabinerhaken.', focus: '50% 50%' },
+  { k: 'rb-schwarz-dring', label: 'D-Ringe', text: 'Metall-D-Ringe als Aufnahme für den Schultergurt.', focus: '50% 50%' },
+  { k: 'rb-schwarz-molle', label: 'MOLLE & Klett', text: 'PALS-Gurtband mit Riegelnähten für Pouches, Flauschfläche für Patches.', focus: '50% 40%' },
+  { k: 'rb-schwarz-gurt', label: 'Schultergurt', text: 'Abnehmbar, mit drehbaren Karabinerhaken.', focus: '50% 50%' },
 ];
 
 export function Explode() {

@@ -6,7 +6,7 @@ export function Ticker() {
     ...PRODUCTS.map((p) => `${p.code} ${p.name.toUpperCase()} — AB ${formatEuro(minPrice(p))}`),
     `${SHOP.coords.lat} / ${SHOP.coords.lon} ${SHOP.coords.label.toUpperCase()}`,
     'VERSAND AUS WORMS',
-    `SET −${SHOP.bundle.percent} % AB ${SHOP.bundle.minDistinctProducts} TEILEN`,
+    SHOP.volume.label.toUpperCase(),
   ];
   const row = (
     <span className="ticker__row">

@@ -11,7 +11,7 @@ export default function VersandZahlung() {
       <h2>Versand</h2>
       <p>
         Wir liefern innerhalb Deutschlands. Versandkosten: {formatEuro(s.flatCents)} pro Bestellung, ab einem Bestellwert von{' '}
-        {formatEuro(s.freeFromCents)} (nach Set-Rabatt) versandkostenfrei.
+        {formatEuro(s.freeFromCents)} (nach Rabatt) versandkostenfrei.
       </p>
       <p>
         Versand ab Lager in Worms innerhalb von {s.handlingDays} nach Zahlungseingang (bei PayPal sofort, bei Überweisung nach Gutschrift).
@@ -33,10 +33,10 @@ export default function VersandZahlung() {
       </p>
       <h2>Preise</h2>
       <p>Alle Preise sind Endpreise. {SHOP.vatNote}</p>
-      <h2>Set-Rabatt</h2>
+      <h2>Mengenrabatt</h2>
       <p>
-        Sobald mindestens {SHOP.bundle.minDistinctProducts} verschiedene Produkte im Warenkorb liegen, ziehen wir automatisch{' '}
-        {SHOP.bundle.percent} % vom Warenwert ab.
+        Ab {SHOP.volume.minQty} Stück IFAK oder {SHOP.volume.minQty} Stück Range Bag (Farben beliebig gemischt) ziehen wir
+        automatisch {SHOP.volume.percent} % vom Preis dieser Artikel ab.
       </p>
     </article>
   );

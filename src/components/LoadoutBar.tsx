@@ -7,7 +7,7 @@ import { pull, scrollToId } from './MotionProvider';
 
 /**
  * Mobile Loadout-Leiste: erscheint nach dem Hero, zählt live mit,
- * zeigt Set-Rabatt und führt zum Warenkorb. Kurzer „Puls“ bei Änderung.
+ * zeigt Mengenrabatt und führt zum Warenkorb. Kurzer „Puls“ bei Änderung.
  */
 export function LoadoutBar() {
   const { count, totals, setCartOpen } = useCart();
@@ -32,7 +32,6 @@ export function LoadoutBar() {
     }
   }, [count]);
 
-  const missing = SHOP.bundle.minDistinctProducts - totals.distinctProducts;
   return (
     <div className={`lbar${show ? ' is-on' : ''}${bump ? ' is-bump' : ''}`} role="region" aria-label="Dein Loadout">
       <div className="lbar__info">
@@ -42,12 +41,10 @@ export function LoadoutBar() {
         <span className="lbar__sum">{count ? formatEuro(totals.totalCents) : 'Noch leer'}</span>
         <span className="mono lbar__hint">
           {totals.bundleActive
-            ? `Set −${SHOP.bundle.percent} % aktiv`
-            : count && missing > 0
-              ? `Noch ${missing} Teil → −${SHOP.bundle.percent} %`
-              : count
-                ? ''
-                : 'Stell dein Set zusammen'}
+            ? `−${SHOP.volume.percent} % ${totals.discountFor.join(' + ')} aktiv`
+            : count
+              ? (totals.volumeHint ?? '')
+              : 'Stell dein Set zusammen'}
         </span>
       </div>
       <button

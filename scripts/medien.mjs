@@ -33,55 +33,39 @@ const DETAIL = [480, 960];
 
 /** gemini: Gemini-Sternchen unten rechts wegschneiden */
 const MANIFEST = [
-  // ---------- Range Bag ----------
-  { key: 'rb-coyote-front', src: `${RB}/studio/coyote/20251103_194403.jpg`, sizes: STAGE },
-  { key: 'rb-coyote-offen', src: `${RB}/studio/coyote/20251103_194047.jpg`, sizes: STAGE },
-  { key: 'rb-coyote-zipper', src: `${RB}/studio/coyote/20251103_194320.jpg`, sizes: DETAIL },
-  { key: 'rb-coyote-dring', src: `${RB}/studio/coyote/20251103_194348.jpg`, sizes: DETAIL },
-  { key: 'rb-coyote-klett', src: `${RB}/studio/coyote/20251103_193207.jpg`, sizes: DETAIL },
-  { key: 'rb-coyote-gurt', src: `${RB}/studio/coyote/20251103_193858.jpg`, sizes: DETAIL },
-  { key: 'rb-oliv-front', src: `${RB}/studio/oliv/20251103_200912.jpg`, sizes: STAGE },
-  { key: 'rb-oliv-quer', src: `${RB}/studio/oliv/20251103_201003.jpg`, sizes: STAGE },
-  { key: 'rb-schwarz-front', src: `${RB}/studio/schwarz/20251103_195559.jpg`, sizes: STAGE },
-  { key: 'rb-schwarz-offen', src: `${RB}/studio/schwarz/20251103_192137.jpg`, sizes: STAGE },
-  { key: 'rb-cut-coyote', src: `${RB}/freisteller/coyote/Produktversch*bd91*.jpg`, sizes: CUT },
-  { key: 'rb-cut-oliv', src: `${RB}/freisteller/oliv/Produktversch*41e4*.jpg`, sizes: CUT },
-  { key: 'rb-cut-schwarz', src: `${RB}/freisteller/schwarz/Produktversch*ffbd*.jpg`, sizes: CUT },
-  { key: 'rb-cut-camo', src: `${RB}/freisteller/camo/20260201_132439*.jpg`, sizes: CUT },
+  // ---------- Range Bag (Freisteller, weißer Grund) ----------
+  { key: 'rb-coyote-front', src: `${RB}/freisteller/coyote/Produktversch*bd91*.jpg`, sizes: STAGE },
+  { key: 'rb-coyote-offen', src: `${RB}/freisteller/coyote/20251103_194047*.jpg`, sizes: STAGE },
+  { key: 'rb-coyote-zipper', src: `${RB}/freisteller/coyote/20251103_194320*.jpg`, sizes: DETAIL },
+  { key: 'rb-coyote-griff', src: `${RB}/freisteller/coyote/1.jpg`, sizes: DETAIL },
+  { key: 'rb-oliv-front', src: `${RB}/freisteller/oliv/Produktversch*41e4*.jpg`, sizes: STAGE },
+  { key: 'rb-oliv-quer', src: `${RB}/freisteller/oliv/20251103_201003*.jpg`, sizes: STAGE },
+  { key: 'rb-schwarz-front', src: `${RB}/freisteller/schwarz/Produktversch*ffbd*.jpg`, sizes: STAGE },
+  { key: 'rb-schwarz-quer', src: `${RB}/freisteller/schwarz/20251103_192702*.jpg`, sizes: STAGE },
+  { key: 'rb-schwarz-offen', src: `${RB}/freisteller/schwarz/20251103_192137*.jpg`, sizes: STAGE },
+  { key: 'rb-schwarz-dring', src: `${RB}/freisteller/schwarz/hfgh.jpg`, sizes: DETAIL },
+  { key: 'rb-schwarz-molle', src: `${RB}/freisteller/schwarz/kwtr.jpg`, sizes: DETAIL },
+  { key: 'rb-schwarz-gurt', src: `${RB}/freisteller/schwarz/81481.jpg`, sizes: DETAIL },
+  { key: 'rb-camo-front', src: `${RB}/freisteller/camo/20260201_132439*.jpg`, sizes: STAGE },
+  { key: 'rb-camo-offen', src: `${RB}/freisteller/camo/20260201_132525*.jpg`, sizes: STAGE },
   { key: 'rb-dark-1', src: `${RB}/szenen-ki/schwarz/Gemini_Generated_Image_85aylf*.png`, sizes: STAGE, gemini: true },
-  { key: 'rb-dark-2', src: `${RB}/szenen-ki/schwarz/Gemini_Generated_Image_ksved3*.png`, sizes: STAGE, gemini: true },
-  { key: 'rb-dark-coyote', src: `${RB}/szenen-ki/coyote/Gemini_Generated_Image_59jfo5*.png`, sizes: STAGE, gemini: true },
   { key: 'rb-wald', src: `${RB}/szenen-ki/gemischt/Gemini_Generated_Image_d7z5*.png`, sizes: SCENE, gemini: true },
 
-  // ---------- Rucksack 25 l ----------
-  { key: 'dp-schwarz-front', src: `${DP}/studio/schwarz/20260131_085502.jpg`, sizes: STAGE },
-  { key: 'dp-schwarz-quer', src: `${DP}/studio/schwarz/20260131_085606.jpg`, sizes: STAGE },
-  { key: 'dp-schwarz-offen', src: `${DP}/studio/schwarz/20260131_085626.jpg`, sizes: DETAIL },
-  { key: 'dp-schwarz-ruecken', src: `${DP}/studio/schwarz/20260131_085515.jpg`, sizes: DETAIL },
-  { key: 'dp-graucamo-front', src: `${DP}/studio/grau-camo/20260131_091012.jpg`, sizes: STAGE },
-  { key: 'dp-graucamo-quer', src: `${DP}/studio/grau-camo/20260131_091111.jpg`, sizes: STAGE },
-  { key: 'dp-gruencamo-front', src: `${DP}/studio/gruen-camo/20260131_091753.jpg`, sizes: STAGE },
-  { key: 'dp-gruencamo-quer', src: `${DP}/studio/gruen-camo/20260131_092004.jpg`, sizes: STAGE },
-  { key: 'dp-cut-schwarz', src: `${DP}/freisteller/schwarz/Rucksack Schwarz.png`, sizes: CUT },
-  { key: 'dp-cut-graucamo', src: `${DP}/freisteller/grau-camo/Rucksack Grau.png`, sizes: CUT },
-  { key: 'dp-cut-gruencamo', src: `${DP}/studio/gruen-camo/20260131_091753.jpg`, sizes: CUT },
-  { key: 'dp-traeger', src: `${DP}/freisteller/schwarz/Rucksack Schwarz 2.png`, sizes: STAGE, gemini: true },
+  // ---------- Assault Pack 37 (eigene Fotos) ----------
+  { key: 'dp-oliv-front', src: `${DP}/freisteller/oliv/01-front.png`, sizes: STAGE },
+  { key: 'dp-oliv-seite', src: `${DP}/freisteller/oliv/02-seite.png`, sizes: STAGE },
+  { key: 'dp-oliv-ruecken', src: `${DP}/freisteller/oliv/03-ruecken.png`, sizes: STAGE },
+  { key: 'dp-schwarz-front', src: `${DP}/freisteller/schwarz/01-front.png`, sizes: STAGE },
+  { key: 'dp-coyote-front', src: `${DP}/freisteller/coyote/01-front.jpg`, sizes: STAGE },
 
-  // ---------- IFAK ----------
-  { key: 'med-coyote-front', src: `${MED}/studio/coyote/20251120_114252.jpg`, sizes: STAGE },
-  { key: 'med-coyote-offen', src: `${MED}/studio/coyote/20251120_114445.jpg`, sizes: STAGE },
-  { key: 'med-coyote-platte', src: `${MED}/studio/coyote/20251120_114224.jpg`, sizes: DETAIL },
-  { key: 'med-oliv-front', src: `${MED}/studio/oliv/20251120_113857.jpg`, sizes: STAGE },
-  { key: 'med-oliv-offen', src: `${MED}/studio/oliv/20251120_114835.jpg`, sizes: STAGE },
-  { key: 'med-schwarz-front', src: `${MED}/studio/schwarz/20251120_113136.jpg`, sizes: STAGE },
-  { key: 'med-schwarz-offen', src: `${MED}/studio/schwarz/20251120_112926.jpg`, sizes: STAGE },
-  { key: 'med-schwarz-platte', src: `${MED}/studio/schwarz/20251120_113219.jpg`, sizes: DETAIL },
-  { key: 'med-cut-schwarz', src: `${MED}/freisteller/schwarz/IFAK_SW_001 (2).jpg`, sizes: CUT },
-  { key: 'med-cut-oliv', src: `${MED}/freisteller/oliv/IFAK_ODG_001 (2).jpg`, sizes: CUT },
-  { key: 'med-cut-coyote', src: `${MED}/freisteller/coyote/IFAK_TAN_001 (1).jpg`, sizes: CUT },
-  { key: 'med-cut-rot', src: `${MED}/freisteller/rot/IFAK_RED_001 (2).jpg`, sizes: CUT },
-  { key: 'med-cut-camo', src: `${MED}/freisteller/camo/IFAK_CAM_001.jpg`, sizes: CUT },
-  { key: 'med-cut-acu', src: `${MED}/freisteller/acu/IFAK_ACU_001.jpg`, sizes: CUT },
+  // ---------- IFAK (Freisteller) ----------
+  { key: 'med-coyote-front', src: `${MED}/freisteller/coyote/IFAK_TAN_001 (1).jpg`, sizes: STAGE },
+  { key: 'med-coyote-offen', src: `${MED}/freisteller/coyote/IFAK_TAN_003.jpg`, sizes: STAGE },
+  { key: 'med-coyote-seite', src: `${MED}/freisteller/coyote/IFAK_TAN_002.jpg`, sizes: STAGE },
+  { key: 'med-oliv-front', src: `${MED}/freisteller/oliv/IFAK_ODG_001 (2).jpg`, sizes: STAGE },
+  { key: 'med-oliv-offen', src: `${MED}/freisteller/oliv/IFAK_ODG_004.jpg`, sizes: STAGE },
+  { key: 'med-schwarz-front', src: `${MED}/freisteller/schwarz/IFAK_SW_001 (2).jpg`, sizes: STAGE },
+  { key: 'med-schwarz-offen', src: `${MED}/freisteller/schwarz/IFAK_SW_003.jpg`, sizes: STAGE },
   { key: 'med-rot-stage', src: `${MED}/freisteller/rot/IFAK_RED_001 (2).jpg`, sizes: STAGE },
   { key: 'med-camo-stage', src: `${MED}/freisteller/camo/IFAK_CAM_001.jpg`, sizes: STAGE },
   { key: 'med-acu-stage', src: `${MED}/freisteller/acu/IFAK_ACU_001.jpg`, sizes: STAGE },
@@ -112,9 +96,10 @@ const MANIFEST = [
  *         3) node scripts/medien.mjs  → nutzt automatisch freigestellt/<key>.png
  */
 const CUT_KEYS = new Set([
-  'rb-coyote-front', 'rb-coyote-offen', 'rb-oliv-front', 'rb-oliv-quer', 'rb-schwarz-front', 'rb-schwarz-offen', 'rb-cut-camo',
-  'dp-schwarz-front', 'dp-schwarz-quer', 'dp-graucamo-front', 'dp-graucamo-quer', 'dp-gruencamo-front', 'dp-gruencamo-quer',
-  'med-coyote-front', 'med-coyote-offen', 'med-oliv-front', 'med-oliv-offen', 'med-schwarz-front', 'med-schwarz-offen',
+  'rb-coyote-front', 'rb-coyote-offen', 'rb-oliv-front', 'rb-oliv-quer', 'rb-schwarz-front', 'rb-schwarz-quer', 'rb-schwarz-offen',
+  'rb-camo-front', 'rb-camo-offen',
+  'dp-oliv-front', 'dp-oliv-seite', 'dp-oliv-ruecken', 'dp-schwarz-front', 'dp-coyote-front',
+  'med-coyote-front', 'med-coyote-offen', 'med-coyote-seite', 'med-oliv-front', 'med-oliv-offen', 'med-schwarz-front', 'med-schwarz-offen',
   'med-rot-stage', 'med-camo-stage', 'med-acu-stage',
   'sl-schwarz-front', 'sl-qd-oliv', 'sl-qd-teile',
 ]);
@@ -198,6 +183,7 @@ async function run() {
       console.log(`OK ${item.key.padEnd(22)} ${w}x${h} -> ${uniq.join('/')}`);
     } catch (e) {
       console.error(`FEHLT ${item.key}: ${e.message}`);
+      if (prev[item.key]) meta[item.key] = prev[item.key];
     }
   }
   await fs.writeFile(JSON_OUT, JSON.stringify(meta, null, 1));

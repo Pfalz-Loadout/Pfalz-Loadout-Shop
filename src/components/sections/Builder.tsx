@@ -29,7 +29,6 @@ export function Builder() {
 
   const chosen = PRODUCTS.filter((p) => sel[p.code].on);
   const totals = useMemo(() => computeTotals(chosen.map((p) => ({ sku: sel[p.code].sku, qty: 1 }))), [sel, chosen]);
-  const missing = SHOP.bundle.minDistinctProducts - chosen.length;
 
   // 3D-Neigung der Matte mit dem Zeiger
   const onMove = (e: React.PointerEvent) => {
@@ -50,7 +49,7 @@ export function Builder() {
             Loadout-Builder
           </span>
           <span className="dim-3">
-            Ab {SHOP.bundle.minDistinctProducts} Teilen −{SHOP.bundle.percent} % auf das Set
+            {SHOP.volume.label}
           </span>
         </div>
         <h2 className="display h2" style={{ marginBottom: 36 }}>
@@ -133,7 +132,6 @@ export function Builder() {
                 );
               })}
               {chosen.length === 0 && <div className="mat__empty">Matte leer – wähle links deine Teile</div>}
-              {totals.bundleActive && <span className="mat__stamp">Set −{SHOP.bundle.percent} %</span>}
               <div className="mat__ruler" aria-hidden="true">
                 <span>0</span>
                 <span>10</span>
@@ -150,18 +148,14 @@ export function Builder() {
                 <span>{formatEuro(totals.subtotalCents)}</span>
               </div>
               <div className="tally__row">
-                <span>Set-Rabatt</span>
-                <span className={totals.bundleActive ? 'tally__save' : 'dim-3'}>
-                  {totals.bundleActive
-                    ? `− ${formatEuro(totals.discountCents)}`
-                    : missing > 0
-                      ? `noch ${missing} Teil${missing > 1 ? 'e' : ''}`
-                      : '—'}
+                <span>Versand</span>
+                <span className="dim-3">
+                  {totals.subtotalCents >= SHOP.shipping.freeFromCents ? 'kostenlos' : `${formatEuro(SHOP.shipping.flatCents)}`}
                 </span>
               </div>
               <div className="tally__row tally__row--sum">
                 <span>Set</span>
-                <span>{formatEuro(totals.subtotalCents - totals.discountCents)}</span>
+                <span>{formatEuro(totals.subtotalCents)}</span>
               </div>
               <button
                 ref={btn}
@@ -176,8 +170,8 @@ export function Builder() {
                 Set in den Warenkorb
               </button>
               <span className="dim-3" style={{ fontSize: '.78rem' }}>
-                Der Set-Rabatt gilt automatisch im Warenkorb, sobald {SHOP.bundle.minDistinctProducts} verschiedene Teile drin
-                sind. {SHOP.vatNote}
+                Mengenrabatt: {SHOP.volume.label} – Stückzahl im Warenkorb anpassen, der Rabatt rechnet sich automatisch.{' '}
+                {SHOP.vatNote}
               </span>
             </div>
           </div>

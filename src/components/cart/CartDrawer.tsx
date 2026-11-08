@@ -113,12 +113,12 @@ export function CartDrawer() {
               </div>
               {totals.bundleActive ? (
                 <div className="sum__row signal">
-                  <span>Set-Rabatt −{SHOP.bundle.percent} %</span>
+                  <span>Mengenrabatt −{SHOP.volume.percent} % ({totals.discountFor.join(', ')})</span>
                   <span>− {formatEuro(totals.discountCents)}</span>
                 </div>
               ) : (
                 <div className="sum__hint">
-                  Tipp: Ab {SHOP.bundle.minDistinctProducts} verschiedenen Teilen gibt es −{SHOP.bundle.percent} % Set-Rabatt.
+                  {totals.volumeHint ? `Tipp: ${totals.volumeHint}` : `Tipp: ${SHOP.volume.label}`}
                 </div>
               )}
               <div className="sum__row">
