@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type ColorKey, type Product, colorName } from '@/data/shop';
 import { LockBadge } from '../LockBadge';
 import { ShotArrows } from '../ShotArrows';
-import { Picture, hasMedia, lockSpace } from '../Picture';
+import { Picture, hasMedia, lockSpace, mediaMeta } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull } from '../MotionProvider';
 
@@ -61,7 +61,8 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           <span className="pcard__scan" aria-hidden="true" />
         </div>
         <ShotArrows index={shotIdx % Math.max(1, shots.length)} count={shots.length} onChange={setShotIdx} />
-        <LockBadge on={variant.option === 'mit Zahlenschloss'} />
+        {/* Handy: nur zeigen, wenn oben rechts genug Platz ist (aufgeklappte Tasche: nein) */}
+        <LockBadge on={variant.option === 'mit Zahlenschloss' && (shot ? (mediaMeta(shot).tr ?? 1) >= 0.25 : false)} />
         <span className="pcard__code mono">{colorCode(product, color)}</span>
         <span className="pcard__num mono">{String(index + 1).padStart(2, '0')}/04</span>
       </div>

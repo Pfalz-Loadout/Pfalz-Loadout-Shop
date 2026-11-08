@@ -178,7 +178,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Reißverschluss', value: 'SBS, wasserabweisend, abschließbar' },
       { label: 'Transport', value: 'Abgeschlossen = verschlossenes Behältnis, „nicht zugriffsbereit“ (§ 12 Abs. 3 Nr. 2 WaffG)' },
       { label: 'Magazinplätze', value: 'bis zu 6 (elastische Schlaufen)' },
-      { label: 'Fächer', value: '2 gepolsterte Hauptfächer, Munitionsfach, Fronttasche' },
+      { label: 'Fächer', value: '2 gepolsterte Hauptfächer für 2 Kurzwaffen (erprobt bis 6 Zoll Lauf), Munitionsfach, Fronttasche' },
       { label: 'Außen', value: 'MOLLE-Gurtband, Klettfläche für Patches' },
       { label: 'Tragen', value: 'Tragegriffe + abnehmbarer Schultergurt mit Karabinern' },
     ],
@@ -187,6 +187,10 @@ export const PRODUCTS: Product[] = [
       { label: 'Griff', text: 'Doppelter Tragegriff, mit Klett zusammengefasst.', at: { 'rb-oliv-quer': [47, 23], 'rb-coyote-gerade': [47, 22], 'rb-coyote-front': [47, 26], 'rb-oliv-front': [45, 28], 'rb-schwarz-quer': [45, 29], 'rb-schwarz-front': [44, 26], 'rb-camo-front': [48, 30] } },
       { label: 'SBS-Zipper', text: 'Wasserabweisender Reißverschluss, abschließbar – für den Transport nach § 12 WaffG.', at: { 'rb-oliv-quer': [87, 56], 'rb-coyote-gerade': [87, 56], 'rb-coyote-front': [13, 52], 'rb-oliv-front': [12, 56], 'rb-schwarz-quer': [87, 54], 'rb-schwarz-front': [12, 52], 'rb-camo-front': [18, 52] } },
       { label: 'Klett', text: 'Flauschfläche für Namens- und Kennungspatches.', at: { 'rb-coyote-front': [58, 43], 'rb-oliv-front': [54, 45], 'rb-schwarz-front': [56, 43], 'rb-camo-front': [59, 38] } },
+      // aufgeklappte Ansichten
+      { label: 'Magazine', text: 'Sechs elastische Schlaufen: Magazine stehen sortiert und griffbereit.', at: { 'rb-schwarz-offen': [56, 41], 'rb-coyote-offen': [62, 43], 'rb-camo-offen': [62, 44] } },
+      { label: '2 Waffenfächer', text: 'Zwei gepolsterte Fächer für zwei Kurzwaffen – erprobt mit Lauflänge bis 6 Zoll.', at: { 'rb-schwarz-offen': [22, 68], 'rb-coyote-offen': [40, 72], 'rb-camo-offen': [40, 71] } },
+      { label: 'Arbeitsmatte', text: 'Weiche Fläche: aufgeklappt deine Unterlage zum Zerlegen und Reinigen am Stand.', at: { 'rb-schwarz-offen': [45, 60], 'rb-coyote-offen': [55, 60], 'rb-camo-offen': [55, 62] } },
     ],
     lab: [
       {

@@ -87,17 +87,18 @@
 .lockbadge {
   position: absolute;
   z-index: 6;
-  top: 10px;
-  right: 10px;
-  width: clamp(26px, calc((max(0px, 50cqh - 50cqw * var(--r, 1)) + var(--tr, 0.3) * 100cqw * var(--r, 1) - 12px) / 1.9), 58px);
+  /* direkt unter der Seriennummer (SN KWT-…), rechtsbündig mit ihr; die Seriennummer bleibt, wo sie ist */
+  --top: 38px;
+  top: var(--top);
+  right: 8px;
+  width: clamp(26px, calc((max(0px, 50cqh - 50cqw * var(--r, 1)) + var(--tr, 0.3) * 100cqw * var(--r, 1) - var(--top) - 6px) / 1.9), 58px);
   pointer-events: none;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
-/* Seriennummer / Kartennummer rücken nach links, solange das Schloss da ist */
-.stage__visual:has(.lockbadge) .stage__serial,
-.pcard__media:has(.lockbadge) .pcard__num {
-  right: 78px;
+.pcard__media .lockbadge {
+  --top: 30px; /* unter der Kartennummer 01/04 */
+  right: 6px;
 }
 .lockbadge.is-in {
   animation: lockin 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
