@@ -136,3 +136,29 @@ html.intro-vorab body::after {
     visibility: hidden;
   }
 }
+
+/* ------------------------------------------------------------------
+   Hero: das Pfalz-Foto in der Wortmarke (Berge durch die Buchstaben)
+   ------------------------------------------------------------------ */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero__mark {
+    background-image: linear-gradient(rgba(20, 18, 12, 0.18), rgba(20, 18, 12, 0.18)), var(--hero-foto);
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero__mark--a {
+    background-position: center, 70% 44%; /* Bergkamm im Abendlicht */
+  }
+  .hero__mark--b {
+    background-position: center, 68% 82%; /* Weinberge */
+  }
+}
+.hero__title .ch.is-done {
+  animation: none;
+  clip-path: none;
+  transform: none;
+}

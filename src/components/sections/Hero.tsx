@@ -4,6 +4,7 @@ import { Fragment, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { PRODUCTS, SHOP } from '@/data/shop';
 import { useMotion, scrollToId } from '../MotionProvider';
+import { photoSrc } from '../Logo';
 
 /** Text in Wörter + Buchstaben zerlegen → Stencil-Aufbau Buchstabe für Buchstabe */
 function Stencil({ text, delay, step = 0.05 }: { text: string; delay: number; step?: number }) {
@@ -27,12 +28,22 @@ function Stencil({ text, delay, step = 0.05 }: { text: string; delay: number; st
 }
 
 /**
- * Hero: reine Typografie wie das Deckblatt eines Datenblatts.
- * Kein Bild, kein Video → lädt sofort, LCP = Text.
+ * Hero: Typografie wie das Deckblatt eines Datenblatts.
+ * In der Wortmarke: das echte Pfalz-Foto aus dem Zielfernrohr-Intro (PFALZ = Bergkamm, LOADOUT = Weinberge).
+ * LCP bleibt Text (Foto nur als Hintergrund der Schrift).
  */
 export function Hero() {
   const section = useRef<HTMLElement>(null);
   const { ready, reduced } = useMotion();
+
+  // Foto in der Schrift: fertige Buchstaben verlieren ihre Animation (sonst blendet Chrome sie bei background-clip: text aus)
+  useEffect(() => {
+    const h1 = section.current?.querySelector('.hero__title');
+    if (!h1) return;
+    const done = (e: Event) => (e.target as HTMLElement).classList?.add('is-done');
+    h1.addEventListener('animationend', done);
+    return () => h1.removeEventListener('animationend', done);
+  }, []);
 
   // Beim Rausscrollen: Wortmarke auseinanderziehen, Rest verblasst (Parallax-Ebenen)
   useEffect(() => {
@@ -68,7 +79,7 @@ export function Hero() {
           <span className="dim-3">Taktische Ausrüstung · Schießstand · Gelände · Outdoor</span>
         </div>
 
-        <h1 id="hero-title" className="hero__title stencil-in">
+        <h1 id="hero-title" className="hero__title stencil-in" style={{ ['--hero-foto' as string]: `url("${photoSrc('large')}")` }}>
           <span className="hero__mark hero__mark--a">
             <Stencil text="PFALZ" delay={0.1} />
           </span>
