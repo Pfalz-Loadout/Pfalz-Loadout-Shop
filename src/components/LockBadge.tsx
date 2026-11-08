@@ -66,6 +66,7 @@ export function LockBadge({ on }: { on: boolean }) {
             </span>
           ))}
       </div>
+      <span className="badge-incl mono">inklusive</span>
     </div>
   );
 }

@@ -8,7 +8,7 @@ export function PatchBadge({ k, glow, label, show = true }: { k: string; glow?: 
   if (!show || !hasMedia(k)) return null;
   const m = mediaMeta(k);
   return (
-    <div className="lockbadge patchbadge is-in" style={{ ['--badge-ar' as string]: m.h / m.w, ['--badge-max' as string]: '50px' }}>
+    <div className="lockbadge patchbadge is-in">
       <div className="lockbadge__shot" style={{ aspectRatio: `${m.w} / ${m.h}` }}>
         <Picture k={k} alt={label} sizes="120px" priority className="lockbadge__img" />
         {glow && hasMedia(glow) && (
@@ -17,6 +17,7 @@ export function PatchBadge({ k, glow, label, show = true }: { k: string; glow?: 
           </span>
         )}
       </div>
+      <span className="badge-incl mono">inklusive</span>
     </div>
   );
 }

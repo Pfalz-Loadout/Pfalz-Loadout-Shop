@@ -5,7 +5,7 @@ import { COLORS, COLOR_NO, colorCode, formatEuro, SHOP, variantLabel, type Color
 import { LockBadge } from '../LockBadge';
 import { PatchBadge } from '../PatchBadge';
 import { ShotArrows } from '../ShotArrows';
-import { Picture, hasMedia, lockSpace, mediaMeta } from '../Picture';
+import { Picture, hasMedia, lockSpace } from '../Picture';
 import { useCart } from '../cart/CartProvider';
 import { pull } from '../MotionProvider';
 
@@ -70,9 +70,9 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           </div>
         )}
         <ShotArrows index={shotIdx % Math.max(1, shots.length)} count={shots.length} onChange={setShotIdx} />
-        {/* Handy: nur zeigen, wenn oben rechts genug Platz ist (aufgeklappte Tasche: nein) */}
-        <LockBadge on={variant.option === 'mit Zahlenschloss' && (shot ? (mediaMeta(shot).tr ?? 1) >= 0.25 : false)} />
-        {product.badge && <PatchBadge {...product.badge} show={shot ? (mediaMeta(shot).tr ?? 1) >= 0.25 : false} />}
+        {/* Zubehör steht statisch in fester Größe über jedem Vorschaubild */}
+        <LockBadge on={variant.option === 'mit Zahlenschloss'} />
+        {product.badge && <PatchBadge {...product.badge} />}
         <span className="pcard__code mono">{colorCode(product, color)}</span>
         <span className="pcard__num mono">{String(index + 1).padStart(2, '0')}/04</span>
       </div>

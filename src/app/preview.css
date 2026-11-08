@@ -386,3 +386,37 @@
     animation: none;
   }
 }
+
+/* 08.11.2026: Zubehör (Schloss, Patch) statisch in FESTER Größe über jedem Vorschaubild, darunter „inklusive“.
+   Größe hängt nicht mehr vom Bild ab → nichts springt beim Bildwechsel. */
+.lockbadge,
+.pcard__media .lockbadge {
+  width: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+.lockbadge.patchbadge,
+.pcard__media .lockbadge.patchbadge {
+  width: 50px;
+}
+.badge-incl {
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bone-3);
+  white-space: nowrap;
+  line-height: 1;
+}
+/* Handy-Karten: feste Breite – Inhalt (z. B. Ausführungs-Schalter) darf die Karte nicht aufdrücken */
+.pcard {
+  min-width: 0;
+  width: 86%;
+  max-width: 86%;
+}
+.pcard .seg {
+  max-width: 100%;
+  width: auto;
+  flex-wrap: wrap;
+}
