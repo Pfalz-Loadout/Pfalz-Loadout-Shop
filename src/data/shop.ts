@@ -165,22 +165,22 @@ export const PRODUCTS: Product[] = [
     serial: 'SN KWT-0425',
     claim: 'Alles für die Bahn. In einer Hand.',
     description:
-      'Die Schießstandtasche für Kurzwaffe, Magazine, Gehörschutz und Munition. Zwei gepolsterte Hauptfächer, Munitionsfach und Schlaufen für bis zu 6 Magazine. Ausgeklappt wird das Innenfutter zur sauberen Arbeitsmatte – zum Reinigen und Warten direkt am Stand. Optional mit Zahlenschloss (+ 2 €), Farbe nach Verfügbarkeit.',
+      'Die Schießstandtasche für Kurzwaffe, Magazine, Gehörschutz und Munition. Zwei gepolsterte Hauptfächer, Munitionsfach und Schlaufen für bis zu 6 Magazine. Ausgeklappt wird das Innenfutter zur sauberen Arbeitsmatte – zum Reinigen und Warten direkt am Stand. Optional mit Zahlenschloss (+ 3 €), Farbe nach Verfügbarkeit.',
     variants: [
       // Preis = Wunsch-Erlös + PayPal-Gebühr (2,49 % + 0,35 €), auf ,90 gerundet
       { sku: 'PL_KWT_01', color: 'schwarz', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL_KWT_01-ZS', color: 'schwarz', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
+      { sku: 'PL_KWT_01-ZS', color: 'schwarz', option: 'mit Zahlenschloss', priceCents: 3390, stock: 'lager' },
       { sku: 'PL_KWT_02', color: 'oliv', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL_KWT_02-ZS', color: 'oliv', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
+      { sku: 'PL_KWT_02-ZS', color: 'oliv', option: 'mit Zahlenschloss', priceCents: 3390, stock: 'lager' },
       { sku: 'PL_KWT_03', color: 'coyote', priceCents: 3090, stock: 'lager' },
-      { sku: 'PL_KWT_03-ZS', color: 'coyote', option: 'mit Zahlenschloss', priceCents: 3290, stock: 'lager' },
+      { sku: 'PL_KWT_03-ZS', color: 'coyote', option: 'mit Zahlenschloss', priceCents: 3390, stock: 'lager' },
       { sku: 'PL_KWT_04', color: 'camo', priceCents: 3090, stock: 'ausverkauft' },
     ],
     specs: [
       { label: 'Maße', value: '33 × 24 cm' },
       { label: 'Material', value: OXFORD_600D_PVC },
       { label: 'Reißverschluss', value: 'SBS, wasserabweisend, abschließbar' },
-      { label: 'Option Zahlenschloss', value: '+2 €: Zahlenschloss für die Reißverschluss-Ösen, Farbe nach Verfügbarkeit' },
+      { label: 'Option Zahlenschloss', value: '+3 €: Zahlenschloss für die Reißverschluss-Ösen, Farbe nach Verfügbarkeit' },
       { label: 'Transport', value: 'Abgeschlossen = verschlossenes Behältnis, „nicht zugriffsbereit“ (§ 12 Abs. 3 Nr. 2 WaffG)' },
       { label: 'Magazinplätze', value: 'bis zu 6 (elastische Schlaufen)' },
       { label: 'Fächer', value: '2 gepolsterte Hauptfächer für 2 Kurzwaffen (erprobt bis 6 Zoll Lauf), Munitionsfach, Fronttasche' },
@@ -396,7 +396,7 @@ export const PRODUCTS: Product[] = [
       },
     ],
     // Front, Rückseite, aufgeklappt; Schwarz zusätzlich abgelöst von der Trägerplatte (leer = so wird geliefert)
-    stage: { coyote: ['med-coyote-front', 'med-coyote-seite', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-rueck', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-rueck', 'med-schwarz-leer', 'med-schwarz-platte'], rot: ['med-rot-stage', 'med-rot-rueck', 'med-rot-offen'], camo: ['med-camo-stage', 'med-camo-rueck'], acu: ['med-acu-stage', 'med-acu-front'] },
+    stage: { coyote: ['med-coyote-front', 'med-coyote-seite', 'med-coyote-offen'], oliv: ['med-oliv-front', 'med-oliv-rueck', 'med-oliv-offen'], schwarz: ['med-schwarz-front', 'med-schwarz-rueck', 'med-schwarz-leer'], rot: ['med-rot-stage', 'med-rot-rueck', 'med-rot-offen'], camo: ['med-camo-stage', 'med-camo-rueck'], acu: ['med-acu-stage', 'med-acu-front'] },
     cutout: { coyote: 'med-coyote-front', oliv: 'med-oliv-front', schwarz: 'med-schwarz-front', rot: 'med-rot-stage', camo: 'med-camo-stage', acu: 'med-acu-stage' },
     model3d: '/models/pl-med03.glb',
     note: 'Lieferung ohne medizinischen Inhalt.',
@@ -414,11 +414,11 @@ export const PRODUCTS: Product[] = [
     description:
       'Gewehrriemen mit QD-Anschluss, in Sekunden zwischen Ein- und Zweipunkt umgebaut. Nylon-Gurtband 3,2 cm, Länge stufenlos von 90 bis 140 cm – zum Tragen lang, im Anschlag kurz.',
     variants: [
-      // Riemen in Schwarz oder Oliv, optional mit QD-Öse (Montageset) für +2 €
+      // Riemen in Schwarz oder Oliv, optional mit QD-Öse (Montageset) für +3 €
       { sku: 'PL_GR_01', color: 'schwarz', option: 'Riemen', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL_GR_01-QD', color: 'schwarz', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
+      { sku: 'PL_GR_01-QD', color: 'schwarz', option: '+ QD-Öse', priceCents: 1390, stock: 'lager' },
       { sku: 'PL_GR_02', color: 'oliv', option: 'Riemen', priceCents: 1090, stock: 'lager' },
-      { sku: 'PL_GR_02-QD', color: 'oliv', option: '+ QD-Öse', priceCents: 1290, stock: 'lager' },
+      { sku: 'PL_GR_02-QD', color: 'oliv', option: '+ QD-Öse', priceCents: 1390, stock: 'lager' },
     ],
     specs: [
       { label: 'Typ', value: 'Ein- / Zweipunkt, schnell umbaubar' },
@@ -426,13 +426,13 @@ export const PRODUCTS: Product[] = [
       { label: 'Gurtband', value: 'Nylon, 3,2 cm breit' },
       { label: 'Länge', value: 'stufenlos 90–140 cm' },
       { label: 'Farben', value: 'Schwarz, Oliv' },
-      { label: 'Option + QD-Öse', value: '+2 €: QD-Swivel, Montageplatte, Schrauben, Nutensteine, Inbus' },
+      { label: 'Option + QD-Öse', value: '+3 €: QD-Swivel, Montageplatte, Schrauben, Nutensteine, Inbus' },
     ],
     hotspots: [
       { label: 'Schnalle', text: 'Schiebeschnalle: Länge stufenlos von 90 bis 140 cm.', at: { 'sl-schwarz-front': [53, 43], 'sl-oliv-front': [56, 45], 'sl-schwarz-stand': [50, 45], 'sl-oliv-stand': [48, 41] } },
       { label: 'Umbau-Clip', text: 'Schnell zwischen Ein- und Zweipunkt wechseln.', at: { 'sl-qd-oliv': [58, 44] } },
       { label: 'QD-Swivel', text: 'Drückknopf-Swivel: einrasten, drehen, mit einer Hand lösen.', at: { 'sl-schwarz-front': [23, 23], 'sl-oliv-front': [55, 89], 'sl-qd-oliv': [84, 65], 'sl-qd-teile': [21, 75], 'sl-oliv-stand': [50, 76] } },
-      { label: 'QD-Öse', text: 'Optional (+2 €): Montageplatte, Schrauben, Nutensteine und Inbus.', at: { 'sl-qd-oliv': [28, 70], 'sl-qd-teile': [21, 57] } },
+      { label: 'QD-Öse', text: 'Optional (+3 €): Montageplatte, Schrauben, Nutensteine und Inbus.', at: { 'sl-qd-oliv': [28, 70], 'sl-qd-teile': [21, 57] } },
       { label: 'Gurtband', text: 'Nylon, 3,2 cm breit.', at: { 'sl-qd-oliv': [34, 39] } },
     ],
     lab: [
@@ -455,7 +455,7 @@ export const PRODUCTS: Product[] = [
         property: 'Drücken, einsetzen, einrasten',
         material: 'QD-Swivel mit Drückknopf und Sperrkugeln, Montageplatte',
         source: 'Funktionsprinzip QD',
-        text: 'Knopf drücken, Swivel in die Montageplatte setzen, loslassen – die Sperrkugeln greifen und halten. Zum Lösen wieder drücken, mit einer Hand. Die QD-Öse gibt es als Option für +2 €.',
+        text: 'Knopf drücken, Swivel in die Montageplatte setzen, loslassen – die Sperrkugeln greifen und halten. Zum Lösen wieder drücken, mit einer Hand. Die QD-Öse gibt es als Option für +3 €.',
         media: { kind: 'svg-qd', brief: 'Animierte Schnittzeichnung (läuft im Browser)' },
       },
       {
