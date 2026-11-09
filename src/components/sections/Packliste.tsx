@@ -6,16 +6,16 @@ import { Picture } from '../Picture';
 /**
  * IFAK-Packliste nach M.A.R.C.H. – eigene Texte.
  * Anregungen: taktik-training-medizin.de (2021), PPF Germany (2026); fachlich angelehnt an TCCC/Hartford Consensus.
- * Foto zeigt eine Beispielbefüllung – geliefert wird die Pouch ohne Inhalt.
+ * Foto zeigt die leere Pouch – Pins sitzen auf den Fächern, in die jedes Teil gehört.
  */
 
 type Zone = 'aussen' | 'deckel' | 'hauptfach' | 'netzfach';
 
 const ZONES: Record<Zone, { label: string; layer: string; at: [number, number] }> = {
-  aussen: { label: 'Außen', layer: 'am Gürtel / Rucksack', at: [64, 9] },
-  deckel: { label: 'Deckel', layer: 'Schicht 1 · vorne', at: [60, 37] },
-  hauptfach: { label: 'Hauptfach', layer: 'Schicht 2 · Mitte', at: [52, 58] },
-  netzfach: { label: 'Netzfach', layer: 'Schicht 3 · hinten', at: [36, 78] },
+  aussen: { label: 'Außen', layer: 'am Gürtel / Rucksack', at: [50, 7] },
+  deckel: { label: 'Deckel', layer: 'Schicht 1 · vorne', at: [42, 30] },
+  hauptfach: { label: 'Hauptfach', layer: 'Schicht 2 · Mitte', at: [42, 57] },
+  netzfach: { label: 'Netzfach', layer: 'Schicht 3 · hinten', at: [42, 80] },
 };
 
 type Item = { name: string; note: string; zone: Zone | null };
@@ -125,7 +125,7 @@ export function Packliste() {
 
         <div className="pack__grid">
           <figure className="pack__photo">
-            <Picture k="med-coyote-offen" alt="Aufgeklappte IFAK Pouch mit Beispielbefüllung" sizes="(max-width: 860px) 92vw, 44vw" />
+            <Picture k="med-schwarz-leer" alt="Aufgeklappte, leere IFAK Pouch: Deckel, Hauptfach und Netzfach" sizes="(max-width: 860px) 92vw, 44vw" />
             {(Object.keys(ZONES) as Zone[]).map((z) => (
               <span
                 key={z}
@@ -137,7 +137,7 @@ export function Packliste() {
                 <b>{ZONES[z].label}</b>
               </span>
             ))}
-            <figcaption className="mono dim-3">Beispielbefüllung – nicht im Lieferumfang</figcaption>
+            <figcaption className="mono dim-3">Leere Pouch – so wird geliefert, Inhalt nicht dabei</figcaption>
           </figure>
 
           <div className="pack__panel">

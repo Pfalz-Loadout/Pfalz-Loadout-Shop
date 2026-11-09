@@ -165,7 +165,7 @@ export const PRODUCTS: Product[] = [
     serial: 'SN KWT-0425',
     claim: 'Alles für die Bahn. In einer Hand.',
     description:
-      'Die Schießstandtasche für Kurzwaffe, Magazine, Gehörschutz und Munition. Zwei gepolsterte Hauptfächer, Munitionsfach und Schlaufen für bis zu 6 Magazine. Ausgeklappt wird das Innenfutter zur sauberen Arbeitsmatte – zum Reinigen und Warten direkt am Stand.',
+      'Die Schießstandtasche für Kurzwaffe, Magazine, Gehörschutz und Munition. Zwei gepolsterte Hauptfächer, Munitionsfach und Schlaufen für bis zu 6 Magazine. Ausgeklappt wird das Innenfutter zur sauberen Arbeitsmatte – zum Reinigen und Warten direkt am Stand. Optional mit Zahlenschloss (+ 2 €), Farbe nach Verfügbarkeit.',
     variants: [
       // Preis = Wunsch-Erlös + PayPal-Gebühr (2,49 % + 0,35 €), auf ,90 gerundet
       { sku: 'PL_KWT_01', color: 'schwarz', priceCents: 3090, stock: 'lager' },
@@ -180,6 +180,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Maße', value: '33 × 24 cm' },
       { label: 'Material', value: OXFORD_600D_PVC },
       { label: 'Reißverschluss', value: 'SBS, wasserabweisend, abschließbar' },
+      { label: 'Option Zahlenschloss', value: '+2 €: Zahlenschloss für die Reißverschluss-Ösen, Farbe nach Verfügbarkeit' },
       { label: 'Transport', value: 'Abgeschlossen = verschlossenes Behältnis, „nicht zugriffsbereit“ (§ 12 Abs. 3 Nr. 2 WaffG)' },
       { label: 'Magazinplätze', value: 'bis zu 6 (elastische Schlaufen)' },
       { label: 'Fächer', value: '2 gepolsterte Hauptfächer für 2 Kurzwaffen (erprobt bis 6 Zoll Lauf), Munitionsfach, Fronttasche' },
