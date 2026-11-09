@@ -50,7 +50,7 @@ export function Manifest() {
           ))}
         </p>
         <p className="manifest__sub">
-          Kleines Sortiment, klare Aufgabe: vier Teile, die am Stand, im Gelände und im Fahrzeug funktionieren müssen.
+          Kleines Sortiment, klare Aufgabe: vier Teile, die am Stand, im Gelände und im Einsatz funktionieren müssen.
           Jedes mit Produktcode, jedes mit offenen Materialangaben – damit du weißt, was du trägst.
         </p>
       </div>

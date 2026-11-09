@@ -317,7 +317,7 @@ export const PRODUCTS: Product[] = [
   {
     code: 'PL_IFAK',
     bullets: ['Ein Zug – und die Pouch ist ab','Aufklappen, alles liegt offen','Passt an Rucksack, Gürtel oder Bein'],
-    use: 'Notfall · Gelände · Fahrzeug',
+    use: 'Notfall · Gelände · Einsatz',
     slug: 'ifak',
     name: 'IFAK Pouch',
     category: 'Erste Hilfe / Schnellzugriff',
