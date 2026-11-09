@@ -430,3 +430,25 @@
 .pcard__media .lockbadge.qdbadge {
   width: 42px;
 }
+
+/* Labor: Hochformat-Fotos (z. B. Arbeitsmatte) groß – Hochformat-Rahmen statt kleiner Querformat-Bühne */
+.proof--hoch {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+}
+.proof--hoch .proof__media {
+  aspect-ratio: 3 / 4;
+  width: min(100%, calc((100svh - 120px) * 0.75));
+  margin-inline: auto;
+}
+.proof--hoch .proof__media img {
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+@media (max-width: 860px) {
+  .proof--hoch {
+    grid-template-columns: 1fr;
+  }
+  .proof--hoch .proof__media {
+    width: 100%;
+  }
+}

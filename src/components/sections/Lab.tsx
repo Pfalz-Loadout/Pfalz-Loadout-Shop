@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { PRODUCTS, type ProofMoment } from '@/data/shop';
 import { CompareSlot, FabricSlot, LengthSlot, MolleSlot, Placeholder, QdSlot, VideoSlot } from '../lab/Media';
-import { Picture, hasMedia } from '../Picture';
+import { Picture, hasMedia, mediaMeta } from '../Picture';
 
 function ProofMedia({ m }: { m: ProofMoment }) {
   const s = m.media;
@@ -68,7 +68,7 @@ export function Lab() {
 
         <div className="proofs" id="lab-panel" role="tabpanel" aria-labelledby={`tab-${active}`}>
           {product.lab.map((m, i) => (
-            <div className="proof" key={m.id}>
+            <div className={`proof${m.media.kind === 'image' && m.media.fit === 'contain' && hasMedia(m.media.src ?? '') && mediaMeta(m.media.src!).h > mediaMeta(m.media.src!).w ? ' proof--hoch' : ''}`} key={m.id}>
               <div className="proof__media hud">
                 <ProofMedia m={m} />
                 {m.media.kind === 'video' && !m.media.src ? null : m.media.kind !== 'shader-fabric' ? (
